@@ -1,6 +1,7 @@
 /*start of imports */
 
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
 
 /*End of imports*/
 
@@ -12,6 +13,17 @@ body {
     background-color: rgb(227, 227, 227);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .div-design {
     width: 100%;
     height: 380px;
@@ -19,6 +31,12 @@ body {
     position: absolute;
     margin-top: 50px;
     z-index: 1;
+}
+
+.nav-header {
+    width: 100%;
+    height: 80px;
+    background-color: black;
 }
 
 .contact-us-div {
@@ -31,11 +49,69 @@ body {
     z-index: 2;
 }
 
+.form-div {
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
 .text-head {
     padding-top: 15px;
     padding-left: 30px;
     color: black;
-    font-size: xx-large;
-    font-weight: 200;
+    font-size: 40px;
+    font-weight: 300;
     font-family: 'Dosis', sans-serif;
+}
+
+label {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 15px;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+.left-label {
+    margin-left: 40px;
+}
+
+.left-holder {
+    margin-top: 35px;
+    height: 30px;
+    margin-left: 43px;
+    border-top: 0px;
+    border-left: 0px;
+    width: 170px;
+    border-right: 0px;
+    border-color: rgb(250, 36, 36);
+    
+}
+
+input:focus {
+    outline: none;
+}
+
+.email-input {
+    width: 390px !important;
+}
+
+.input-div {
+    margin-top: 35px;
+    height: 30px;
+    width: 170px;
+    margin-left: 18px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: rgb(250, 36, 36);
+}
+
+.submit-button {
+    background-color: rgb(250, 36, 36);
+    border: 0px;
+    border-radius: 4px;
+    width: 100px;
+    height: 40px;
+    margin-left: 18px;
+    margin-top: 15px;
 }
