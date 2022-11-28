@@ -29,14 +29,53 @@ input[type=number] {
     height: 380px;
     background-color: rgb(250, 36, 36);
     position: absolute;
-    margin-top: 50px;
+    margin-top: 120px;
     z-index: 1;
 }
 
 .nav-header {
     width: 100%;
     height: 80px;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.nav-page {
+    margin-top: 25px;
+    position: absolute;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+    margin-left: 60%;
+}
+
+.page-2 {
+    margin-left: 70% !important;
+}
+
+.page-3 {
+    margin-left: 80% !important;
+}
+
+.page-4 {
+    margin-left: 90% !important;
+}
+
+.logo-head {
+    margin-top: 25px;
+    margin-left: 160px;
+    position: absolute;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Dosis', sans-serif;
+}
+
+.nav-logo {
+    margin-left: 80px;
+    margin-top: 10px;
 }
 
 .contact-us-div {
@@ -45,7 +84,7 @@ input[type=number] {
     width: 32%;
     height: 480px;
     margin-left: 55%;
-    margin-top: 110px;
+    margin-top: 80px;
     z-index: 2;
 }
 
@@ -106,10 +145,16 @@ input:focus {
     border-color: rgb(250, 36, 36);
 }
 
+.submit-button:hover {
+    background-color: rgb(217, 208, 36);
+    transition: 0.8s;
+}
+
 .submit-button {
     background-color: rgb(250, 36, 36);
     border: 0px;
     border-radius: 4px;
+    transition: 0.8s;
     width: 100px;
     height: 40px;
     margin-left: 18px;
