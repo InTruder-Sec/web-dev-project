@@ -44,6 +44,30 @@ a {
     text-decoration: none;
 }
 
+.head-1 {
+    margin-top: 20px;
+    margin-left: 40px;
+    font-size: 36px;
+    font-weight: 800;
+    font-family: 'Dosis', sans-serif;
+}
+
+.address {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 16px;
+    margin-left: 50px;
+    padding-bottom: 40px;
+}
+
+.social-icons {
+    margin-top: 10px;
+    
+}
+
+svg {
+    padding-left: 10px;
+}
+
 .nav-page {
     margin-top: 25px;
     position: absolute;
@@ -159,4 +183,12 @@ input:focus {
     height: 40px;
     margin-left: 18px;
     margin-top: 15px;
+}
+
+.footer-div {
+    height: 10%;
+    margin-top: 55px;
+    font-family: 'Titillium Web', sans-serif;
+    width: 100%;
+    background-color: white;
 }
