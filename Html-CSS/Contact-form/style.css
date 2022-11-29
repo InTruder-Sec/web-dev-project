@@ -9,6 +9,16 @@
     margin: 0%;
 }
 
+::-moz-selection {
+    color: white;
+    background-color: red;
+}
+
+::selection {
+    color: white;
+    background-color: red;
+}
+
 body {
     background-color: rgb(227, 227, 227);
 }
@@ -18,6 +28,46 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+/*Screen Breckpoints*/
+
+@media screen and (max-width: 1080px) {
+    .down {
+        display: block !important;
+    }
+    .left-label {
+        margin-top: 20px;
+        margin-left: 15px !important;
+    }
+    .left-holder {
+        margin-top: 60px !important;
+        margin-left: 20px !important;
+    }
+    .email-input {
+        margin-top: 120px !important;
+    }
+    .email {
+        margin-top: 90px;
+    }
+    .div-design {
+        margin-top: 150px !important;
+    }
+    .input-div {
+        width: 50% !important;
+    }
+    .left-holder {
+        width: 45% !important;
+    }
+}
+
+@media screen and (max-width: 921px) {
+    
+    .contact-us-div {
+        margin-left: 45% !important;
+        width: 40% !important;
+    }
+}
+
 
 /* Firefox */
 input[type=number] {
@@ -29,7 +79,7 @@ input[type=number] {
     height: 380px;
     background-color: rgb(250, 36, 36);
     position: absolute;
-    margin-top: 120px;
+    margin-top: 110px;
     z-index: 1;
 }
 
@@ -62,6 +112,9 @@ a {
 .social-icons {
     margin-top: 10px;
     
+}
+.down {
+    display: none;
 }
 
 svg {
@@ -106,7 +159,7 @@ svg {
     background-color: white;
     position: relative;
     width: 32%;
-    height: 480px;
+    padding-bottom: 30px;
     margin-left: 55%;
     margin-top: 80px;
     z-index: 2;
@@ -134,17 +187,21 @@ label {
     margin-left: 15px;
 }
 
+
+
 .left-label {
+    position: absolute;
     margin-left: 40px;
 }
 
 .left-holder {
+    position: absolute;
     margin-top: 35px;
     height: 30px;
     margin-left: 43px;
     border-top: 0px;
     border-left: 0px;
-    width: 170px;
+    width: 35%;
     border-right: 0px;
     border-color: rgb(250, 36, 36);
     
@@ -155,13 +212,13 @@ input:focus {
 }
 
 .email-input {
-    width: 390px !important;
+    width: 70% !important;
 }
 
 .input-div {
     margin-top: 35px;
     height: 30px;
-    width: 170px;
+    width: 35%;
     margin-left: 18px;
     border-top: 0px;
     border-left: 0px;
@@ -192,3 +249,4 @@ input:focus {
     width: 100%;
     background-color: white;
 }
+
