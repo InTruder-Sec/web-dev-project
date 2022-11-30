@@ -9,6 +9,10 @@
     margin: 0%;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 ::-moz-selection {
     color: white;
     background-color: red;
@@ -62,9 +66,26 @@ input::-webkit-inner-spin-button {
 
 @media screen and (max-width: 921px) {
     
+    .logo-head {
+        margin-left: 100px !important;
+    }
+
+    .nav-logo {
+        margin-left: 30px !important;
+    }
+
     .contact-us-div {
         margin-left: 45% !important;
         width: 40% !important;
+    }
+}
+
+@media screen and (max-width: 712px) {
+    .nav-header {
+        display: none;
+    }
+    .nav-hamburger {
+        display: block !important;
     }
 }
 
@@ -127,6 +148,33 @@ svg {
     font-family: 'Titillium Web', sans-serif;
     font-weight: 300;
     margin-left: 60%;
+}
+
+.nav-hamburger {
+    width: 10%;
+    height: 60px;
+    margin-left: 88%;
+    display: none;
+    padding-top: 10px;
+    padding-left: 25px;
+    border-bottom-left-radius: 80px;
+    background-color: white;
+}
+
+.nav-hr-1 {
+    size: 30px;
+    width: 35px;
+    height: 2px;
+    background-color: black;
+}
+
+.nav-hr {
+    size: 30px;
+    width: 35px;
+    height: 2px;
+    margin-top: 10px;
+    background-color: black;
+    border-radius: 10px;
 }
 
 .page-2 {
