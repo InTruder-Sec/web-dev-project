@@ -153,31 +153,45 @@ svg {
 }
 
 .nav-hamburger {
-    width: 10%;
-    height: 20%;
+    width: 12%;
+    height: 60px;
     margin-left: 88%;
     display: none;
     padding-right: 20px;
     padding-top: 15px;
-    padding-left: 30px;
     border-bottom-left-radius: 80px;
     background-color: white;
 }
 
 .nav-hr-1 {
     size: 30px;
-    width: 35px;
+    width: 30px;
+    margin-left: 30%;
     height: 1px;
     background-color: black;
 }
 
 .nav-hr {
     size: 30px;
-    width: 35px;
+    width: 30px;
+    margin-left: 30%;
     height: 1px;
     margin-top: 6px;
     background-color: black;
     border-radius: 10px;
+}
+
+input.nav-checkbox {
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    margin-left: 90%;
+    opacity: 1;
+}
+
+#box:checked + .nav-hamburger {
+    height: 100%;
+    width: 100%;
 }
 
 .page-2 {
