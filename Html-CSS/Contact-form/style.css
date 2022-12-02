@@ -82,11 +82,31 @@ input::-webkit-inner-spin-button {
 }
 
 @media screen and (max-width: 712px) {
-    .nav-header {
+    .nav-page {
         display: none;
     }
-    .nav-hamburger {
-        display: block !important;
+}
+
+@media screen and (max-width: 580px) {
+    .div-design {
+        margin-top: 600px !important;
+        height: 270px !important;
+    }
+    .contact-us-div {
+        margin-top: 35px !important;
+        margin-left: 10% !important;
+        width: 80% !important;
+    }
+    .footer-div {
+        position: relative !important;
+        margin-top: auto;
+        display: none;
+    }
+    .nav-logo {
+        margin-left: 20px !important;
+    }
+    .logo-head {
+        margin-left: 80px !important;
     }
 }
 
@@ -161,6 +181,7 @@ svg {
     padding-top: 15px;
     border-bottom-left-radius: 80px;
     background-color: white;
+    transition: 1s;
 }
 
 .nav-hr-1 {
@@ -189,10 +210,6 @@ input.nav-checkbox {
     opacity: 1;
 }
 
-#box:checked + .nav-hamburger {
-    height: 100%;
-    width: 100%;
-}
 
 .page-2 {
     margin-left: 70% !important;
