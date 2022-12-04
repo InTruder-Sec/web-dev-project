@@ -3,6 +3,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400&display=swap');
 @import url('https://db.onlinewebfonts.com/c/a8a61c251907c1e48b8224c5956c7110?family=Mentone+Lig');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 /* End of imports */
 
@@ -14,33 +15,87 @@ body {
     background-color: black;
 }
 
+a {
+    text-decoration: none;
+    color: rgb(178, 178, 178);
+}
+
+a:hover {
+    color: white;
+    font-weight: 500;
+}
+
 .nav-bar {
     z-index: 100;
     width: 100%;
     color: rgb(178, 178, 178);
-    height: 70px;
+    height: 55px;
     font-family: 'Inconsolata', monospace;
-    font-weight: 400;
-    font-size: 19px;
+    font-size: 18px;
 }
+
 
 .nav-pc {
     position: absolute;
-    margin-top: 22px;
-    margin-left: 20%;
+    font-weight: 300;
+    margin-top: 18px;
+    margin-left: 18%;
 }
 
 .nav-console {
     position:absolute;
-    margin-top: 22px;
-    margin-left: 28%;
+    font-weight: 300;
+    margin-top: 18px;
+    margin-left: 24%;
+}
+
+.nav-mob {
+    position: absolute;
+    font-weight: 300;
+    margin-top: 18px;
+    margin-left: 32%;
+}
+
+.nav-life {
+    position: absolute;
+    font-weight: 300;
+    margin-top: 18px;
+    margin-left: 40%;
+}
+
+.nav-services {
+    position: absolute;
+    font-weight: 300;
+    margin-top: 18px;
+    margin-left: 49%;
+}
+
+.nav-community {
+    position: absolute;
+    font-weight: 300;
+    margin-top: 18px;
+    margin-left: 58%;
+}
+
+.nav-support {
+    position: absolute;
+    font-weight: 300;
+    margin-top: 18px;
+    margin-left: 67%;
+}
+
+.nav-store {
+    position: absolute;
+    margin-top: 18px;
+    margin-left: 75%;
+    font-weight: 300;
 }
 
 .logo-png {
     position: absolute;
-    width: 45px;
-    height: 45px;
-    margin-top: 10px;
+    width: 38px;
+    height: 38px;
+    margin-top: 8px;
     margin-left: 11%;
 }
 
@@ -53,14 +108,14 @@ hr {
 
 .laptop-buy {
     position: sticky;
-    top: 1.5px;
+    top: 2px;
     z-index: 100;
     height: 60px;
     width: 100%;
     background-color: rgb(23, 23, 23);
     font-family: 'Inconsolata', monospace;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     color: white;
 }
 
@@ -69,6 +124,18 @@ hr {
     font-weight: 400;
     margin-left: 10%;
     position: absolute;
+}
+
+.search-svg {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: 81%;
+}
+
+.cart-div {
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 87%;
 }
 
 .buy-button {
@@ -154,18 +221,106 @@ hr {
 }
 
 .details {
-    height: 300px;
+    padding-bottom: 200px;
     width: 100%;
 }
 
-.details-table {
-    margin-left: 10%;
-    padding-top: 60px;
-    border-spacing: 10px;
-    border-collapse: separate;
+
+.img-ulist {
+    list-style-type: none;
+    overflow: hidden;
 }
 
-td {
-    padding: 10%;
-    border: none;
+.img-list{
+    float: left;
+    margin-top: 80px;
+    padding-left: 14%;
 }
+
+.details-ulist {
+    list-style-type: none;
+    margin-top: 40px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Inconsolata', monospace;
+    margin-left: 5%; 
+}
+
+.details-list {
+    text-align: center;
+    width: 240px;
+    padding-left: 4.5%;
+    float: left;
+}
+
+.details-ulist-2 {
+    list-style-type: none;
+    padding-left: 6%;
+    margin-top: 80px;
+    color: rgb(178, 178, 178);
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Inconsolata', monospace;
+}
+
+.details-list-2 {
+    text-align: center;
+    width: 240px;
+    margin-top: 20px;
+    padding-left: 5%;
+    float: left;
+}
+.laptop-video {
+    height: 550px;
+}
+
+.lap-specs {
+    width: 100%;
+    height: 300px;
+    color: white;
+    background-color: rgb(23, 23, 23);
+    padding-top: 70px;
+    font-family: 'Inconsolata', monospace;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.specs-text {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.specs-ul {
+    margin-left: 16%;
+    margin-top: 60px;
+    list-style-type: none;
+}
+
+.specs-img {
+    float: left;
+    padding-left: 80px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.img-specs {
+    width: 100px;
+    height: 100px;
+}
+
+.shop-now {
+    height: 400px;
+    width: 100%;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 28px;
+    padding-top: 40px;
+    font-weight: 400;
+    align-items: center;
+    text-align: center;
+}
+
+
+
