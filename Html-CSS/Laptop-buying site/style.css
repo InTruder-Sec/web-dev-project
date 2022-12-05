@@ -312,16 +312,37 @@ hr {
 }
 
 .shop-now {
-    height: 400px;
     width: 100%;
+    height: 300px;
     color: white;
     font-family: 'Open Sans', sans-serif;
-    font-size: 28px;
-    padding-top: 40px;
-    font-weight: 400;
+    font-size: 30px;
+    padding-top: 60px;
+    font-weight: 500;
     align-items: center;
     text-align: center;
 }
+
+.shop-ul {
+    list-style-type: none;
+    padding-top: 80px;
+    padding-left: 10%;
+    padding-right: 12%;
+    align-items: center;
+    padding-bottom: 150px;
+}
+
+.shop-li {
+    float: left;
+    padding-left: 5%;
+}
+
+.lap-version {
+    width: 100%;
+    height: 700px;
+    background-color: rgb(23, 23, 23);
+}
+
 
 
 
