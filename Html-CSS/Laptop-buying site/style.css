@@ -341,8 +341,94 @@ hr {
     width: 100%;
     height: 700px;
     background-color: rgb(23, 23, 23);
+    padding-top: 60px;
+
 }
 
+.version-table {
+    color: white;
+    border: 1px white;
+    margin-left: 15%;
+    margin-right: 15%;
+    border-collapse: collapse;
+}
+
+
+
+.table-c1 {
+    width: 5%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.table-c11 {
+    width: 5%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 17px;
+    font-weight: 400;
+    border: 1px solid rgb(112, 112, 112);
+    border-left: rgb(23, 23, 23);
+    border-collapse: collapse;
+}
+
+.table-c2 {
+    width: 10%;
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-bottom: 15px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.table-c22 {
+    width: 10%;
+    color: rgb(178, 178, 178);
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-bottom: 15px;
+    border: 1px solid rgb(112, 112, 112);
+    font-family: 'Inconsolata', monospace;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.table-c3 {
+    width: 10%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.table-c33 {
+    width: 10%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: rgb(178, 178, 178);
+    border: 1px solid rgb(112, 112, 112);
+    border-right: rgb(23, 23, 23);
+    padding-left: 25px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.table-new {
+    color: rgb(10, 255, 2);
+    font-size: 14px;
+    margin-left: 112px;
+    position: absolute;
+}
 
 
 
