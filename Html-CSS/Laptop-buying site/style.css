@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400&display=swap');
 @import url('https://db.onlinewebfonts.com/c/a8a61c251907c1e48b8224c5956c7110?family=Mentone+Lig');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 /* End of imports */
 
@@ -28,7 +29,6 @@ a:hover {
 .nav-bar {
     z-index: 100;
     width: 100%;
-    color: rgb(178, 178, 178);
     height: 55px;
     font-family: 'Inconsolata', monospace;
     font-size: 18px;
@@ -38,6 +38,7 @@ a:hover {
 .nav-pc {
     position: absolute;
     font-weight: 300;
+    
     margin-top: 18px;
     margin-left: 18%;
 }
@@ -339,7 +340,7 @@ hr {
 
 .lap-version {
     width: 100%;
-    height: 700px;
+    padding-bottom: 80px;
     background-color: rgb(23, 23, 23);
     padding-top: 60px;
 
@@ -431,4 +432,80 @@ hr {
 }
 
 
+.intel-details {
+    padding: 0px;
+    height: 650px;
+}
+.intel-image {
+    width: 100%;
+    overflow-x: hidden;
+}
 
+.intel-header {
+    font-family: 'Roboto', sans-serif;
+    font-size: 35px;
+    word-spacing: 0px;
+    font-weight: 400;
+    color: white;
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+}
+
+.intel-discription {
+    width: 70%;
+    position: absolute;
+    margin-top: 90px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 19px;
+    font-weight: 400;
+    padding-left: 15%;
+    padding-right: 15%;
+    text-align: center;
+    color: rgb(178, 178, 178);
+}
+.graphics-div {
+    height: 850px;
+}
+
+.graphics-img {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.graphics-discription {
+    width: 70%;
+    position: absolute;
+    margin-top: 90px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 20px;
+    font-weight: 300;
+    padding-left: 15%;
+    padding-right: 15%;
+    text-align: center;
+    color: rgb(178, 178, 178);
+}
+
+.learn-grap {
+    width: 70%;
+    position: absolute;
+    margin-top: 800px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 20px;
+    font-weight: 400;
+    padding-left: 15%;
+    padding-right: 15%;
+    text-align: center;
+}
+
+.lm-grap {
+    color: rgb(10, 255, 2);
+}
+.lm-grap:hover {
+    color: rgb(5, 164, 0);
+}
+
+.ram-image {
+    width: 100%;
+}
