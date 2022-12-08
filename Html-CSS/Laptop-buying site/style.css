@@ -509,3 +509,148 @@ hr {
 .ram-image {
     width: 100%;
 }
+.win-11 {
+    height: 510px;
+}
+
+.win-11-image {
+    width: 100%;
+}
+
+.win-11-discription {
+    position: absolute;
+    font-family: 'Inconsolata', monospace;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 150px;
+    margin-left: 63%;
+    width: 350px;
+}
+
+.win-11-header {
+    font-size: 34px;
+    padding-bottom: 25px;
+}
+
+.studio-image-2 {
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 15%;
+}
+
+.studio-div {
+    height: 480px;
+}
+
+.studio-dis {
+    position: absolute;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+    font-size: 20px;
+    font-weight: 300;
+    width: 400px;
+    margin-top: 140px;
+    margin-left: 10%;
+}
+
+.studio-head {
+    font-size: 34px; 
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 10px;
+}
+
+.studio-image {
+    width: 100%;
+}
+
+.studio-ext {
+    font-size: 17px;
+    font-weight: 400;
+    color: rgb(10, 255, 2);
+}
+
+.razer-img {
+    width: 100%;
+    height: 250px;
+    zoom: 20%;
+}
+
+.care-div {
+    position: absolute;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+    font-size: 18px;
+    width: 700px;
+    font-weight: 400;
+    margin-left: 44%;
+    margin-top: 60px;
+} 
+
+.care-head {
+    font-size: 35px;
+    font-weight: 400;
+    padding-bottom: 20px;
+    font-family: 'Inconsolata', monospace;
+}
+
+.footer {
+    width: 100%;
+    height: 400px;
+}
+
+.footer-table {
+    margin-top: 20px;
+    margin-left: 10%;
+    color: rgb(149, 149, 149);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+.footer-head {
+    color: white;
+}
+
+.footer-head:hover {
+    text-decoration: none;
+}
+
+.footer-detailsh {
+    width: 280px;
+    padding: 8px;
+}
+
+.footer-details {
+    width: 280px;
+    padding: 8px;
+}
+.footer-details:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-hr {
+    margin-top: 30px;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.socials-div {
+    position: absolute;
+    color: rgb(10, 255, 2);
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 75%;
+    font-family: 'Inconsolata', monospace;
+}
+.social-icons {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.credits {
+    margin-top: 5px;
+    margin-left: 80%;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+}
