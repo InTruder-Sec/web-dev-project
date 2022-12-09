@@ -1,0 +1,4 @@
+
+function add() {
+    alert("ADDED");
+}

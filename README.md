@@ -4,3 +4,7 @@
 
 1. [Contact Form](./Html-CSS/Contact-form)
 2. [Laptop Buying Page](./Html-CSS/Laptop-buying%20site)
+
+<hr>
+
+<h3>Javascript Projects</h3>

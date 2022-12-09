@@ -1,0 +1,52 @@
+/* Imports */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+/* End of Imports */
+
+
+* {
+    margin: 0px;
+}
+
+body {
+    background-color: #F5C7F7;
+}
+
+.glass-effect {
+    background-color: white;
+    width: 80%;
+    height: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: 10%;
+    margin-top: 60px;
+    opacity: 0.8;
+    border-radius: 10px;
+}
+
+.to-do-head {
+    /* font-family: 'Space Grotesk', sans-serif; */
+    font-family: 'Handlee', cursive;
+    font-size: 48px;
+}
+
+.to-do-table {
+    margin-top: 40px;
+}
+
+input[type="text"] {
+    font-family: 'Space Grotesk', sans-serif;
+    width: 70%;
+}
+
+.table-details {
+    width: 34%;
+    background-color: #fee3ff;
+    padding-left: 1%;
+    padding-top: 10px;
+    margin-left: 0px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+}
