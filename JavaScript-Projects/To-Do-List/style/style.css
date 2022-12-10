@@ -11,7 +11,7 @@
 }
 
 body {
-    background-color: #F5C7F7;
+    background-color: #46C2CB;
 }
 
 .glass-effect {
@@ -31,22 +31,47 @@ body {
     font-family: 'Handlee', cursive;
     font-size: 48px;
 }
-
-.to-do-table {
-    margin-top: 40px;
-}
-
-input[type="text"] {
+.userinput {
     font-family: 'Space Grotesk', sans-serif;
-    width: 70%;
+    width: 40%;
+    height: 80px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    margin-left: 25px;
+    margin-top: 50px;
+    resize: none;
 }
 
-.table-details {
-    width: 34%;
-    background-color: #fee3ff;
-    padding-left: 1%;
-    padding-top: 10px;
-    margin-left: 0px;
-    padding-bottom: 10px;
-    border-radius: 8px;
+.addbutton {
+    position: absolute;
+    margin-top: 75px;
+    margin-left: 10px;
+    width: 45px;
+    border: 0px;
+    background-color: #46C2CB;
+    border-radius: 5px;
+    font-size: 13px;
+    font-family: 'Space Grotesk', sans-serif;
+    height: 30px;
+}
+
+.checkbox {
+    padding: 10px;
+    position: absolute;
+    margin-top: 30px;
+    height: 20px;
+    width: 20px;
+}
+
+
+.reset {
+    margin-left: 80%;
+    width: 100px;
+    height: 30px;
+    border: 0px;
+    border-radius: 5px;
 }
