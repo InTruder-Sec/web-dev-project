@@ -1,4 +1,5 @@
-
+document.cookie = "Temp=0";
+fetchCookies();
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -15,7 +16,9 @@ function getCookie(cname) {
     }
     return "";
 }
-document.cookie = "Temp=0";
+
+
+
 function getnoCookies() {
   let cook = document.cookie;
   let cook2 = (cook.split(";").length-1);
@@ -30,10 +33,32 @@ function add() {
     let cookName = "ToDo" + newCount;
     console.log(cookName);
     document.cookie = cookName + "=" + val;
-    alert(document.cookie);
+    let list = document.getElementById("makeList");
+    let li = document.createElement("li");
+    li.innerText = val;
+    list.appendChild(li);
 }
 
-// function fetchCookies() {
-//   let count = getnoCookies()+1;
-//   for(let i = 2;i<count)
-// }
+function fetchCookies() {
+  let count = getnoCookies();
+  if(count==0) {
+    return 0;
+  } else {
+    for(let i=1; i<(count+1); i++) {
+      let list = document.getElementById("makeList");
+      let current = "ToDo" + i;
+      let newCurrent = getCookie(current);
+      let li = document.createElement("li");
+      li.innerText = newCurrent;
+      list.appendChild(li);
+    }
+  }
+}
+
+function reset() {
+    var allCookies = document.cookie.split(';');
+    for (var i = 0; i < allCookies.length; i++) {
+      document.cookie = allCookies[i] + "=;expires=" + new Date(0).toUTCString();
+    displayCookies.innerHTML = document.cookie;
+  } 
+}
