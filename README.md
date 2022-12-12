@@ -8,3 +8,5 @@
 <hr>
 
 <h3>Javascript Projects</h3>
+
+1. [ToDo List](./JavaScript-Projects/To-Do-List)
