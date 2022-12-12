@@ -37,7 +37,15 @@ function add() {
     let li = document.createElement("li");
     li.innerText = val;
     list.appendChild(li);
+    clearInput();
 }
+
+function clearInput(){
+  var getValue= document.getElementById("addTask");
+    if (getValue.value !="") {
+        getValue.value = "";
+    }
+ }
 
 function fetchCookies() {
   let count = getnoCookies();
@@ -56,9 +64,11 @@ function fetchCookies() {
 }
 
 function reset() {
-    var allCookies = document.cookie.split(';');
-    for (var i = 0; i < allCookies.length; i++) {
-      document.cookie = allCookies[i] + "=;expires=" + new Date(0).toUTCString();
-    displayCookies.innerHTML = document.cookie;
-  } 
+  let count = getnoCookies();
+  console.log(count);
+  for (var t=0; t<count; t++) {
+    let current = "ToDo" + (t+1);
+    document.cookie = current + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";  
+  }
+  window.location.reload();
 }
