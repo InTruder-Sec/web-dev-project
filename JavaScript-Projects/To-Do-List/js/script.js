@@ -33,9 +33,8 @@ function add() {
     let cookName = "ToDo" + newCount;
     console.log(cookName);
     document.cookie = cookName + "=" + val;
-    let newdiv = document.createElement("div");
+    let newdiv = document.createElement("li");
     document.getElementById("makeList").appendChild(newdiv);
-    newdiv.setAttribute("id", newCount);
     newdiv.innerText = val;
     document.getElementById("makeList").appendChild(div);
     clearInput();
