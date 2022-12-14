@@ -76,7 +76,7 @@ body {
     border-radius: 5px;
 }
 
-ul {
+.listing {
     margin-top: 80px;
     margin-left: 10%;
     font-size: 18px;
