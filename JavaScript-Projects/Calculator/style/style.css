@@ -1,0 +1,46 @@
+/* Import Lines*/
+
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kenia&display=swap');
+
+/* End of imports*/
+
+* {
+    margin: 0px;
+}
+
+body {
+    background-color: rgb(194, 194, 194);
+}
+
+.struct {
+    margin-top: 60px;
+    height: 300px;
+    border-radius: 10px;
+    opacity: 0.8;
+    width: 30%;
+    padding: 30px;
+    background-color: white;
+}
+
+.head {
+    font-family: 'Handlee', cursive;
+    font-size: 34px;
+    padding-bottom: 20px;
+}
+
+.display {
+    width: 80%;
+    font-size: 25px;
+    height: 40px;
+}
+
+.button {
+    display: inline;
+    font-family: 'Handlee', cursive;
+    background-color: rgb(194, 194, 194);
+    padding-top: 6px;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+}
