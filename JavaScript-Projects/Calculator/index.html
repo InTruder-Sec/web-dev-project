@@ -17,11 +17,38 @@
                     </center>
                     <input class="display" id="display" placeholder="" disabled>
                     <div class="buttons">
-                        <div class="button">1</div>
-                        <div class="button">2</div>
-                        <div class="button">3</div>
-                        <div class="button">4</div>
-                        <div class="button">5</div>
+                        <table>
+                            <tr>
+                                <td><button class="button" onclick="valueC()" value="1">1</button></td>
+                                <td><button class="button" onclick="valueC()" value="2">2</button></td>
+                                <td><button class="button" onclick="valueC()" value="3">3</button></td>
+                                <td><button class="button" onclick="addOpp()" value="+">+</button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="button" onclick="valueC()" value="4">4</button></td>
+                                <td><button class="button" onclick="valueC()" value="5">5</button></td>
+                                <td><button class="button" onclick="valueC()" value="6">6</button></td>
+                                <td><button class="button" onclick="subOpp()" value="-">-</button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="button" onclick="valueC()" value="7">7</button></td>
+                                <td><button class="button" onclick="valueC()" value="8">8</button></td>
+                                <td><button class="button" onclick="valueC()" value="9">9</button></td>
+                                <td><button class="button" onclick="mulOpp()" value="*">*</button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="button" onclick="valueC()" value="0">0</button></td>
+                                <td><button class="button" onclick="valueC()" value="00">00</button></td>
+                                <td><button class="button" onclick="divOppC()" value=".">.</button></td>
+                                <td><button class="button" onclick="calc()" value="/">/</button></td>
+                            </tr>
+                            <tr>
+                                <td><button class="button" onclick="valueC()" value="0">C</button></td>
+                                <td><button class="button" onclick="valueC()" value=".">D</button></td>
+                                <td><button class="button" onclick="divOppC()" value="/">%</button></td>
+                                <td><button class="button" onclick="calc()" value="=">=</button></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

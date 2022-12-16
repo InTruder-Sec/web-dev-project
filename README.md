@@ -10,3 +10,4 @@
 <h3>Javascript Projects</h3>
 
 1. [ToDo List](./JavaScript-Projects/To-Do-List)
+2. [Calculator](./JavaScript-Projects/Calculator/)

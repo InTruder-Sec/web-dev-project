@@ -15,7 +15,6 @@ body {
 
 .struct {
     margin-top: 60px;
-    height: 300px;
     border-radius: 10px;
     opacity: 0.8;
     width: 30%;
@@ -35,12 +34,16 @@ body {
     height: 40px;
 }
 
+table {
+    border-collapse: separate;
+    border-spacing: 20px;
+}
+
 .button {
-    display: inline;
     font-family: 'Handlee', cursive;
     background-color: rgb(194, 194, 194);
-    padding-top: 6px;
     border-radius: 5px;
-    width: 80px;
-    height: 30px;
+    width: 30px;
+    text-align: center;
+    height: 35px;
 }
