@@ -62,10 +62,15 @@ function valclear() {
 }
 
 function del() {
-    console.log(current);
+    if (current = "<empty string>") {
+        values.pop();
+        let nlen = values.length-1;
+        current = values[nlen];
+    }
     current = current.substring(0, current.length -1);
     display = display.substring(0, display.length -1);
     document.getElementById('display').placeholder = display;
+    console.log(values);
 }
 
 function calc() {
