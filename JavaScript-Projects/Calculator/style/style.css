@@ -10,16 +10,15 @@
 }
 
 body {
-    background-color: rgb(194, 194, 194);
+    background-image: url("https://cdn.pixabay.com/photo/2021/11/10/18/44/mathematics-6784603_1280.jpg");
 }
 
 .struct {
     margin-top: 60px;
     border-radius: 10px;
-    opacity: 0.8;
     width: 30%;
     padding: 30px;
-    background-color: white;
+    background-color: rgb(238, 238, 238);
 }
 
 .head {

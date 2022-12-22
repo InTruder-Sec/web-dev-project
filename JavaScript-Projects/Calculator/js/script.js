@@ -27,29 +27,76 @@ function subOpp(opp) {
     console.log(values);    
 }
 
+function mulOpp(opp) {
+    display += opp;
+    values.push(current);
+    values.push("*");
+    current = "";
+    document.getElementById('display').placeholder = display;
+    console.log(values);    
+}
+
+function divOpp(opp) {
+    display += opp;
+    values.push(current);
+    values.push("/");
+    current = "";
+    document.getElementById('display').placeholder = display;
+    console.log(values);    
+}
+
+function perOpp(opp) {
+    display += opp;
+    values.push(current);
+    values.push("%");
+    current = "";
+    document.getElementById('display').placeholder = display;
+    console.log(values);    
+}
+
+function valclear() {
+    display = "";
+    current = "";
+    values = [];
+    document.getElementById('display').placeholder = "0";
+}
+
+function del() {
+    console.log(current);
+    current = current.substring(0, current.length -1);
+    display = display.substring(0, display.length -1);
+    document.getElementById('display').placeholder = display;
+}
+
 function calc() {
     values.push(current);
     console.log(values);
-    let leng = values.length;
+    let leng = values.length -1;
     var c;
-    let v = 0;
+    let v = parseFloat(values[0]);
     let v2;
-    for (let t=0; t<leng; t++) {
-        console.log(values[t]);
-        if (t%2==0) {
-            
-            c = parseInt(values[t]);
-        } else {
+    for (let t=1; t<leng; t++) {
+        if (t%2!=0) {
             switch (values[t]) {
                 case '+':
-                    console.log(c)
-                    v += c;
+                    v = v + parseFloat(values[t+1]);
                     break;
                 case '-':
-                    v = v - c;
-                    break
+                    v = v - parseFloat(values[t+1]);
+                    break;
+                case '*':
+                    v = v * parseFloat(values[t+1]);
+                    break;
+                case "/":
+                    v = v / parseFloat(values[t+1]);
+                    break;
+                case "%":
+                    v = ((v/parseFloat(values[t+1]))*100);
             }
         }
     }
-    document.getElementById('display').placeholder = "j";
+    document.getElementById('display').placeholder = v;
+    values = [];
+    display = "";
+    current = "";
 }
