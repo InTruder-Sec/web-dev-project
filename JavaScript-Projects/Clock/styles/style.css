@@ -1,0 +1,34 @@
+/* Start of Imports */
+
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap');
+
+/* End of imports */
+
+* {
+    margin: 0;
+}
+
+body {
+    background-color: rgb(32, 32, 32);
+}
+
+.background {
+    width: 100%;
+    margin-top: 200px;
+    border-radius: 20px;
+    
+}
+
+.time {
+    font-family: 'Teko', sans-serif;
+    color: white;
+    font-size: 80px;
+    display: inline;
+}
+
+.stat {
+    display: inline;
+    font-family: 'Teko', sans-serif;
+    color: white;
+    font-size: 40px;
+}
