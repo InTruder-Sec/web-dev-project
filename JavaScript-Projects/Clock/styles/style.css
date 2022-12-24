@@ -32,3 +32,23 @@ body {
     color: white;
     font-size: 40px;
 }
+
+.date {
+    font-family: 'Teko', sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+.changer {
+    height: 85px;
+    width: 390px;
+    background-color: white;
+    margin-top: 100px;
+    border-radius: 10px;
+}
+
+.clockImage {
+    width: 80px;
+    height: 70px;
+    display: inline-block;
+}
