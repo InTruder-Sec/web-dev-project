@@ -50,7 +50,7 @@ function getDate() {
         case 6:
             day = "Saturday";
             break;
-        case 7:
+        case 0:
             day = "Sunday";
             break;
     }
@@ -59,40 +59,40 @@ function getDate() {
     let month = stat.getMonth();
     console.log(month);
     switch (month) {
-        case 1:
+        case 0:
             month = "January";
             break;
-        case 2:
+        case 1:
             month = "February";
             break;
-        case 3:
+        case 2:
             month = "March";
             break;
-        case 4:
+        case 3:
             month = "April";
             break;
-        case 5:
+        case 4:
             month = "May";
             break;
-        case 6:
+        case 5:
             month = "June";
             break;
-        case 7:
+        case 6:
             month = "July";
             break;
-        case 8:
+        case 7:
             month = "August";
             break;
-        case 9:
-            month = "September";
+        case 8:
+            mnth = "September";
             break; 
-        case 10:
+        case 9:
             month = "October";
             break;
-        case 11:
+        case 10:
             month = "November";
             break;
-        case 12:
+        case 11:
             month = "December";
             break;
     }
@@ -103,3 +103,34 @@ function getDate() {
 // End of clock 
 
 // Start of Stopwatch code
+
+// End of Stopwatch code
+
+// Start of change pannel
+
+function changeClock() {
+    document.getElementById("displayClock").style.backgroundColor = "rgb(134, 134, 134)";
+    document.getElementById("displayStop").style.backgroundColor = "white";
+    document.getElementById("displayTimer").style.backgroundColor = "white";
+    document.getElementById("backgroundClock").style.opacity = '1';
+    document.getElementById("backgroundTimer").style.opacity = '0';
+    document.getElementById("backgroundStop").style.opacity = '0';
+}
+
+function changeStop() {
+    document.getElementById("displayClock").style.backgroundColor = "white";
+    document.getElementById("displayStop").style.backgroundColor = "rgb(134, 134, 134)";
+    document.getElementById("displayTimer").style.backgroundColor = "white";
+    document.getElementById("backgroundClock").style.opacity = '0';
+    document.getElementById("backgroundTimer").style.opacity = '0';
+    document.getElementById("backgroundStop").style.opacity = '1';
+}
+
+function changeTimer() {
+    document.getElementById("displayClock").style.backgroundColor = "white";
+    document.getElementById("displayStop").style.backgroundColor = "white";
+    document.getElementById("displayTimer").style.backgroundColor = "rgb(134, 134, 134)";
+    document.getElementById("backgroundClock").style.opacity = '0';
+    document.getElementById("backgroundTimer").style.opacity = '1';
+    document.getElementById("backgroundStop").style.opacity = '0';
+}
