@@ -115,18 +115,6 @@ let newHrs = 0;
 
 
 function timeIncrease() {
-    if (sec<59) {
-        sec = sec + 1;
-    } else {
-        if (min<59) {
-            min = min + 1;
-            sec = 0;
-        } else {
-            hrs = hrs + 1;
-            min = 0;
-            sec = 0;
-        }
-    }
     if (sec<10) {
         newSec = "0" + sec;
     } else {
@@ -144,6 +132,19 @@ function timeIncrease() {
     }
     swformat = newHrs + " : " + newMin + " : " + newSec;
     document.getElementById("stoptime").innerText = swformat;
+    if (sec<59) {
+        sec = sec + 1;
+    } else {
+        if (min<59) {
+            min = min + 1;
+            sec = 0;
+        } else {
+            hrs = hrs + 1;
+            min = 0;
+            sec = 0;
+        }
+    }
+    
 }
 
 function swStart() {
@@ -163,6 +164,12 @@ function swStart() {
 
 
 // End of Stopwatch code
+
+//Start of Timer code
+
+
+//End of Timer code
+
 
 // Start of change pannel
 
@@ -192,3 +199,5 @@ function changeTimer() {
     document.getElementById("backgroundTimer").style.opacity = '1';
     document.getElementById("backgroundStop").style.opacity = '0';
 }
+
+// End of change pannel
