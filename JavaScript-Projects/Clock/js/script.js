@@ -6,7 +6,9 @@ function getTime() {
     let hrs = stat.getHours();
     if (hrs>=12) {
         hrs = hrs - 12;
-        hrs = "0" + hrs;
+        if (hrs <= 10) {
+            hrs = "0" + hrs;
+        }
         s = "PM" 
     }
     let min = stat.getMinutes();
@@ -84,7 +86,7 @@ function getDate() {
             month = "August";
             break;
         case 8:
-            mnth = "September";
+            month = "September";
             break; 
         case 9:
             month = "October";
@@ -103,6 +105,62 @@ function getDate() {
 // End of clock 
 
 // Start of Stopwatch code
+
+let sec = 0;
+let min = 0;
+let hrs = 0;
+let newSec = 0;
+let newMin = 0;
+let newHrs = 0;
+
+
+function timeIncrease() {
+    if (sec<59) {
+        sec = sec + 1;
+    } else {
+        if (min<59) {
+            min = min + 1;
+            sec = 0;
+        } else {
+            hrs = hrs + 1;
+            min = 0;
+            sec = 0;
+        }
+    }
+    if (sec<10) {
+        newSec = "0" + sec;
+    } else {
+        newSec = sec;
+    }
+    if (min<10) {
+        newMin = "0" + min;
+    } else {
+        newMin = min;
+    }
+    if (hrs<10) {
+        newHrs = "0" + hrs;
+    } else {
+        newHrs = hrs;
+    }
+    swformat = newHrs + " : " + newMin + " : " + newSec;
+    document.getElementById("stoptime").innerText = swformat;
+}
+
+function swStart() {
+    if (sec==0 && min==0 && hrs==0) {
+        intervalId = setInterval('timeIncrease()', 1000);
+        document.getElementById("stopSVG").style.opacity = 1;
+        document.getElementById("playSvg").style.opacity = 0;
+    } else {
+        clearInterval(intervalId);
+        document.getElementById("stopSVG").style.opacity = 0;
+        document.getElementById("playSvg").style.opacity = 1;
+        sec = 0;
+        min = 0;
+        hrs = 0;
+    }
+}
+
 
 // End of Stopwatch code
 

@@ -87,3 +87,27 @@ td {
     position: absolute;
     transition: 0.8s;
 }
+
+.stoptime {
+    font-family: 'Teko', sans-serif;
+    color: white;
+    font-size: 80px;
+}
+
+.stopstart {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: 0px;
+    padding-left: 5px;
+}
+
+.playSvg {
+    transition: 0.3s;
+}
+
+.stopSVG {
+    position: absolute;
+    opacity: 0;
+    transition: 0.3s;
+}
