@@ -49,7 +49,7 @@ body {
 }
 
 
-table {
+.disTable {
     border-collapse: separate;
     padding: 0;
     border-radius: 10px;
@@ -110,4 +110,85 @@ td {
     position: absolute;
     opacity: 0;
     transition: 0.3s;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.increase {
+    display: inline;
+}
+
+.hrsInput {
+    width: 80px;
+    height: 60px;
+}
+.minInput {
+    width: 80px;
+    height: 60px;
+}
+.secInput {
+    width: 80px;
+    height: 60px;
+}
+
+.background-timer {
+    font-family: 'Teko', sans-serif;
+    color: white;
+    font-size: 30px;
+}
+
+.increaseSvg {
+    transition: 0.6s;
+}
+
+.decreaseSvg {
+    rotate: 180deg;
+    margin-top: 20px;
+    transition: 0.6s;
+}
+
+.timerTable {
+    text-align: center;
+    cursor: default;
+    font-family: 'Teko', sans-serif;
+}
+
+.timertd {
+    width: 20px;
+    padding: 2px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+}
+
+.numInput {
+    font-family: 'Teko', sans-serif;
+    padding-top: 5px;
+    color: white;
+    font-size: 80px;
+    background-color: rgb(32, 32, 32);
+    border: 0;
+    opacity: 1;
+}
+
+.tss {
+    margin-top: 20px;
 }

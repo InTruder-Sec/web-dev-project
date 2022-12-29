@@ -6,7 +6,7 @@ function getTime() {
     let hrs = stat.getHours();
     if (hrs>=12) {
         hrs = hrs - 12;
-        if (hrs <= 10) {
+        if (hrs < 10) {
             hrs = "0" + hrs;
         }
         s = "PM" 
@@ -166,6 +166,162 @@ function swStart() {
 // End of Stopwatch code
 
 //Start of Timer code
+
+document.getElementById("hrsInput").value = "00";
+document.getElementById("minInput").value = "00";
+document.getElementById("secInput").value = "00";
+
+
+function hrsIncrease() {
+    let val = document.getElementById("hrsInput").value;
+    if (val=="") {
+        val = parseInt("1");
+    } else {
+        val = parseInt(val) + 1;
+    }
+    if (val<10) {
+        val = "0" + val;
+    }
+    document.getElementById("hrsInput").value = val;
+}
+
+function hrsDecrease() {
+    let val = document.getElementById("hrsInput").value;
+    
+    if (val>0) {
+        val = val - 1;
+    }
+    if (val<10) {
+        val = "0" + val;
+    }
+    document.getElementById("hrsInput").value = val;
+}
+
+function minIncrease() {
+    let minVal = document.getElementById("minInput").value;
+    if (parseInt(minVal)<59) {
+        minVal = parseInt(minVal) + 1;
+    } else {
+        minVal = "00";
+    }
+
+    if (minVal<10) {
+        minVal = "0" + minVal;
+    }
+
+    document.getElementById("minInput").value = minVal;
+}
+
+function minDecrease() {
+    let minVal = document.getElementById("minInput").value;
+    
+    if (minVal>0) {
+        minVal = minVal - 1;
+    } else {
+        minVal = 59;
+    }
+    if (minVal<10) {
+        minVal = "0" + minVal;
+    }
+    document.getElementById("minInput").value = minVal;
+}
+
+function secIncrease() {
+    let secVal = document.getElementById("secInput").value;
+    if (parseInt(secVal)<59) {
+        secVal = parseInt(secVal) + 1;
+    } else {
+        secVal = "00";
+    }
+
+    if (secVal<10) {
+        secVal = "0" + secVal;
+    }
+
+    document.getElementById("secInput").value = secVal;
+}
+
+function secDecrease() {
+    let secVal = document.getElementById("secInput").value;
+    
+    if (secVal>0) {
+        secVal = secVal - 1;
+    } else {
+        secVal = 59;
+    }
+    if (secVal<10) {
+        secVal = "0" + secVal;
+    }
+    document.getElementById("secInput").value = secVal;
+}
+let  newInter;
+function tStart() {
+    let nsecVal = document.getElementById("secInput").value;
+    let nminVal = document.getElementById("minInput").value;
+    let nhrsVal = document.getElementById("hrsInput").value;
+    if (nsecVal == 0 && nminVal==0 && nhrsVal==0) {
+        alert("Please Input valid time interval");
+    } else {
+        document.getElementById("changeButton").style.opacity = 0;
+        document.getElementById("changeButton2").style.opacity = 0;
+        document.getElementById("changeButton3").style.opacity = 0;
+        document.getElementById("changeButton4").style.opacity = 0;
+        document.getElementById("changeButton5").style.opacity = 0;
+        document.getElementById("changeButton6").style.opacity = 0;
+        document.getElementById("playSvg2").style.opacity = 1;
+        document.getElementById("stopstart").disabled = true;
+        newInter = setInterval("decreaseTime()", 1000);
+    }
+}
+
+function decreaseTime() {
+    let s = document.getElementById("secInput").value;
+    let m = document.getElementById("minInput").value;
+    let h = document.getElementById("hrsInput").value;
+    
+    if (h==0 && m==0 && s==0) {
+        alert("Time Up")
+        clearInterval(newInter);
+        document.getElementById("changeButton").style.opacity = 1;
+        document.getElementById("changeButton2").style.opacity = 1;
+        document.getElementById("changeButton3").style.opacity = 1;
+        document.getElementById("changeButton4").style.opacity = 1;
+        document.getElementById("changeButton5").style.opacity = 1;
+        document.getElementById("changeButton6").style.opacity = 1;
+        document.getElementById("playSvg2").style.opacity = 1;
+        document.getElementById("stopstart").disabled = false;
+        
+    } else {
+        if (s==0) {
+            s = 59;
+            if (m==0) {
+                m = 59;
+                if (h!=0) {
+                    h = h-1;
+                }            
+            } else {
+                m = m -1;
+            }
+        } else {
+            s = s - 1;
+        }
+
+        if (s<10) {
+            s = "0" + s;
+        }
+        if (m<10) {
+            m = "0" + m;
+        }
+        
+        document.getElementById("secInput").value = s;
+        document.getElementById("minInput").value = m;
+        document.getElementById("hrsInput").value = h;
+    }
+}
+
+
+
+
 
 
 //End of Timer code
