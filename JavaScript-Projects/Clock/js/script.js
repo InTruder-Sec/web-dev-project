@@ -269,7 +269,7 @@ function tStart() {
         document.getElementById("changeButton5").style.opacity = 0;
         document.getElementById("changeButton6").style.opacity = 0;
         document.getElementById("playSvg2").style.opacity = 1;
-        document.getElementById("stopstart").disabled = true;
+        document.getElementById("stopstart2").disabled = true;
         newInter = setInterval("decreaseTime()", 1000);
     }
 }
@@ -278,7 +278,9 @@ function decreaseTime() {
     let s = document.getElementById("secInput").value;
     let m = document.getElementById("minInput").value;
     let h = document.getElementById("hrsInput").value;
-    
+    s = parseInt(s);
+    m = parseInt(m);
+    h = parseInt(h);
     if (h==0 && m==0 && s==0) {
         alert("Time Up")
         clearInterval(newInter);
@@ -289,21 +291,20 @@ function decreaseTime() {
         document.getElementById("changeButton5").style.opacity = 1;
         document.getElementById("changeButton6").style.opacity = 1;
         document.getElementById("playSvg2").style.opacity = 1;
-        document.getElementById("stopstart").disabled = false;
+        document.getElementById("stopstart2").disabled = false;
         
     } else {
-        if (s==0) {
-            s = 59;
-            if (m==0) {
-                m = 59;
-                if (h!=0) {
-                    h = h-1;
-                }            
-            } else {
-                m = m -1;
-            }
+        if (s>0) {
+            s = s -1;
         } else {
-            s = s - 1;
+            if (m>0) {
+                m = m - 1
+                s = 59;
+            } else {
+                m = 59;
+                s = 59;
+                h = h -1
+            }
         }
 
         if (s<10) {
@@ -312,6 +313,10 @@ function decreaseTime() {
         if (m<10) {
             m = "0" + m;
         }
+        if (h<10) {
+            h = "0" + h;
+        }
+        
         
         document.getElementById("secInput").value = s;
         document.getElementById("minInput").value = m;
@@ -338,6 +343,13 @@ function changeClock() {
     document.getElementById("backgroundStop").style.opacity = '0';
 }
 
+function disableSW() {
+    document.getElementById("stopstart").style.display = "none";
+}
+function disableTM() {
+    document.getElementById("stopstart2").style.display = "none";
+}
+
 function changeStop() {
     document.getElementById("displayClock").style.backgroundColor = "white";
     document.getElementById("displayStop").style.backgroundColor = "rgb(134, 134, 134)";
@@ -345,6 +357,7 @@ function changeStop() {
     document.getElementById("backgroundClock").style.opacity = '0';
     document.getElementById("backgroundTimer").style.opacity = '0';
     document.getElementById("backgroundStop").style.opacity = '1';
+    setTimeout("disableTM()", 1000);
 }
 
 function changeTimer() {
@@ -354,6 +367,8 @@ function changeTimer() {
     document.getElementById("backgroundClock").style.opacity = '0';
     document.getElementById("backgroundTimer").style.opacity = '1';
     document.getElementById("backgroundStop").style.opacity = '0';
+    document.getElementById("stopstart2").style.display = "block";
+    setTimeout("disableSW()", 1000);
 }
 
 // End of change pannel
