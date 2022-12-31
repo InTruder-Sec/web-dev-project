@@ -12,3 +12,4 @@
 1. [ToDo List](./JavaScript-Projects/To-Do-List)
 2. [Calculator](./JavaScript-Projects/Calculator/)
 3. [Clock](./JavaScript-Projects/Clock/)
+4. [Notes Keeper](./JavaScript-Projects/Notes%20Keeper/)

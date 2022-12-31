@@ -3,13 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="./js/script.js" async></script>
     <link rel="stylesheet" href="./styles/style.css">
     <title>Notes Keeper</title>
 </head>
 <body>
+    <div class="window" id="window">
+        <label for="headerInput">Title:</label><br>
+        <input class="headerInput" id="headerInput" type="text"><br><br>
+
+        <label for="textHolder">Details:</label><br>
+        <textarea class="textHolder" id="textHolder"></textarea>
+
+    </div>
     <div class="wrapper">
         <div class="navigator"><h1 class="kh1">Notes Keeper</h1></div>
-        <button class="addNote" id="addNote">ADD</button>
+        <button class="addNote" id="addNote" onclick="displayWindow(this.value)" value="1">+</button>
+        <div class="folder1">
+            <div class="folderHeader">Welcome to Notes Keeper
+            </div>
+            <div class="folderDetails">Get started by adding your first note! </div>
+            
+        </div>
+        <!-- <div class="folder2">
+            <div class="folderHeader">Header</div>
+            <div class="folderDetails">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</div>
+        </div>
+        <div class="folder3">
+            <div class="folderHeader">Header</div>
+            <div class="folderDetails">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</div>
+        </div> -->
     </div>
+    
 </body>
 </html>
