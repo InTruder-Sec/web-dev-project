@@ -9,16 +9,21 @@
 </head>
 <body>
     <div class="window" id="window">
-        <label for="headerInput">Title:</label><br>
-        <input class="headerInput" id="headerInput" type="text"><br><br>
+        
+        <div class="imageDiv"></div>
+        <div class="windowText">
+            <div class="divTemp"></div>
+            <label for="headerInput" class="headerInput">Title:</label><br>
+            <input class="headerInput" id="headerInput" type="text"><br><br>
 
-        <label for="textHolder">Details:</label><br>
-        <textarea class="textHolder" id="textHolder"></textarea>
-
+            <label for="textHolder">Details:</label><br>
+            <textarea class="textHolder" id="textHolder"></textarea>
+        </div>
     </div>
-    <div class="wrapper">
+    <button class="addNote" id="addNote" onclick="displayWindow(this.value)" value="1">+</button>
+    <div class="wrapper" id="wrapper">
         <div class="navigator"><h1 class="kh1">Notes Keeper</h1></div>
-        <button class="addNote" id="addNote" onclick="displayWindow(this.value)" value="1">+</button>
+        
         <div class="folder1">
             <div class="folderHeader">Welcome to Notes Keeper
             </div>

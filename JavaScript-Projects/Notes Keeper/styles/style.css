@@ -1,13 +1,20 @@
+/* Start of Imports */
 
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
 
+/* End of Imports */
 
 * {
     margin: 0px;
     overflow-x: hidden;
 }
 
+.wrapper {
+    transition: 0.8s;
+}
 
 body {
     background-image: url("./background.jpg");
@@ -41,6 +48,7 @@ body {
     font-size: 40px;
     transition: 0.8s;
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .addNote:hover {
@@ -92,25 +100,64 @@ body {
 }
 .folderDetails {
     padding: 10px 10px 10px 10px;
-    font-family: 'Dosis', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .window {
     position: absolute;
-    width: 60%;
-    height: 400px;
+    width: 42%;
+    height: 320px;
     background-color: white;
-    margin-top: 8%;
-    margin-left: 20%;
-    border-radius: 30px;
+    margin-top: 12%;
+    margin-left: 28%;
     padding: 30px;
     opacity: 0;
     z-index: -1;
+    border-radius: 5px;
     transition: 0.3s ease-out;
-    
+    padding: 0;
+    overflow-y: hidden;
+}
+
+.windowText {
+    display: inline-block;
+    height: 100%;
+    width: 58%;
+}
+.imageDiv {
+    display: inline-block;
+    height: 100%;
+    width: 40%;
+    background-image: url("./backimage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 label {
     color: black;
-    font-family: 'Balsamiq Sans', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
+    margin-left: 12px;
+}
+
+.headerInput {
+    margin-left: 20px;
+    border-top: 0px;
+    border-left: 0px;
+    width: 80%;
+    border-right: 0px;
+    border-color: rgb(36, 93, 250);
+}
+
+.textHolder {
+    margin-left: 20px;
+    border-top: 0px;
+    border-left: 0px;
+    width: 80%;
+    height: 80px;
+    border-right: 0px;
+    border-color: rgb(36, 93, 250)
+}
+
+.divTemp {
+    height: 30px;
 }
