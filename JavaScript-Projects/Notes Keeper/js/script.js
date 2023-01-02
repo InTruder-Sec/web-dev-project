@@ -25,12 +25,12 @@ function notesGen() {
 function addNewNote() {
     let head = document.getElementById("headerInput").value;
     let body = document.getElementById("textHolder").value;
+    head = head.replace(/[^a-zA-Z0-9 ]/g, '');
+    body = body.replace(/[^a-zA-Z0-9 ]/g, '');
     if (head != "" && body!= "") {
         let cookName = getCookie("Note");
         var arr = JSON.parse(cookName);
         let content = [head, body];
-        console.log(content);
-        console.log(arr);
         arr.push(content);
         console.log(arr);
         arr = JSON.stringify(arr);
