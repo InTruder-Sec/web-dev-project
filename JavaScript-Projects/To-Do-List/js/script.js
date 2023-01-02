@@ -18,7 +18,6 @@ function getCookie(cname) {
 }
 
 
-
 function getnoCookies() {
   let cook = document.cookie;
   let cook2 = (cook.split(";").length-1);
