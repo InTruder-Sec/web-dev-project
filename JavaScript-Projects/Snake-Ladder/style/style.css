@@ -77,3 +77,22 @@ body {
     border: 1px black solid;
     margin-left: 0; 
 }
+
+.RC {
+    height: 68px;
+    width: 90px;
+    background-color: hsl(104, 63%, 74%);
+    display: inline-block;
+    border: 1px black solid;
+
+    margin-left: 0;
+}
+
+.RC100 {
+    height: 68px;
+    width: 90px;
+    background-color: hsl(0, 100%, 77%);
+    display: inline-block;
+    border: 1px black solid;
+    margin-left: 0; 
+}
