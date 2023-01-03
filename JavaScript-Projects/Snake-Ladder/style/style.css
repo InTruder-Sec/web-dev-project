@@ -1,0 +1,79 @@
+
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+
+* {
+    margin: 0;
+}
+
+body {
+    background-color: rgb(253, 250, 52);
+}
+
+.popWindow {
+    height: 680px;
+    width: 916px;
+    margin-left: 6%;
+    margin-top: 10px;
+    background-color: white;
+    font-size: 0px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.header {
+    position: absolute;
+    right: 180px;
+    color: rgb(173, 153, 21);
+    text-align: center;
+    font-size: 100px;
+    font-family: 'East Sea Dokdo', cursive;
+    top: 30px;
+}
+
+.start {
+    position: absolute;
+    margin-left: 210px;
+    margin-top: 420px;
+    border: none;
+    background-color: rgb(173, 153, 21);
+    border-radius: 4px;
+    width: 100px;
+    height: 30px;
+    transition: 0.7s;
+}
+
+.start:hover {
+    background-color: #d2ab46;
+}
+
+.roll {
+    position: absolute;
+    display: none;
+    margin-left: 210px;
+    margin-top: 420px;
+    border: none;
+    background-color: rgb(173, 153, 21);
+    border-radius: 4px;
+    width: 100px;
+    height: 30px;
+    transition: 0.7s;
+} 
+
+.RC1 {
+    height: 68px;
+    width: 90px;
+    background-color: #d2ab46;
+    display: inline-block;
+    border: 1px black solid;
+
+    margin-left: 0;
+}
+
+.RC2 {
+    height: 68px;
+    width: 90px;
+    background-color: #ffffff;
+    display: inline-block;
+    border: 1px black solid;
+    margin-left: 0; 
+}
