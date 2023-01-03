@@ -1,5 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 
 * {
     margin: 0;
@@ -7,21 +9,25 @@
 
 body {
     background-color: rgb(253, 250, 52);
+    color: black;
 }
 
 .popWindow {
-    height: 680px;
+    height: 685px;
     width: 916px;
     margin-left: 6%;
+    font-family: 'Nunito', sans-serif;
     margin-top: 10px;
-    background-color: white;
+    background-color: rgb(180, 171, 0);
     font-size: 0px;
+    text-align: center;
     border-radius: 5px;
     display: inline-block;
+    padding: 5px;
 }
 
 .header {
-    position: absolute;
+    position: fixed;
     right: 180px;
     color: rgb(173, 153, 21);
     text-align: center;
@@ -32,7 +38,7 @@ body {
 
 .start {
     position: absolute;
-    margin-left: 210px;
+    margin-left: 180px;
     margin-top: 420px;
     border: none;
     background-color: rgb(173, 153, 21);
@@ -40,6 +46,20 @@ body {
     width: 100px;
     height: 30px;
     transition: 0.7s;
+}
+
+.snakeLogo {
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 120px;
+    height: 160px;
+}
+
+.ladderLogo {
+    position: absolute;
+    margin-top: 60px;
+    margin-left: 260px;
+    rotate: -20deg;
 }
 
 .start:hover {
@@ -60,39 +80,124 @@ body {
 } 
 
 .RC1 {
-    height: 68px;
+    height: 47px;
     width: 90px;
     background-color: #d2ab46;
     display: inline-block;
     border: 1px black solid;
-
+    font-size: 20px;
+    color: black;
     margin-left: 0;
+    padding-top: 20px;
 }
 
 .RC2 {
-    height: 68px;
+    height: 47px;
     width: 90px;
     background-color: #ffffff;
     display: inline-block;
     border: 1px black solid;
     margin-left: 0; 
+    font-size: 20px;
+    color: black;
+    padding-top: 20px;
 }
 
 .RC {
-    height: 68px;
+    height: 47px;
     width: 90px;
     background-color: hsl(104, 63%, 74%);
     display: inline-block;
     border: 1px black solid;
-
+    font-size: 20px;
+    color: black;
     margin-left: 0;
+    padding-top: 20px;
 }
 
 .RC100 {
-    height: 68px;
+    height: 47px;
     width: 90px;
-    background-color: hsl(0, 100%, 77%);
+    background-color: hsl(284, 100%, 89%);
     display: inline-block;
     border: 1px black solid;
     margin-left: 0; 
+    font-size: 20px;
+    color: black;
+    padding-top: 20px;
+}
+
+.ladder {
+    position: absolute;
+}
+
+.ladder1 {
+    position: absolute;
+    rotate: 42deg;
+    bottom: 48px;
+    margin-left: 470px;
+}
+
+.ladder2 {
+    rotate: -32deg;
+    bottom: 140px;
+    margin-left: 300px;
+}
+
+.ladder3 {
+    rotate: -5deg;
+    bottom: 260px;
+    margin-left: 670px;
+}
+
+.ladder4 {
+    margin-top: 32px;
+    rotate: -46deg;
+    margin-left: 200px;
+}
+
+.ladder5 {
+    margin-top: 260px;
+    rotate: 30deg;
+    margin-left: 300px;
+}
+
+.ladder6 {
+    margin-top: 190px;
+    margin-left: 535px;
+}
+
+.snake {
+    position: absolute;
+}
+
+.snake1 {
+    margin-left: 700px;
+    rotate: 44deg;
+    bottom: 50px;
+}
+
+.snake2 {
+    margin-top: 250px;
+    margin-left: 360px;
+}
+
+.snake3 {
+    rotate: 10deg;
+    margin-left: 365px;
+    margin-top: 10px;
+}
+
+.snake4 {
+    scale: 0.8;
+    bottom: 30px;
+    rotate: 12deg;
+    margin-left: 180px;
+}
+
+.snake5 {
+    scale: 0.6;
+    rotate: 20deg;
+    margin-top: 80px;
+    margin-left: 60px;
 }
