@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 
+
+
 * {
     margin: 0;
 }
@@ -28,6 +30,7 @@ body {
 
 .header {
     position: fixed;
+    transition: 0.6s;
     right: 180px;
     color: rgb(173, 153, 21);
     text-align: center;
@@ -46,6 +49,7 @@ body {
     width: 100px;
     height: 30px;
     transition: 0.7s;
+    z-index: 2;
 }
 
 .snakeLogo {
@@ -53,12 +57,14 @@ body {
     margin-top: 150px;
     margin-left: 120px;
     height: 160px;
+    transition: 0.6s;
 }
 
 .ladderLogo {
     position: absolute;
     margin-top: 60px;
     margin-left: 260px;
+    transition: 0.6s;
     rotate: -20deg;
 }
 
@@ -68,8 +74,8 @@ body {
 
 .roll {
     position: absolute;
-    display: none;
-    margin-left: 210px;
+    opacity: 0;
+    margin-left: 180px;
     margin-top: 420px;
     border: none;
     background-color: rgb(173, 153, 21);
@@ -201,3 +207,150 @@ body {
     margin-top: 80px;
     margin-left: 60px;
 }
+
+.player1 {
+    position: absolute;
+    scale: 0.15;
+    margin-top: 280px;
+    transition: 0.6s;
+    margin-left: -80px;
+}
+
+.player2 {
+    position: absolute;
+    scale: 0.15;
+    margin-top: 280px;
+    margin-left: 200px;
+    transition: 0.6s;
+}
+
+.player1Name {
+    position: absolute;
+    display: inline-block;
+    margin-left: 195px;
+    bottom: 60px;
+    opacity: 0;
+    transition: 0.6s;
+    font-family: 'Nunito', sans-serif;
+}
+
+
+
+
+/* CodePen Dice*/
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+  
+  #cube .front {
+    transform: 
+      translateZ(100px);
+  }
+  
+#cube .back {
+transform: 
+    rotateX(-180deg)
+    translateZ(100px);
+}
+
+#cube .right {
+transform:
+    rotateY(90deg)
+    translateZ(100px);
+}
+
+#cube .left {
+transform:
+    rotateY(-90deg)
+    translateZ(100px);
+}
+
+#cube .top {
+transform:
+    rotateX(90deg)
+    translateZ(100px);
+}
+
+#cube .bottom {
+transform:
+    rotateX(-90deg)
+    translateZ(100px);
+}
+
+.container {
+width: 200px;
+height: 200px;
+position: absolute;
+margin: 0 auto 40px;
+right: 190px;
+opacity: 0;
+transition: 0.6s;
+perspective: 1000px;
+perspective-origin: 50% 100%;
+}
+
+#cube {
+width: 100%;
+height: 100%;
+top: 100px;
+position: absolute;
+
+transform-style: preserve-3d;
+
+transition: transform 6s;
+}
+
+#cube:hover {
+cursor: pointer;
+}
+
+#cube div {
+background: hsla(0, 85%, 50%, 0.8);
+display: block;
+position: absolute;
+width: 200px;
+height: 100px;
+border: 2px solid #ab1a1a;
+
+margin: 0 auto;  
+
+font-family: Arial, Helvetica, sans-serif;
+font-size: 500%;
+text-align: center;
+padding: 50px 0;
+}
+
+.dot {
+display: block;
+position: absolute;
+width: 30px;
+height: 30px;
+background: #fff;
+border-radius: 15px;  
+}
+
+.front .dot1 { top: 85px; left: 85px; }
+.back .dot1 { top: 45px; left: 45px; }
+.back .dot2 { top: 125px; left: 125px; }
+.right .dot1 { top: 45px; left: 45px; }
+.right .dot2 { top: 85px; left: 85px; }
+.right .dot3 { top: 125px; left: 125px; }
+.left .dot1 { top: 45px; left: 45px; }
+.left .dot2 { top: 45px; left: 125px; }
+.left .dot3 { top: 125px; left: 45px; }
+.left .dot4 { top: 125px; left: 125px; }
+.top .dot1 { top: 45px; left: 45px; }
+.top .dot2 { top: 45px; left: 125px; }
+.top .dot3 { top: 85px; left: 85px; }
+.top .dot4 { top: 125px; left: 45px; }
+.top .dot5 { top: 125px; left: 125px; }
+.bottom .dot1 { top: 45px; left: 45px; }
+.bottom .dot2 { top: 45px; left: 85px; }
+.bottom .dot3 { top: 45px; left: 125px; }
+.bottom .dot4 { top: 125px; left: 45px; }
+.bottom .dot5 { top: 125px; left: 85px; }
+.bottom .dot6 { top: 125px; left: 125px; }
+
+/* End of codepen dice */
