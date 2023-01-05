@@ -299,7 +299,7 @@ position: absolute;
 
 transform-style: preserve-3d;
 
-transition: transform 6s;
+transition: transform 5s;
 }
 
 #cube:hover {
@@ -354,3 +354,32 @@ border-radius: 15px;
 .bottom .dot6 { top: 125px; left: 125px; }
 
 /* End of codepen dice */
+
+
+.chanceShow {
+    position: absolute;
+    display: inline-block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    margin-top: 440px;
+    margin-left: 120px;
+    opacity: 0;
+}
+
+.playerDice1 {
+    scale: 0.09;
+    z-index: 4;
+    position: absolute;
+    margin-left: -35px;
+    margin-top: 368px;
+    transition: 1.2s;
+}
+
+.playerDice2 {
+    scale: 0.09;
+    z-index: 4;
+    position: absolute;
+    margin-top: 368px;
+    margin-left: -40px;
+    transition: 1.2s;
+}

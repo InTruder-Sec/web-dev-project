@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="wrapper">
+      
       <section class="container" id="container">
         <div id="cube">
           <div class="front">
@@ -46,6 +47,8 @@
           </div>
         </div>
       </section>
+        <img class="playerDice1" id="playerDice1" src="./contents/player1.png">
+        <img class="playerDice2" id="playerDice2" src="./contents/player2.png">
         <img class="ladder ladder1" src="./contents/shortladder.png">
         <img class="ladder ladder2" src="./contents/midLadder.png">
         <img class="ladder ladder3" src="./contents/ladderLogo.png">
@@ -168,24 +171,21 @@
             <div class="RC2">9</div>
             <div class="RC1">10</div>
         </div>
+
+        <div class="chanceShow" id="chanceShow">Click on dice to rotate...</div>
         
         <img class="snakeLogo" id="snakeLogo" src="./contents/snakeLogo.png" alt="Image">
         <img class="ladderLogo" id="ladderLogo" src="./contents/ladderLogo.png" alt="Image">
-        <div class="player1Name" id="player1Name">PLayer-1</div>
-            <button class="start" id="startButton" onclick="startGame()">START</button>
-            <button class="roll" id="rollButton">Roll Dice</button>
-            <img class="player1" id="player1" src="./contents/player1.png">
-            <img class="player2" id="player2" src="./contents/player2.png">
+        <div class="player1Name" id="namePlayer">PLayer-1 </div>
+        <button class="start" id="startButton" onclick="startGame()">START</button>
+        <button class="roll" id="rollButton">Roll Dice</button>
+        <img class="player1" id="player1" src="./contents/player1.png">
+        <img class="player2" id="player2" src="./contents/player2.png">
         <div class="header" id="header">
             
             Sankes<br> and<br> Ladder
             
         </div>
-        <!-- <div class="player1Name" id="player1Name">PLayer-1</div>
-        <button class="start" id="startButton" onclick="startGame()">START</button>
-        <button class="roll" id="rollButton">Roll Dice</button>
-        <img class="player1" id="player1" src="./contents/player1.png">
-        <img class="player2" id="player2" src="./contents/player2.png"> -->
         
     </div>
 </body>
