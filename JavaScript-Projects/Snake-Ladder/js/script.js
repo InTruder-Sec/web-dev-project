@@ -137,7 +137,7 @@ function movePlayer() {
       if (playerOneSum==43) {
         playerOneSum = 64;
       }
-      if (playerOneSum==55) {
+      if (playerOneSum==65) {
         playerOneSum = 25; 
       }
       if (playerOneSum==81) {
@@ -223,7 +223,7 @@ function movePlayer() {
       if (playerTwoSum==43) {
         playerTwoSum = 64;
       }
-      if (playerTwoSum==55) {
+      if (playerTwoSum==65) {
         playerTwoSum = 25; 
       }
       if (playerTwoSum==81) {
