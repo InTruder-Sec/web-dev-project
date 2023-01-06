@@ -383,3 +383,29 @@ border-radius: 15px;
     margin-left: -40px;
     transition: 1.2s;
 }
+
+.playerWon {
+    position: absolute;
+    background-color: white;
+    height: 100px;
+    width: 300px;
+    margin-left: 40%;
+    margin-top: 280px;
+    z-index: 6;
+    border-radius: 8px;
+    border: solid 5px rgb(253, 250, 52);
+    padding-top: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    opacity: 0;
+    transition:0.5s;
+}
+
+.restartBtn {
+    margin-top: 20px;
+    background-color: rgb(253, 250, 52);
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    border-radius: 4px;
+}
