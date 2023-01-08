@@ -3,10 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="./js/script.js"></script>
+    <title>Virtual Keyboard</title>
 </head>
 <body>
-    
+    <div class="wrapper">
+        <h1>Virtual Keyboard - HTML CSS JS</h1>
+        <hr>
+
+        <div class="Features">
+            <div class="fHeader">Features</div>
+            <div class="fDetails">
+                A simple virtual Keyboard built with javascript, CSS and HTML. . It emulates a physical keyboard, making it possible that users can type on it just like they would on a normal keyboard.
+            </div>
+        </div>
+        <textarea class="textEnter" id="textEnter" placeholder="Enter your text here"></textarea>
+        <div class="keyboard">
+            <button class="key splKey1" id="key1" onclick="enterText(this.value)" value="`">`</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="1">1</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="2">2</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="3">3</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="4">4</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="5">5</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="6">6</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="7">7</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="8">8</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="9">9</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="0">0</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="-">-</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="=">=</button>
+            <button class="key splKey2" id="key1" onclick="enterText(this.value)" value="del">delete</button>
+            <br>
+        </div>
+    </div>
 </body>
 </html>

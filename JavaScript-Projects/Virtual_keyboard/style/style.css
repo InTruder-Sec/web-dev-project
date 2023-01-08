@@ -1,0 +1,85 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@300&display=swap');
+
+* {
+    margin: 0px;
+}
+
+body {
+    padding-top: 30px;
+}
+
+h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 36px;
+    text-align: center;
+    color: #3bbfc8;
+}
+
+hr {
+    width: 80%;
+    margin-left: 10%;
+    height: 1px;
+    background-color: rgb(143, 141, 141);
+    border-radius: 0.5px;
+    margin-top: 10px;
+}
+
+.Features {
+    margin-left: 12%;
+    margin-top: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 22px;
+    display: inline-block;
+    width: 30%;
+    padding-right: 5%;
+}
+
+.fDetails {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.textEnter {
+    display: inline-block;
+    position: absolute;
+    margin-top: 55px;
+    width: 40%;
+    height: 110px;
+    border-radius: 5px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
+}
+
+.keyboard {
+    width: 70%;
+    height: 380px;
+    background-color: rgb(182, 182, 182);
+    position: absolute;
+    bottom: 15px;
+    margin-left: 13%;
+    border-radius: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.key {
+    width: 6.28%;
+    height: 55px;
+    margin-top: 10px;
+    margin-left: 4px;
+    font-family: 'Sofia Sans Extra Condensed', sans-serif;
+    font-size: 18px;
+    border: solid 1px rgb(92, 91, 91);
+    border-radius: 5px;
+}
+
+.splKey1 {
+    border-top-left-radius: 20px;
+}
+
+.splKey2 {
+    width: 8%;
+    border-top-right-radius: 20px;
+}
