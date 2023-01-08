@@ -8,13 +8,14 @@
 
 body {
     padding-top: 30px;
+    background-color: #7cdde3;
 }
 
 h1 {
     font-family: 'Quicksand', sans-serif;
     font-size: 36px;
     text-align: center;
-    color: #3bbfc8;
+    color: #000;
 }
 
 hr {
@@ -54,7 +55,7 @@ hr {
 
 .keyboard {
     width: 70%;
-    height: 380px;
+    height: 335px;
     background-color: rgb(182, 182, 182);
     position: absolute;
     bottom: 15px;
@@ -82,4 +83,29 @@ hr {
 .splKey2 {
     width: 8%;
     border-top-right-radius: 20px;
+}
+
+.splKey3 {
+    margin-left: 40px;
+}
+.splKey4 {
+    width: 10%;
+}
+
+.splKey5 {
+    width: 11%;
+}
+
+.splKey6 {
+    width: 13%;
+    margin-left: 15px;
+}
+
+.splKey7 {
+    width: 13%;
+}
+
+.splKey8 {
+    width: 50%;
+    margin-left: 23%;
 }

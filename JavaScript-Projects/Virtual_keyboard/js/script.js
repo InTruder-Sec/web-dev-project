@@ -1,5 +1,4 @@
 
-let keyVal;
 function enterText(keyVal) {
     let initVal = document.getElementById("textEnter").value;
     if (keyVal == "del") {
