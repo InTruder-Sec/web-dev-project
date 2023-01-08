@@ -7,17 +7,19 @@
 
 * {
     margin: 0;
+    
 }
 
 body {
     background-color: rgb(253, 250, 52);
     color: black;
+    overflow: hidden;
 }
 
 .popWindow {
     height: 685px;
     width: 65%;
-    margin-left: 4%;
+    margin-left: 3.5%;
     font-family: 'Nunito', sans-serif;
     margin-top: 10px;
     background-color: rgb(180, 171, 0);
@@ -53,9 +55,9 @@ body {
 }
 
 .snakeLogo {
-    position: absolute;
+    position: fixed;
     margin-top: 150px;
-    margin-left: 120px;
+    margin-left: 60px;
     height: 160px;
     transition: 0.6s;
 }
@@ -63,7 +65,7 @@ body {
 .ladderLogo {
     position: absolute;
     margin-top: 60px;
-    margin-left: 260px;
+    margin-left: 210px;
     transition: 0.6s;
     rotate: -20deg;
 }
@@ -228,7 +230,7 @@ body {
     position: absolute;
     display: inline-block;
     margin-left: 195px;
-    bottom: 60px;
+    bottom: 50px;
     opacity: 0;
     transition: 0.6s;
     font-family: 'Nunito', sans-serif;
@@ -282,9 +284,9 @@ transform:
 .container {
 width: 200px;
 height: 200px;
-position: absolute;
+position: fixed;
 margin: 0 auto 40px;
-right: 190px;
+right: 130px;
 opacity: 0;
 transition: 0.6s;
 perspective: 1000px;
