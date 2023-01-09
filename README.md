@@ -14,3 +14,4 @@
 3. [Clock](./JavaScript-Projects/Clock/)
 4. [Notes Keeper](./JavaScript-Projects/Notes%20Keeper/)
 5. [Snakes and Ladders](./JavaScript-Projects/Snake-Ladder/)
+6. [Virtual Keyboard](./JavaScript-Projects/Virtual_keyboard/)
