@@ -19,7 +19,66 @@
             </div>
         </div>
         <textarea class="textEnter" id="textEnter" placeholder="Enter your text here" disabled></textarea>
-        <div class="keyboard">
+        <div class="keyboardLarge" id="keyboardLarge">
+            <button class="key splKey1" id="key1" onclick="enterText(this.value)" value="~">~</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="!">!</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="@">@</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="#">#</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="$">$</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="%">%</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="^">^</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="&">&</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="*">*</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="(">(</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value=")">)</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="_">_</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="+">+</button>
+            <button class="key splKey2" id="key1" onclick="enterText(this.value)" value="del">delete</button>
+            <br>
+            <button class="key splKey3" id="key1" onclick="enterText(this.value)" value="Q">Q</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="W">W</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="E">E</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="R">R</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="T">T</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="Y">Y</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="U">U</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="I">I</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="O">O</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="P">P</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="{">{</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="}">}</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="|">|</button>
+            <br>
+            <button class="key splKey4" id="key1" onclick="enterText(this.value)" value="caps"><div class="capsLight" id="capsLight"></div> CapsLock</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="A">A</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="S">S</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="D">D</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="F">F</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="G">G</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="H">H</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="J">J</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="K">K</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="L">L</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value=":">:</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value='"'>"</button>
+            <button class="key splKey5" id="key1" onclick="enterText(this.value)" value="enter">Enter</button>
+            <br>
+            <button class="key splKey6" id="key1" onclick="enterText(this.value)" value="shift">Shift ⬆</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="Z">Z</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="X">X</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="C">C</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="V">V</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="B">B</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="N">N</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="M">M</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="<"><</button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value=">">></button>
+            <button class="key" id="key1" onclick="enterText(this.value)" value="?">?</button>
+            <button class="key splKey7" id="key1" onclick="enterText(this.value)" value="shift">Shift ⬆</button>
+            <br>
+            <button class="key splKey8 id="key1" onclick="enterText(this.value)" value=" ">______</button>
+        </div>
+        <div class="keyboardSmall" id="keyboardSmall">
             <button class="key splKey1" id="key1" onclick="enterText(this.value)" value="`">`</button>
             <button class="key" id="key1" onclick="enterText(this.value)" value="1">1</button>
             <button class="key" id="key1" onclick="enterText(this.value)" value="2">2</button>
@@ -49,7 +108,7 @@
             <button class="key" id="key1" onclick="enterText(this.value)" value="]">]</button>
             <button class="key" id="key1" onclick="enterText(this.value)" value="\">\</button>
             <br>
-            <button class="key splKey4" id="key1" onclick="enterText(this.value)" value="caps">CapsLock</button>
+            <button class="key splKey4" id="key1" onclick="enterText(this.value)" value="caps"><div class="capsLight" id="capsLight"></div>CapsLock </button>
             <button class="key" id="key1" onclick="enterText(this.value)" value="a">a</button>
             <button class="key" id="key1" onclick="enterText(this.value)" value="s">s</button>
             <button class="key" id="key1" onclick="enterText(this.value)" value="d">d</button>
@@ -78,6 +137,7 @@
             <br>
             <button class="key splKey8 id="key1" onclick="enterText(this.value)" value=" ">______</button>
         </div>
+        
     </div>
 </body>
 </html>
