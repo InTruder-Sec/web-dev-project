@@ -1,0 +1,149 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+*{
+    margin: 0px;
+}
+
+body {
+    background-color: rgb(3, 3, 23);
+    font-family: 'Dosis', sans-serif;
+    color: azure;
+}
+
+.headline {
+    font-size: 42px;
+    margin-left: 10%;
+    margin-top: 80px;
+}
+
+.gameDis {
+    font-size: 23px;
+    margin-left: 10%;
+    margin-top: 20px;
+    width: 300px;
+}
+
+.jsHeader {
+    font-size: 48px;
+    color: #ff605c;
+}
+
+.gameMainDiv {
+    position: fixed;
+    right: 20%;
+    margin-top: 50px;
+    width: 400px;
+    height: 442px;
+    border: solid white 1px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.snakeImageDisplay {
+    transition: 0.7s;
+}
+
+.topNav {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: 12px;
+}
+
+.redBtn {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: #ff605c;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.yellowBtn {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: #ffbd44;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+.greenBtn {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: #00ca4e;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+
+.startBtn {
+    background-color: #ff605c;
+    border: 0px;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    font-family: 'Dosis', sans-serif;
+    transition: 0.8s;
+    margin-left: 13%;
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+.startBtn:hover {
+    background-color: #ffbd44;
+}
+
+.upBtn {
+    width: 0px;
+    height: 0px;
+    border: 24px solid rgb(3, 3, 23);
+    border-bottom-color: rgb(245, 245, 245);
+}
+
+.upBtn {
+    opacity: 1;
+    width: 0px;
+    margin-left: 65px;
+    height: 0px;
+    border: 30px solid rgb(3, 3, 23);
+    border-bottom-color: rgb(245, 245, 245);
+}
+.rightBtn {
+    width: 0px;
+    margin-left: 69px;
+    margin-top: 5px;
+    height: 0px;
+    border: 30px solid rgb(3, 3, 23);
+    border-left-color: rgb(245, 245, 245);
+    display: inline-block;
+}
+.leftBtn {
+    width: 0px;
+    height: 0px;
+    margin-top: 5px;
+    border: 30px solid rgb(3, 3, 23);
+    border-right-color: rgb(245, 245, 245);
+    display: inline-block;
+}
+.downBtn {
+    width: 0px;
+    height: 0px;
+    margin-left: 65px;
+    border: 30px solid rgb(3, 3, 23);
+    border-top-color: rgb(245, 245, 245);
+}
+
+.moveBtns {
+    margin-left: 12%;
+    opacity: 0;
+    position: fixed;
+    font-size: 20px;
+    z-index: -1;
+    transition: 0.8s;
+}

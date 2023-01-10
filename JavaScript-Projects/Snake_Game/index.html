@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="./js/script.js" async></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="gameMainDiv">
+            <div class="topNav">
+                <div class="redBtn"></div>
+                <div class="yellowBtn"></div>
+                <div class="greenBtn"></div>
+            </div>
+            <div class="snakeImageDisplay"><img class="snakeImageDisplay" id="snakeImg" height="400px" width="400px" src="https://gameforge.com/de-DE/littlegames/includes/images/games/1788_5eaa94947045f.png"></div>
+        </div>
+        <div class="headline">Snake Game in <br> <div class="jsHeader">JavaScript</div></div>
+        <div class="gameDis">
+            A snake game is a simple game where a snake moves around a box trying to eat an apple. Once it successfully eats the apple, the length of the snake increases.
+        </div>
+        <div class="moveBtns" id="moveBtns">
+            <div class="upBtn"></div>
+            <div class="leftBtn"></div>
+            <div class="rightBtn"></div>
+            <div class="downBtn"></div>
+            <br>
+            Click on arrows to move...
+
+        </div>
+        <button class="startBtn" id="startBtn" onclick="startGame()">Start</button>
+        
+    </div>
+</body>
+</html>
