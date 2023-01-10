@@ -41,6 +41,7 @@ body {
 }
 
 .snakeImageDisplay {
+    font-size: 0px;
     transition: 0.7s;
 }
 
@@ -146,4 +147,20 @@ body {
     font-size: 20px;
     z-index: -1;
     transition: 0.8s;
+}
+
+.block {
+    width: 40px;
+    height: 40px;
+    background-color: #0a0034;
+    display: inline-block;
+    margin: 0;
+}
+
+.block2 {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    display: inline-block;
+    margin: 0;
 }
