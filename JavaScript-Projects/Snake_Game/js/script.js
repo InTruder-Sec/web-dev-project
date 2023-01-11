@@ -4,6 +4,7 @@ let startBtn = document.getElementById("startBtn");
 let snakeImg = document.getElementById("snakeImg");
 let blockMainDiv = document.getElementById("blockMainDiv");
 let i;
+let t;
 
 function startGame() {
     startBtn.style.opacity = 0;
@@ -27,20 +28,60 @@ function removeIMG() {
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 const buildBlocks = async () => {
+    t = 0;
     for (i=1; i<=100; i++) {
-        await delay();
-        if (i%2==0) {
-            let content = '<div class="block" id="block' + i + '"value="' + i + '"></div>'
-            blockMainDiv.innerHTML += content;
-        } else {
-            let content = '<div class="block2" id="block' + i + '"value="' + i + '"></div>'
-            blockMainDiv.innerHTML += content;
-        }
-    }
-}
+        if (t=0) {
+            if (i%2==0) {
+                let content = '<div class="block" id="block' + i + ' "value="' + i + '"></div>';
+                blockMainDiv.innerHTML += content;
+            } else {
+                let content = '<div class="block2" id="block' + i + ' "value="' + i + '"></div>';
+                blockMainDiv.innerHTML += content;
+            }
 
-function createDiv() {
-    i = parseInt(i);
-    
-    
+            if (t%10==0) {
+                t = 1;
+            }
+        } else {
+            if (i%2==0) {
+                let content = '<div class="block" id="block' + i + ' "value="' + i + '"></div>';
+                blockMainDiv.innerHTML += content;
+            } else {
+                let content = '<div class="block2" id="block' + i + ' "value="' + i + '"></div>';
+                blockMainDiv.innerHTML += content;
+            }
+            if (t%10==0) {
+                t = 0;
+            }
+        }
+    } 
+
+
+
+    // for (i=1; i<=100; i++) {
+    //     await delay(100);
+    //     if (t==0) {
+    //         if (i%2==0) {
+    //             let content = '<div class="block" id="block' + i + '"value="' + i + '"></div>'
+    //             blockMainDiv.innerHTML += content;
+    //         } else {
+    //             let content = '<div class="block2" id="block' + i + '"value="' + i + '"></div>'
+    //             blockMainDiv.innerHTML += content;
+    //         }
+    //         if (i%10==0) {
+    //             t = 1;
+    //         }
+    //     } else {
+    //         if (i%2==0) {
+    //             let content = '<div class="block2" id="block' + i + '"value="' + i + '"></div>'
+    //             blockMainDiv.innerHTML += content;
+    //         } else {
+    //             let content = '<div class="block" id="block' + i + '"value="' + i + '"></div>'
+    //             blockMainDiv.innerHTML += content;
+    //         }
+    //         if (i%10==0) {
+    //             t = 1;
+    //         }
+    //     }
+    // } 
 }
