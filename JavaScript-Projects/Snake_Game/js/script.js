@@ -11,6 +11,9 @@ let moveRight = true;
 let moveLeft = false;
 let head = 24;
 let tail = 21;
+let arr = [21, 22, 23, 24];
+let ltail;
+
 
 
 function startGame() {
@@ -21,6 +24,7 @@ function startGame() {
     setTimeout("removeIMG()", 700);
     setTimeout("buildBlocks()", 800);
     setTimeout("displaySnake()", 7500);
+    
 }
 
 function changeAxis() {
@@ -41,10 +45,10 @@ const buildBlocks = async () => {
         await delay(50);
         if (t===0) {
             if (i%2===0) {
-                let content = '<div class="block" id="block' + i + '" value="' + i + '"></div>'
+                let content = '<div class="block" id="block' + i + '" value="' + i + '"><div class="snakeBlock" id="sBlock' + i + '"></div></div>'
                 blockMainDiv.innerHTML += content;
             } else {
-                let content = '<div class="block2" id="block' + i + '"value="' + i + '"></div>'
+                let content = '<div class="block2" id="block' + i + '"value="' + i + '"><div class="snakeBlock" id="sBlock' + i + '"></div></div>'
                 blockMainDiv.innerHTML += content;
             }
             if (i%10===0) {
@@ -52,10 +56,10 @@ const buildBlocks = async () => {
             }
         } else {
             if (i%2===0) {
-                let content = '<div class="block2" id="block' + i + '" value="' + i + '"></div>'
+                let content = '<div class="block2" id="block' + i + '" value="' + i + '"><div class="snakeBlock" id="sBlock' + i + '"></div></div>'
                 blockMainDiv.innerHTML += content;
             } else {
-                let content = '<div class="block" id="block' + i + '"value="' + i + '"></div>'
+                let content = '<div class="block" id="block' + i + '"value="' + i + '"><div class="snakeBlock" id="sBlock' + i + '"></div></div>'
                 blockMainDiv.innerHTML += content;
             }
             if (i%10===0) {
@@ -67,19 +71,89 @@ const buildBlocks = async () => {
 
 
 const displaySnake = async () => {
-    document.getElementById("block21").style.backgroundColor = "#2DCDDF";
-    await delay(100);
-    document.getElementById("block22").style.backgroundColor = "#2DCDDF";
-    await delay(100);
-    document.getElementById("block23").style.backgroundColor = "#2DCDDF";
-    await delay(100);
-    document.getElementById("block24").style.backgroundColor = "#2DCDDF";
+    setInterval("moveSnake()", 800);
 }
 
 
-// const moveSnake = () => {
-//     if (moveUp == true) {
+const moveSnake = () => {
+    if (moveUp == true) {
+        head = head - 10;
+        arr.push(head);
+        tail = arr.shift();
+        ltail = "sBlock" + tail;
+        document.getElementById(ltail).style.opacity = 0;
+        arr.forEach((element) => {
+            ltail = "sBlock" + element;
+            document.getElementById(ltail).style.opacity = 1;
+        })
+    } else if(moveDown == true) {
+        head = head + 10;
+        arr.push(head);
+        tail = arr.shift();
+        ltail = "sBlock" + tail;
+        document.getElementById(ltail).style.opacity = 0;
+        arr.forEach((element) => {
+            ltail = "sBlock" + element;
+            document.getElementById(ltail).style.opacity = 1;
+        })
+    } else if(moveLeft == true) {
+        head = head - 1;
+        arr.push(head);
+        tail = arr.shift();
+        ltail = "sBlock" + tail;
+        document.getElementById(ltail).style.opacity = 0;
+        arr.forEach((element) => {
+            ltail = "sBlock" + element;
+            document.getElementById(ltail).style.opacity = 1;
+        })
+    } else {
+        head = head + 1;
+        arr.push(head);
+        tail = arr.shift();
+        ltail = "sBlock" + tail;
+        document.getElementById(ltail).style.opacity = 0;
+        arr.forEach((element) => {
+            ltail = "sBlock" + element;
+            document.getElementById(ltail).style.opacity = 1;
+        })
+    }
+}
 
-//     }
-// }
+const changeUp = () => {
+    if (moveDown != true){
+        moveUp = true;
+        moveDown = false;
+        moveLeft = false;
+        moveRight = false;
+    }
+}
+
+const changeLeft = () => {
+    if (moveRight != true) {
+        moveLeft = true;
+        moveDown = false;
+        moveRight = false;
+        moveUp = false;
+    }
+}
+
+const changeRight = () => {
+    if (moveLeft != true) {
+        moveLeft = false;
+        moveDown = false;
+        moveRight = true;
+        moveUp = false;
+    }
+}
+
+const changeDown = () => {
+    if (moveUp != true) {
+        moveLeft = false;
+        moveDown = true;
+        moveRight = false;
+        moveUp = false;
+    }
+}
+
+
 
