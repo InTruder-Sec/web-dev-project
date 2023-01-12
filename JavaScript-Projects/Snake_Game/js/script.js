@@ -13,6 +13,8 @@ let head = 24;
 let tail = 21;
 let arr = [21, 22, 23, 24];
 let ltail;
+let wallBurst = false;
+let gameInterval;
 
 
 
@@ -71,51 +73,79 @@ const buildBlocks = async () => {
 
 
 const displaySnake = async () => {
-    setInterval("moveSnake()", 800);
+    gameInterval = setInterval("moveSnake()", 800);
 }
 
 
 const moveSnake = () => {
     if (moveUp == true) {
-        head = head - 10;
-        arr.push(head);
-        tail = arr.shift();
-        ltail = "sBlock" + tail;
-        document.getElementById(ltail).style.opacity = 0;
-        arr.forEach((element) => {
-            ltail = "sBlock" + element;
-            document.getElementById(ltail).style.opacity = 1;
-        })
+        checkWall();
+        if (wallBurst==true) {
+            head = head - 10;
+            arr.push(head);
+            tail = arr.shift();
+            ltail = "sBlock" + tail;
+            document.getElementById(ltail).style.opacity = 0;
+            arr.forEach((element) => {
+                ltail = "sBlock" + element;
+                document.getElementById(ltail).style.opacity = 1;
+            })
+        } else {
+            clearInterval(gameInterval);
+            alert("Game Over");
+        }
+        
     } else if(moveDown == true) {
-        head = head + 10;
-        arr.push(head);
-        tail = arr.shift();
-        ltail = "sBlock" + tail;
-        document.getElementById(ltail).style.opacity = 0;
-        arr.forEach((element) => {
-            ltail = "sBlock" + element;
-            document.getElementById(ltail).style.opacity = 1;
-        })
+        checkWall();
+        if (wallBurst == false) {
+            head = head + 10;
+            arr.push(head);
+            tail = arr.shift();
+            ltail = "sBlock" + tail;
+            document.getElementById(ltail).style.opacity = 0;
+            arr.forEach((element) => {
+                ltail = "sBlock" + element;
+                document.getElementById(ltail).style.opacity = 1;
+            })
+        } else {
+            clearInterval(gameInterval);
+            alert("Game Over");
+        }
+        
     } else if(moveLeft == true) {
-        head = head - 1;
-        arr.push(head);
-        tail = arr.shift();
-        ltail = "sBlock" + tail;
-        document.getElementById(ltail).style.opacity = 0;
-        arr.forEach((element) => {
-            ltail = "sBlock" + element;
-            document.getElementById(ltail).style.opacity = 1;
-        })
+        checkWall();
+        if (wallBurst == false) {
+            head = head - 1;
+            arr.push(head);
+            tail = arr.shift();
+            ltail = "sBlock" + tail;
+            document.getElementById(ltail).style.opacity = 0;
+            arr.forEach((element) => {
+                ltail = "sBlock" + element;
+                document.getElementById(ltail).style.opacity = 1;
+            })
+        } else {
+            clearInterval(gameInterval);
+            alert("Game Over");
+        }
+        
     } else {
-        head = head + 1;
-        arr.push(head);
-        tail = arr.shift();
-        ltail = "sBlock" + tail;
-        document.getElementById(ltail).style.opacity = 0;
-        arr.forEach((element) => {
-            ltail = "sBlock" + element;
-            document.getElementById(ltail).style.opacity = 1;
-        })
+        checkWall();
+        if (wallBurst == false) {
+            head = head + 1;
+            arr.push(head);
+            tail = arr.shift();
+            ltail = "sBlock" + tail;
+            document.getElementById(ltail).style.opacity = 0;
+            arr.forEach((element) => {
+                ltail = "sBlock" + element;
+                document.getElementById(ltail).style.opacity = 1;
+            })
+        } else {
+            clearInterval(gameInterval);
+            alert("Game Over");
+        }
+        
     }
 }
 
@@ -153,6 +183,21 @@ const changeDown = () => {
         moveRight = false;
         moveUp = false;
     }
+}
+
+const checkWall = () => {
+    head = parseInt(head);
+    if (moveRight==true && head%10==0) {
+        wallBurst = true;
+        alert("err0r")
+    }
+    // } else if (moveDown==true && head>90) {
+    //     wallBurst = true;
+    // } else if (moveLeft==true && head%10==1) {
+    //     wallBurst = true;
+    // } else {
+    //     wallBurst = false;
+    // }
 }
 
 
