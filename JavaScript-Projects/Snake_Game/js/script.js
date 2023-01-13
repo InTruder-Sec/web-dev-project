@@ -13,9 +13,13 @@ let head = 24;
 let tail = 21;
 let arr = [21, 22, 23, 24];
 let ltail;
+let temp;
 let wallBurst = false;
+let snakeBurst = false;
 let gameInterval;
-
+let newRandom;
+let foodPosition = false;
+let isFood = false;
 
 
 function startGame() {
@@ -78,14 +82,24 @@ const displaySnake = async () => {
 
 
 const moveSnake = () => {
+    if (isFood == false) {
+        bringFood();
+    }
     if (moveUp == true) {
         checkWall();
-        if (wallBurst==true) {
+        checkSnake();
+        if (wallBurst==false && snakeBurst==false) {
             head = head - 10;
             arr.push(head);
-            tail = arr.shift();
-            ltail = "sBlock" + tail;
-            document.getElementById(ltail).style.opacity = 0;
+            ltail = "sBlock" + newRandom
+            if (head==newRandom) {
+                document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                isFood = false
+            } else {
+                tail = arr.shift();
+                ltail = "sBlock" + tail;
+                document.getElementById(ltail).style.opacity = 0;
+            }
             arr.forEach((element) => {
                 ltail = "sBlock" + element;
                 document.getElementById(ltail).style.opacity = 1;
@@ -97,12 +111,19 @@ const moveSnake = () => {
         
     } else if(moveDown == true) {
         checkWall();
-        if (wallBurst == false) {
+        checkSnake();
+        if (wallBurst == false && snakeBurst==false) {
             head = head + 10;
             arr.push(head);
-            tail = arr.shift();
-            ltail = "sBlock" + tail;
-            document.getElementById(ltail).style.opacity = 0;
+            ltail = "sBlock" + newRandom;
+            if (head==newRandom) {
+                document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                isFood = false
+            } else {
+                tail = arr.shift();
+                ltail = "sBlock" + tail;
+                document.getElementById(ltail).style.opacity = 0;
+            }
             arr.forEach((element) => {
                 ltail = "sBlock" + element;
                 document.getElementById(ltail).style.opacity = 1;
@@ -114,12 +135,19 @@ const moveSnake = () => {
         
     } else if(moveLeft == true) {
         checkWall();
-        if (wallBurst == false) {
+        checkSnake();
+        if (wallBurst == false && snakeBurst==false) {
             head = head - 1;
             arr.push(head);
-            tail = arr.shift();
-            ltail = "sBlock" + tail;
-            document.getElementById(ltail).style.opacity = 0;
+            ltail = "sBlock" + newRandom;
+            if (head==newRandom) {
+                document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                isFood = false
+            } else {
+                tail = arr.shift();
+                ltail = "sBlock" + tail;
+                document.getElementById(ltail).style.opacity = 0;
+            }
             arr.forEach((element) => {
                 ltail = "sBlock" + element;
                 document.getElementById(ltail).style.opacity = 1;
@@ -131,12 +159,19 @@ const moveSnake = () => {
         
     } else {
         checkWall();
-        if (wallBurst == false) {
+        checkSnake();
+        if (wallBurst == false && snakeBurst==false) {
             head = head + 1;
             arr.push(head);
-            tail = arr.shift();
-            ltail = "sBlock" + tail;
-            document.getElementById(ltail).style.opacity = 0;
+            ltail = "sBlock" + newRandom;
+            if (head==newRandom) {
+                document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                isFood = false
+            } else {
+                tail = arr.shift();
+                ltail = "sBlock" + tail;
+                document.getElementById(ltail).style.opacity = 0;
+            }
             arr.forEach((element) => {
                 ltail = "sBlock" + element;
                 document.getElementById(ltail).style.opacity = 1;
@@ -189,16 +224,65 @@ const checkWall = () => {
     head = parseInt(head);
     if (moveRight==true && head%10==0) {
         wallBurst = true;
-        alert("err0r")
+    } else if(moveUp==true && head<=10) {
+        wallBurst = true;
+    } else if (moveDown==true && head>90) {
+        wallBurst = true;
+    } else if (moveLeft==true && head%10==1) {
+        wallBurst = true;
+    } else {
+        wallBurst = false;
     }
-    // } else if (moveDown==true && head>90) {
-    //     wallBurst = true;
-    // } else if (moveLeft==true && head%10==1) {
-    //     wallBurst = true;
-    // } else {
-    //     wallBurst = false;
-    // }
 }
+
+const checkSnake = () => {
+    if (moveRight==true) {
+        temp = head + 1;
+        if (arr.includes(temp)==true) {
+            snakeBurst = true;
+        } 
+    } else if (moveLeft==true) {
+        temp = head - 1;
+        if (arr.includes(temp)==true) {
+            snakeBurst = true;
+        }
+    } else if (moveUp==true) {
+        temp = head - 10;
+        if (arr.includes(temp)==true) {
+            snakeBurst = true;
+        }
+    } else {
+        temp = head + 10;
+        if (arr.includes(temp)==true) {
+            snakeBurst = true;
+        }
+    }
+}
+
+function generateRandom(min = 1, max = 101) {
+    let difference = max - min;
+    let rand = Math.random(); 
+    rand = Math.floor( rand * difference);
+    rand = rand + min;
+    return rand;
+}
+
+
+const bringFood = () => {
+    foodPosition = false;
+    while (foodPosition==false) {
+        newRandom  = generateRandom();
+        if (arr.includes(newRandom)==false) {
+            foodPosition = true
+        }
+    }
+    temp = "sBlock" + newRandom;
+    document.getElementById(temp).style.opacity = 1;
+    document.getElementById(temp).style.backgroundColor = "red";
+    isFood = true;
+}
+
+
 
 
 
