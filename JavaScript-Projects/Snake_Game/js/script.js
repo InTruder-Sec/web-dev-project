@@ -94,6 +94,11 @@ const moveSnake = () => {
             ltail = "sBlock" + newRandom
             if (head==newRandom) {
                 document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                document.getElementById(ltail).style.borderRadius = "0px";
+                document.getElementById(ltail).style.height = "40px";
+                document.getElementById(ltail).style.width = "40px";
+                document.getElementById(ltail).style.marginTop = "0px";
+                document.getElementById(ltail).style.marginLeft = "0px";
                 isFood = false
             } else {
                 tail = arr.shift();
@@ -118,6 +123,11 @@ const moveSnake = () => {
             ltail = "sBlock" + newRandom;
             if (head==newRandom) {
                 document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                document.getElementById(ltail).style.borderRadius = "0px";
+                document.getElementById(ltail).style.height = "40px";
+                document.getElementById(ltail).style.width = "40px";
+                document.getElementById(ltail).style.marginTop = "0px";
+                document.getElementById(ltail).style.marginLeft = "0px";
                 isFood = false
             } else {
                 tail = arr.shift();
@@ -142,6 +152,11 @@ const moveSnake = () => {
             ltail = "sBlock" + newRandom;
             if (head==newRandom) {
                 document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                document.getElementById(ltail).style.borderRadius = "0px";
+                document.getElementById(ltail).style.height = "40px";
+                document.getElementById(ltail).style.width = "40px";
+                document.getElementById(ltail).style.marginTop = "0px";
+                document.getElementById(ltail).style.marginLeft = "0px";
                 isFood = false
             } else {
                 tail = arr.shift();
@@ -166,6 +181,11 @@ const moveSnake = () => {
             ltail = "sBlock" + newRandom;
             if (head==newRandom) {
                 document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                document.getElementById(ltail).style.borderRadius = "0px";
+                document.getElementById(ltail).style.height = "40px";
+                document.getElementById(ltail).style.width = "40px";
+                document.getElementById(ltail).style.marginTop = "0px";
+                document.getElementById(ltail).style.marginLeft = "0px";
                 isFood = false
             } else {
                 tail = arr.shift();
@@ -278,7 +298,12 @@ const bringFood = () => {
     }
     temp = "sBlock" + newRandom;
     document.getElementById(temp).style.opacity = 1;
-    document.getElementById(temp).style.backgroundColor = "red";
+    document.getElementById(temp).style.backgroundColor = "green";
+    document.getElementById(temp).style.borderRadius = "15px";
+    document.getElementById(temp).style.height = "30px";
+    document.getElementById(temp).style.marginTop = "5px";
+    document.getElementById(temp).style.marginLeft = "5px";
+    document.getElementById(temp).style.width = "30px";
     isFood = true;
 }
 
