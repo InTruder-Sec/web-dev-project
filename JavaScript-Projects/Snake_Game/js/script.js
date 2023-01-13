@@ -20,6 +20,13 @@ let gameInterval;
 let newRandom;
 let foodPosition = false;
 let isFood = false;
+const restartBtn = document.getElementById("gameOver");
+let currentScore = 0;
+let highestScore = 0;
+
+document.onkeydown = checkKey;
+
+
 
 
 function startGame() {
@@ -93,10 +100,10 @@ const moveSnake = () => {
             arr.push(head);
             ltail = "sBlock" + newRandom
             if (head==newRandom) {
-                document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                document.getElementById(ltail).style.backgroundColor = "#0a8d9c";
                 document.getElementById(ltail).style.borderRadius = "0px";
-                document.getElementById(ltail).style.height = "40px";
-                document.getElementById(ltail).style.width = "40px";
+                document.getElementById(ltail).style.height = "39px";
+                document.getElementById(ltail).style.width = "39px";
                 document.getElementById(ltail).style.marginTop = "0px";
                 document.getElementById(ltail).style.marginLeft = "0px";
                 isFood = false
@@ -111,7 +118,7 @@ const moveSnake = () => {
             })
         } else {
             clearInterval(gameInterval);
-            alert("Game Over");
+            restartBtn.style.opacity = 1;
         }
         
     } else if(moveDown == true) {
@@ -122,10 +129,10 @@ const moveSnake = () => {
             arr.push(head);
             ltail = "sBlock" + newRandom;
             if (head==newRandom) {
-                document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                document.getElementById(ltail).style.backgroundColor = "#0a8d9c";
                 document.getElementById(ltail).style.borderRadius = "0px";
-                document.getElementById(ltail).style.height = "40px";
-                document.getElementById(ltail).style.width = "40px";
+                document.getElementById(ltail).style.height = "39px";
+                document.getElementById(ltail).style.width = "39px";
                 document.getElementById(ltail).style.marginTop = "0px";
                 document.getElementById(ltail).style.marginLeft = "0px";
                 isFood = false
@@ -140,7 +147,8 @@ const moveSnake = () => {
             })
         } else {
             clearInterval(gameInterval);
-            alert("Game Over");
+            restartBtn.style.opacity = 1;
+
         }
         
     } else if(moveLeft == true) {
@@ -151,10 +159,10 @@ const moveSnake = () => {
             arr.push(head);
             ltail = "sBlock" + newRandom;
             if (head==newRandom) {
-                document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                document.getElementById(ltail).style.backgroundColor = "#0a8d9c";
                 document.getElementById(ltail).style.borderRadius = "0px";
-                document.getElementById(ltail).style.height = "40px";
-                document.getElementById(ltail).style.width = "40px";
+                document.getElementById(ltail).style.height = "39px";
+                document.getElementById(ltail).style.width = "39px";
                 document.getElementById(ltail).style.marginTop = "0px";
                 document.getElementById(ltail).style.marginLeft = "0px";
                 isFood = false
@@ -169,7 +177,8 @@ const moveSnake = () => {
             })
         } else {
             clearInterval(gameInterval);
-            alert("Game Over");
+            restartBtn.style.opacity = 1;
+
         }
         
     } else {
@@ -180,10 +189,10 @@ const moveSnake = () => {
             arr.push(head);
             ltail = "sBlock" + newRandom;
             if (head==newRandom) {
-                document.getElementById(ltail).style.backgroundColor = "#2DCDDF";
+                document.getElementById(ltail).style.backgroundColor = "#0a8d9c";
                 document.getElementById(ltail).style.borderRadius = "0px";
-                document.getElementById(ltail).style.height = "40px";
-                document.getElementById(ltail).style.width = "40px";
+                document.getElementById(ltail).style.height = "39px";
+                document.getElementById(ltail).style.width = "39px";
                 document.getElementById(ltail).style.marginTop = "0px";
                 document.getElementById(ltail).style.marginLeft = "0px";
                 isFood = false
@@ -198,10 +207,30 @@ const moveSnake = () => {
             })
         } else {
             clearInterval(gameInterval);
-            alert("Game Over");
+            restartBtn.style.opacity = 1;
+
         }
         
     }
+}
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+    e = e || window.event;
+    if (e.keyCode == '38') {
+        changeUp();
+    }
+    else if (e.keyCode == '40') {
+        changeDown();
+    }
+    else if (e.keyCode == '37') {
+       changeLeft();
+    }
+    else if (e.keyCode == '39') {
+       changeRight();
+    }
+
 }
 
 const changeUp = () => {
@@ -298,13 +327,41 @@ const bringFood = () => {
     }
     temp = "sBlock" + newRandom;
     document.getElementById(temp).style.opacity = 1;
-    document.getElementById(temp).style.backgroundColor = "green";
+    document.getElementById(temp).style.backgroundColor = "#00ca4e";
     document.getElementById(temp).style.borderRadius = "15px";
     document.getElementById(temp).style.height = "30px";
     document.getElementById(temp).style.marginTop = "5px";
     document.getElementById(temp).style.marginLeft = "5px";
     document.getElementById(temp).style.width = "30px";
     isFood = true;
+}
+
+const restartGame = async () => {
+    arr.forEach((element) => {
+        
+        ltail = "sBlock" + element;
+        document.getElementById(ltail).style.opacity = 0;
+    })
+    arr = [21, 22, 23, 24];
+    head = 24;
+    tail = 21;
+    isFood = false;
+    ltail = "sBlock" + newRandom;
+    document.getElementById(ltail).style.opacity = 0;
+    document.getElementById(ltail).style.backgroundColor = "#0a8d9c";
+    document.getElementById(ltail).style.borderRadius = "0px";
+    document.getElementById(ltail).style.height = "39px";
+    document.getElementById(ltail).style.width = "39px";
+    document.getElementById(ltail).style.marginTop = "0px";
+    document.getElementById(ltail).style.marginLeft = "0px";
+    moveUp = false;
+    moveDown = false;
+    moveRight = true;
+    moveLeft = false;
+    snakeBurst = false;
+    wallBurst = false
+    restartBtn.style.opacity = 0;
+    displaySnake();
 }
 
 

@@ -169,10 +169,35 @@ body {
 }
 
 .snakeBlock {
-    width: 40px;
-    height: 40px;
-    background-color: #2DCDDF;
+    width: 39px;
+    height: 39px;
+    background-color: #0a8d9c;
     opacity: 0;
+}
+
+.gameOver {
+    position: absolute;
+    height: 40px;
+    width: 100px;
+    z-index: 6;
+    margin-left: 165px;
+    margin-top: 140px;
+    opacity: 0;
+}
+
+.restartBtn {
+    background-color: white;
+    border: solid 1px black;
+    width: 70px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    transition: 0.4s;
+}
+
+.restartBtn:hover {
+    background-color: black;
+    color: white;
 }
 
 
