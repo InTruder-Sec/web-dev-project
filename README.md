@@ -16,3 +16,4 @@
 5. [Snakes and Ladders](./JavaScript-Projects/Snake-Ladder/)
 6. [Virtual Keyboard](./JavaScript-Projects/Virtual_keyboard/)
 7. [Snake Game](./JavaScript-Projects/Snake_Game/)
+8. [QRcode Generator](./JavaScript-Projects/QrCode/)
