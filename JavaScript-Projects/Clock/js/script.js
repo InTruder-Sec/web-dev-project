@@ -372,3 +372,22 @@ function changeTimer() {
 }
 
 // End of change pannel
+
+
+// Start of change dark and light mode
+
+// let dark = true;
+
+// function switchMode() {
+//     if (dark==true) {
+//         document.body.style.backgroundColor = "white";
+//         document.getElementById("displayTime").style.color = "black";
+//         document.getElementById("stat").style.color = "black";
+//         document.getElementById("date").style.color = "black";
+//         document.getElementById("switchMode").style.color = "black";
+//         document.getElementById("disTable").style.backgroundColor = "black";
+//         document.getElementById("disTable").style.color = "white";
+//     } else {
+
+//     }
+// }

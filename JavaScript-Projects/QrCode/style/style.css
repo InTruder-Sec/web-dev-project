@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@500&display=swap');
+
+
+* {
+    margin: 0px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+body {
+    background-color: rgb(23, 23, 23);
+    color: rgb(27, 225, 205);
+    font-family: 'Sofia Sans Semi Condensed', sans-serif;
+}
+
+.text {
+    font-size: 65px;
+    margin-left: 15%;
+    margin-top: 159px;
+}
+
+.inputURL {
+    width: 40%;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(27, 225, 205);
+    border: 0px;
+    margin-top: 30px;
+    font-family: 'Sofia Sans Semi Condensed', sans-serif;
+    font-size: 18px;
+}
+
+.inputBox {
+    width: 84%;
+    height: 30px;
+    padding-left: 10px;
+    background-color: rgb(27, 225, 205);
+    border: 0ch;
+    padding-top: 0px;
+    padding-top: 4px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-family: 'Sofia Sans Semi Condensed', sans-serif;
+}
+
+.svgArrow {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 46%;
+    margin-top: 4px;
+}
+
+.displayQR {
+    margin-top: 10px;
+    height: 285px;
+    width: 285px;
+    padding-top: 25px;
+    padding-left: 25px;
+    border-radius: 20px;
+    position: absolute;
+    right: 17%;
+    background-color: rgb(27, 225, 205);
+}
+
+.qrcode {
+    width: 220px;
+    height: 220px;
+}
+
+
+@media screen and (max-width: 1034px) {
+    .displayQR {
+        margin-top: 300px;
+        right: 32%;
+    }
+    .svgArrow {
+        left: 44%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .text {
+        margin-top: 50px;
+        margin-left: 10%;
+    }
+    .displayQR {
+        margin-top: 300px;
+        right: 8%;
+    }
+    .inputURL {
+        width: 86%;
+    }
+    .svgArrow {
+        left: 78%;
+    }
+}

@@ -10,6 +10,7 @@
 
 body {
     background-color: rgb(32, 32, 32);
+    transition: 0.8s;
 }
 
 .background-clock {
@@ -191,4 +192,33 @@ input[type=number] {
 
 .tss {
     margin-top: 20px;
+}
+
+.switchMode {
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    border-radius: 40px;
+    background-color: white;
+    bottom: 50px;
+    right: 50px;
+}
+
+.darkSVG {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+    rotate: -10deg;
+    margin-top: 16px;
+}
+
+.lightSVG {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+    rotate: -10deg;
+    margin-top: 16px;
+    opacity: 0;
 }
