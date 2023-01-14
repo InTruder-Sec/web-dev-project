@@ -106,6 +106,8 @@ const moveSnake = () => {
                 document.getElementById(ltail).style.width = "39px";
                 document.getElementById(ltail).style.marginTop = "0px";
                 document.getElementById(ltail).style.marginLeft = "0px";
+                currentScore = currentScore + 1;
+                updateScore();
                 isFood = false
             } else {
                 tail = arr.shift();
@@ -118,6 +120,7 @@ const moveSnake = () => {
             })
         } else {
             clearInterval(gameInterval);
+            checkHighest();
             restartBtn.style.opacity = 1;
         }
         
@@ -135,6 +138,8 @@ const moveSnake = () => {
                 document.getElementById(ltail).style.width = "39px";
                 document.getElementById(ltail).style.marginTop = "0px";
                 document.getElementById(ltail).style.marginLeft = "0px";
+                currentScore = currentScore + 1;
+                updateScore();
                 isFood = false
             } else {
                 tail = arr.shift();
@@ -147,6 +152,7 @@ const moveSnake = () => {
             })
         } else {
             clearInterval(gameInterval);
+            checkHighest();
             restartBtn.style.opacity = 1;
 
         }
@@ -165,6 +171,8 @@ const moveSnake = () => {
                 document.getElementById(ltail).style.width = "39px";
                 document.getElementById(ltail).style.marginTop = "0px";
                 document.getElementById(ltail).style.marginLeft = "0px";
+                currentScore = currentScore + 1;
+                updateScore();
                 isFood = false
             } else {
                 tail = arr.shift();
@@ -177,6 +185,7 @@ const moveSnake = () => {
             })
         } else {
             clearInterval(gameInterval);
+            checkHighest();
             restartBtn.style.opacity = 1;
 
         }
@@ -195,6 +204,8 @@ const moveSnake = () => {
                 document.getElementById(ltail).style.width = "39px";
                 document.getElementById(ltail).style.marginTop = "0px";
                 document.getElementById(ltail).style.marginLeft = "0px";
+                currentScore = currentScore + 1;
+                updateScore();
                 isFood = false
             } else {
                 tail = arr.shift();
@@ -207,8 +218,9 @@ const moveSnake = () => {
             })
         } else {
             clearInterval(gameInterval);
+            checkHighest();
             restartBtn.style.opacity = 1;
-
+            
         }
         
     }
@@ -359,12 +371,22 @@ const restartGame = async () => {
     moveRight = true;
     moveLeft = false;
     snakeBurst = false;
+    currentScore = 0;
+    document.getElementById("scoreDisplay").innerHTML = "Current: "+ currentScore +" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Highest: " + highestScore;
     wallBurst = false
     restartBtn.style.opacity = 0;
     displaySnake();
 }
 
+const updateScore = () => {
+    document.getElementById("scoreDisplay").innerHTML = "Current: "+ currentScore +" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Highest: " + highestScore;
+}
 
-
+const checkHighest = () => {
+    if (currentScore>highestScore) {
+        highestScore = currentScore;
+        document.getElementById("scoreDisplay").innerHTML = "Current: "+ currentScore +" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Highest: " + highestScore;
+    }
+}
 
 

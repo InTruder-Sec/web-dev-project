@@ -35,7 +35,7 @@ body {
 .gameMainDiv {
     position: fixed;
     right: 20%;
-    margin-top: 50px;
+    margin-top: 60px;
     width: 400px;
     height: 442px;
     border: solid white 1px;
@@ -198,6 +198,12 @@ body {
 .restartBtn:hover {
     background-color: black;
     color: white;
+}
+
+.scoreDisplay {
+    position: absolute;
+    right: 28%;
+    margin-top: 20px;
 }
 
 
