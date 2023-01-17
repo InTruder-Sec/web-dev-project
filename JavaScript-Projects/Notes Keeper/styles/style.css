@@ -53,6 +53,7 @@ body {
     font-size: 40px;
     transition: 0.8s;
     cursor: pointer;
+    z-index: 10;
     transition: 0.5s;
 }
 
@@ -179,4 +180,57 @@ label {
 .addButton:hover {
     background-color: rgb(62, 112, 250);
     color: white;
+}
+
+
+@media screen and (max-width: 1063px) {
+    .folder1 {
+        width: 30%;
+    }
+    .window {
+        height: fit-content;
+        padding-bottom: 40px;
+        width: 50%;
+        margin-left: 25%;
+    }
+    .addButton {
+        margin-left: 5%;
+        margin-top: 30px;
+    }
+    .windowText {
+        width: 90%;
+    }
+    .headerInput {
+        width: 90%;
+    }
+    .textHolder {
+        width: 90%
+    }
+    .imageDiv {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 685px) {
+    .folder1 {
+        width: 35%;
+    }
+    .window {
+        margin-top: 100px;
+        width: 80%;
+        margin-left: 10%;
+    }
+    .addButton {
+        margin-left: 10%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .folder1 {
+        width: 60%;
+        margin-left: 20%;
+    }
+    .addButton {
+        margin-left: 15%;
+    }
 }
