@@ -325,8 +325,9 @@ input:focus {
 }
 
 .footer-div {
-    height: 10%;
-    margin-top: 12%;
+    height: 20px;
+    position: absolute;
+    bottom: 0px;
     font-family: 'Titillium Web', sans-serif;
     width: 100%;
     background-color: white;

@@ -10,13 +10,13 @@
 
 * {
     margin: 0;
+    overflow-x: hidden;
 }
 
 body {
     background-color: black;
+
 }
-
-
 
 a {
     text-decoration: none;
@@ -176,6 +176,7 @@ hr {
     background-color: rgb(10, 255, 2);
     margin-left: 45%;
     padding: 0;
+    overflow: hidden;
     border: 0;
     border-radius: 31px;
     z-index: -1;
@@ -264,7 +265,8 @@ hr {
 }
 
 .laptop-video {
-    height: 550px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 
@@ -424,10 +426,10 @@ hr {
 
 .intel-details {
     padding: 0px;
-    height: 650px;
+    font-size: 0px;
 }
+
 .intel-image {
-    width: 100%;
     overflow-x: hidden;
 }
 
@@ -448,7 +450,7 @@ hr {
     position: absolute;
     margin-top: 90px;
     font-family: 'Inconsolata', monospace;
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 400;
     padding-left: 15%;
     padding-right: 15%;
@@ -456,12 +458,13 @@ hr {
     color: rgb(178, 178, 178);
 }
 .graphics-div {
-    height: 850px;
+    font-size: 0px;
 }
 
 .graphics-img {
     width: 100%;
     overflow-x: hidden;
+    height: 650px;
 }
 
 .graphics-discription {
@@ -480,13 +483,17 @@ hr {
 .learn-grap {
     width: 70%;
     position: absolute;
-    margin-top: 800px;
+    margin-top: 40%;
     font-family: 'Inconsolata', monospace;
     font-size: 20px;
     font-weight: 400;
     padding-left: 15%;
     padding-right: 15%;
     text-align: center;
+}
+
+.ram-div {
+    font-size: 0px;
 }
 
 .lm-grap {
@@ -500,7 +507,10 @@ hr {
     width: 100%;
 }
 .win-11 {
-    height: 510px;
+    height: fit-content;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: rgb(219, 219, 219);
 }
 
 .win-11-image {
@@ -512,7 +522,7 @@ hr {
     font-family: 'Inconsolata', monospace;
     font-size: 20px;
     font-weight: 400;
-    margin-top: 150px;
+    margin-top: 10%;
     margin-left: 63%;
     width: 350px;
 }
@@ -529,7 +539,7 @@ hr {
 }
 
 .studio-div {
-    height: 480px;
+    font-size: 0;
 }
 
 .studio-dis {
@@ -552,6 +562,7 @@ hr {
 
 .studio-image {
     width: 100%;
+    height: 500px;
 }
 
 .studio-ext {
@@ -562,8 +573,7 @@ hr {
 
 .razer-img {
     width: 100%;
-    height: 250px;
-    zoom: 20%;
+    height: 300px;
 }
 
 .care-div {
@@ -630,24 +640,75 @@ hr {
     color: rgb(10, 255, 2);
     font-size: 20px;
     margin-top: 10px;
-    margin-left: 75%;
+    margin-left: 10%;
     font-family: 'Inconsolata', monospace;
 }
 .social-icons {
+    position: absolute;
     margin-top: 10px;
-    margin-left: 30px;
+    right: 10%;
 }
 
 .credits {
-    margin-top: 5px;
-    margin-left: 80%;
+    margin-top: 10px;
+    margin-left: 45%;
     color: white;
     font-family: 'Inconsolata', monospace;
 }
 
-
-@media screen and(min-width: 1316px) {
-    .changeLine {
-        all: unset;
+@media screen and (max-width: 1038px) {
+    .buy-button {
+        margin-left: 90%;
     }
+
+    .list-nav {
+        display: none;
+    }
+    .lap-ver {
+        margin-left: 24%;
+    }
+    .gtx {
+        margin-left: 58%;
+    }
+    .intel-img {
+        margin-left: 24%;
+    }
+    .graphics-discription {
+        font-size: 18px;
+    }
+    .win-11-image {
+        margin-left: -100px;
+    }
+    .win-11-discription {
+        margin-left: 53%;
+    }
+    .cart-div {
+        margin-left: 90%;
+    }
+    .search-svg {
+        margin-left: 83%;
+    }
+    .graphics-discription {
+        font-size: 7px;
+    }
+    .intel-discription {
+        font-size: 8px;
+    }
+    .learn-grap {
+        font-size: 12px;
+        margin-top: 50%;
+    }
+    .care-head {
+        font-size: 22px;
+    }
+    .care-div {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .lap-ver {
+        margin-left: 28%;
+    }
+    
 }
