@@ -46,3 +46,29 @@ table {
     text-align: center;
     height: 35px;
 }
+
+
+@media screen and (max-width: 700px) {
+    .struct {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 526px) {
+    .struct {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 402px) {
+    .struct {
+        width: 60%;
+        padding: 3%;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .struct {
+        width: 75%;
+    }
+}
