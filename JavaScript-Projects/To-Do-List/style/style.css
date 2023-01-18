@@ -41,7 +41,7 @@ body {
     border-radius: 4px;
     background-color: #f8f8f8;
     font-size: 16px;
-    margin-left: 25px;
+    margin-left: 28%;
     margin-top: 50px;
     resize: none;
 }
@@ -83,3 +83,27 @@ body {
     font-family: 'Space Grotesk', sans-serif;
 }
 
+
+
+@media screen and (max-width: 806px) {
+    .userinput {
+        width: 60%;
+        margin-left: 20%;
+    }
+    .reset {
+        margin-left: 70%;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .userinput {
+        margin-left: 10%;
+    }
+    .reset {
+        margin-left: 58%;
+        margin-top: 30px;
+    }
+    .listing {
+        margin-left: 4%;
+    }
+}

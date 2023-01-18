@@ -35,15 +35,14 @@ function add() {
     let newdiv = document.createElement("li");
     document.getElementById("makeList").appendChild(newdiv);
     newdiv.innerText = val;
-    document.getElementById("makeList").appendChild(div);
     clearInput();
+    document.getElementById("makeList").appendChild(div);
+    
 }
 
 function clearInput(){
   var getValue= document.getElementById("addTask");
-    if (getValue.value !="") {
-        getValue.value = "";
-    }
+  getValue.innerHTML = "";
  }
 
 function fetchCookies() {
