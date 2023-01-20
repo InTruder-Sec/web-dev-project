@@ -212,12 +212,6 @@ body {
     .gameMainDiv {
         right: 10%;
     }
-    .scoreDisplay {
-        right: 22%;
-    }
-    body {
-        height: 1000px;
-    }
 }
 
 
@@ -239,30 +233,5 @@ body {
     }
     .startBtn {
         margin-left: 35%;
-    }
-    .scoreDisplay {
-        right: 35%;
-        margin-top: 530px;
-    } 
-}
-
-@media screen and (max-width: 600px) {
-    .gameMainDiv {
-        margin-left: 10%;
-    }
-    .discription {
-        margin-left: 5%;
-    }
-    .scoreDisplay {
-        right: 40%;
-    }
-}
-
-@media screen and (max-width: 460px) {
-    .gameMainDiv {
-        margin-left: 4%;
-    }
-    body {
-        zoom: 0.8;
     }
 }
