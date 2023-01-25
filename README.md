@@ -18,6 +18,8 @@
 7. [Snake Game](./JavaScript-Projects/Snake_Game/)
 8. [QRcode Generator](./JavaScript-Projects/QrCode/)
 
+<hr>
+
 <h3>React Projects</h3>
 
 1. [Weather App](https://intruder-sec.github.io/Weather-App-React/)
