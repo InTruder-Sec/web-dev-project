@@ -336,8 +336,13 @@ function decreaseTime() {
 
 function changeClock() {
     document.getElementById("displayClock").style.backgroundColor = "rgb(134, 134, 134)";
-    document.getElementById("displayStop").style.backgroundColor = "white";
-    document.getElementById("displayTimer").style.backgroundColor = "white";
+    if (!dark) {
+        document.getElementById("displayStop").style.backgroundColor = "black";
+        document.getElementById("displayTimer").style.backgroundColor = "black";
+    } else {
+        document.getElementById("displayStop").style.backgroundColor = "white";
+        document.getElementById("displayTimer").style.backgroundColor = "white";
+    }
     document.getElementById("backgroundClock").style.opacity = '1';
     document.getElementById("backgroundTimer").style.opacity = '0';
     document.getElementById("backgroundStop").style.opacity = '0';
@@ -351,9 +356,14 @@ function disableTM() {
 }
 
 function changeStop() {
-    document.getElementById("displayClock").style.backgroundColor = "white";
+    if (!dark) {
+        document.getElementById("displayClock").style.backgroundColor = "black";
+        document.getElementById("displayTimer").style.backgroundColor = "black";
+    } else {
+        document.getElementById("displayClock").style.backgroundColor = "white";
+        document.getElementById("displayTimer").style.backgroundColor = "white";
+    }
     document.getElementById("displayStop").style.backgroundColor = "rgb(134, 134, 134)";
-    document.getElementById("displayTimer").style.backgroundColor = "white";
     document.getElementById("backgroundClock").style.opacity = '0';
     document.getElementById("backgroundTimer").style.opacity = '0';
     document.getElementById("backgroundStop").style.opacity = '1';
@@ -361,8 +371,13 @@ function changeStop() {
 }
 
 function changeTimer() {
-    document.getElementById("displayClock").style.backgroundColor = "white";
-    document.getElementById("displayStop").style.backgroundColor = "white";
+    if (!dark) {
+        document.getElementById("displayClock").style.backgroundColor = "black";
+        document.getElementById("displayStop").style.backgroundColor = "black";
+    } else { 
+        document.getElementById("displayClock").style.backgroundColor = "white";
+        document.getElementById("displayStop").style.backgroundColor = "white";
+    }
     document.getElementById("displayTimer").style.backgroundColor = "rgb(134, 134, 134)";
     document.getElementById("backgroundClock").style.opacity = '0';
     document.getElementById("backgroundTimer").style.opacity = '1';
@@ -376,18 +391,35 @@ function changeTimer() {
 
 // Start of change dark and light mode
 
-// let dark = true;
+let dark = true;
 
-// function switchMode() {
-//     if (dark==true) {
-//         document.body.style.backgroundColor = "white";
-//         document.getElementById("displayTime").style.color = "black";
-//         document.getElementById("stat").style.color = "black";
-//         document.getElementById("date").style.color = "black";
-//         document.getElementById("switchMode").style.color = "black";
-//         document.getElementById("disTable").style.backgroundColor = "black";
-//         document.getElementById("disTable").style.color = "white";
-//     } else {
-
-//     }
-// }
+function switchMode() {
+    if (dark==true) {
+        document.body.style.backgroundColor = "white";
+        document.getElementById("displayTime").style.color = "black";
+        document.getElementById("stat").style.color = "black";
+        document.getElementById("date").style.color = "black";
+        document.getElementById("switchMode").style.backgroundColor = "black";
+        document.getElementById("disTable").style.backgroundColor = "black";
+        document.getElementById("disTable").style.color = "white";
+        document.getElementById("darkSVG").style.opacity = 0;
+        document.getElementById("lightSVG").style.opacity = 1;
+        document.getElementById("stoptime").style.color = "black";
+        document.getElementsByClassName("numInput")[0].style.backgroundColor = "white";
+        dark = false;
+    } else {
+        document.body.style.backgroundColor = "rgb(32, 32, 32)";
+        document.getElementById("displayTime").style.color = "white";
+        document.getElementById("stat").style.color = "white";
+        document.getElementById("date").style.color = "white";
+        document.getElementById("switchMode").style.backgroundColor = "white";
+        document.getElementById("disTable").style.backgroundColor = "white";
+        document.getElementById("disTable").style.color = "black";
+        document.getElementById("lightSVG").style.opacity = 0;
+        document.getElementById("darkSVG").style.opacity = 1;
+        document.getElementById("stoptime").style.color = "black";
+        document.getElementById("stoptime").style.color = "white";
+        document.getElementsByClassName("numInput")[0].style.backgroundColor = "black";
+        dark = true
+    }
+}
