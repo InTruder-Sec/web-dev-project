@@ -23,4 +23,5 @@
 <h3>React Projects</h3>
 
 1. [Weather App](https://intruder-sec.github.io/Weather-App-React/)
-2. [Resume Builder](https://resumebuilder-intruder.netlify.app/) [Currently working]
+2. [Travel Diary](https://travel-diary-intruder.netlify.app/)
+3. [Resume Builder](https://resumebuilder-intruder.netlify.app/) [Currently working]
