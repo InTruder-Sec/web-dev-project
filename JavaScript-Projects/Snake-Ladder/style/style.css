@@ -13,12 +13,13 @@
 body {
     background-color: rgb(253, 250, 52);
     color: black;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .popWindow {
-    height: 685px;
-    width: 65%;
+    position: fixed;
+    height: 688px;
+    width: 920px;
     margin-left: 3.5%;
     font-family: 'Nunito', sans-serif;
     margin-top: 10px;
@@ -43,7 +44,7 @@ body {
 
 .start {
     position: absolute;
-    margin-left: 180px;
+    right: 250px;
     margin-top: 420px;
     border: none;
     background-color: rgb(173, 153, 21);
@@ -54,18 +55,23 @@ body {
     z-index: 2;
 }
 
+.playerChance {
+    position: absolute;
+    right: 500px;
+}
+
 .snakeLogo {
     position: fixed;
     margin-top: 150px;
-    margin-left: 60px;
+    right: 250px;
     height: 160px;
     transition: 0.6s;
 }
 
 .ladderLogo {
-    position: absolute;
+    position: fixed;
     margin-top: 60px;
-    margin-left: 210px;
+    right: 50px;
     transition: 0.6s;
     rotate: -20deg;
 }
@@ -142,32 +148,32 @@ body {
 .ladder1 {
     position: absolute;
     rotate: 42deg;
-    bottom: 48px;
-    margin-left: 470px;
+    bottom: 30px;
+    margin-left: 380px;
 }
 
 .ladder2 {
     rotate: -32deg;
-    bottom: 140px;
-    margin-left: 300px;
+    bottom: 120px;
+    margin-left: 210px;
 }
 
 .ladder3 {
     rotate: -5deg;
-    bottom: 260px;
-    margin-left: 670px;
+    bottom: 240px;
+    margin-left: 580px;
 }
 
 .ladder4 {
-    margin-top: 32px;
+    margin-top: 22px;
     rotate: -46deg;
-    margin-left: 200px;
+    margin-left: 100px;
 }
 
 .ladder5 {
-    margin-top: 260px;
+    margin-top: 255px;
     rotate: 30deg;
-    margin-left: 300px;
+    margin-left: 204px;
 }
 
 .ladder6 {
@@ -180,34 +186,34 @@ body {
 }
 
 .snake1 {
-    margin-left: 700px;
+    margin-left: 605px;
     rotate: 44deg;
-    bottom: 50px;
+    bottom: 38px;
 }
 
 .snake2 {
-    margin-top: 250px;
-    margin-left: 360px;
+    margin-top: 230px;
+    margin-left: 272px;
 }
 
 .snake3 {
     rotate: 10deg;
-    margin-left: 365px;
-    margin-top: 10px;
+    margin-left: 270px;
+    margin-top: -5px;
 }
 
 .snake4 {
     scale: 0.8;
-    bottom: 30px;
+    bottom: 18px;
     rotate: 12deg;
-    margin-left: 180px;
+    margin-left: 83px;
 }
 
 .snake5 {
     scale: 0.6;
     rotate: 20deg;
-    margin-top: 80px;
-    margin-left: 60px;
+    margin-top: 65px;
+    margin-left: -36px;
 }
 
 .player1 {
@@ -229,8 +235,8 @@ body {
 .player1Name {
     position: absolute;
     display: inline-block;
-    margin-left: 195px;
-    bottom: 50px;
+    right: 240px;
+    bottom: 40px;
     opacity: 0;
     transition: 0.6s;
     font-family: 'Nunito', sans-serif;
@@ -364,7 +370,7 @@ border-radius: 15px;
     font-family: 'Nunito', sans-serif;
     font-size: 22px;
     margin-top: 440px;
-    margin-left: 120px;
+    right: 150px;
     opacity: 0;
 }
 
@@ -372,8 +378,8 @@ border-radius: 15px;
     scale: 0.09;
     z-index: 4;
     position: absolute;
-    margin-left: -35px;
-    margin-top: 368px;
+    margin-left: -140px;
+    margin-top: 355px;
     transition: 1.2s;
 }
 
@@ -381,8 +387,8 @@ border-radius: 15px;
     scale: 0.09;
     z-index: 4;
     position: absolute;
-    margin-top: 368px;
-    margin-left: -40px;
+    margin-top: 355px;
+    margin-left: -130px;
     transition: 1.2s;
 }
 
