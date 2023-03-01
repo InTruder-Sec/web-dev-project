@@ -102,7 +102,7 @@ cube.onclick = function() {
 }
 
 // Player Move script code
-var playerOneSum = 1;
+var playerOneSum = 98;
 var playerTwoSum = 1;
 
 
