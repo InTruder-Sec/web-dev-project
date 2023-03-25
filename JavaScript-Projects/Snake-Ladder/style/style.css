@@ -1,419 +1,463 @@
-
-@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-
-
-
+@import url("https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 * {
-    margin: 0;
-    
+  margin: 0;
 }
 
 body {
-    background-color: rgb(253, 250, 52);
-    color: black;
-    overflow-x: hidden;
+  background-color: rgb(253, 250, 52);
+  color: black;
+  overflow-x: hidden;
+  user-select: none;
 }
 
 .popWindow {
-    position: fixed;
-    height: 688px;
-    width: 920px;
-    margin-left: 3.5%;
-    font-family: 'Nunito', sans-serif;
-    margin-top: 10px;
-    background-color: rgb(180, 171, 0);
-    font-size: 0px;
-    text-align: center;
-    border-radius: 5px;
-    display: inline-block;
-    padding: 5px;
+  position: fixed;
+  height: 688px;
+  width: 920px;
+  margin-left: 3.5%;
+  font-family: "Nunito", sans-serif;
+  margin-top: 10px;
+  background-color: rgb(180, 171, 0);
+  font-size: 0px;
+  text-align: center;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px;
 }
 
 .header {
-    position: fixed;
-    transition: 0.6s;
-    right: 180px;
-    color: rgb(173, 153, 21);
-    text-align: center;
-    font-size: 100px;
-    font-family: 'East Sea Dokdo', cursive;
-    top: 30px;
+  position: fixed;
+  transition: 0.6s;
+  right: 180px;
+  color: rgb(173, 153, 21);
+  text-align: center;
+  font-size: 100px;
+  font-family: "East Sea Dokdo", cursive;
+  top: 30px;
 }
 
 .start {
-    position: absolute;
-    right: 250px;
-    margin-top: 420px;
-    border: none;
-    background-color: rgb(173, 153, 21);
-    border-radius: 4px;
-    width: 100px;
-    height: 30px;
-    transition: 0.7s;
-    z-index: 2;
+  position: absolute;
+  right: 250px;
+  margin-top: 420px;
+  border: none;
+  background-color: rgb(173, 153, 21);
+  border-radius: 4px;
+  width: 100px;
+  height: 30px;
+  transition: 0.7s;
+  z-index: 2;
 }
 
 .playerChance {
-    position: absolute;
-    right: 500px;
+  position: absolute;
+  right: 500px;
 }
 
 .snakeLogo {
-    position: fixed;
-    margin-top: 150px;
-    right: 250px;
-    height: 160px;
-    transition: 0.6s;
+  position: fixed;
+  margin-top: 150px;
+  right: 250px;
+  height: 160px;
+  transition: 0.6s;
 }
 
 .ladderLogo {
-    position: fixed;
-    margin-top: 60px;
-    right: 50px;
-    transition: 0.6s;
-    rotate: -20deg;
+  position: fixed;
+  margin-top: 60px;
+  right: 50px;
+  transition: 0.6s;
+  rotate: -20deg;
 }
 
 .start:hover {
-    background-color: #d2ab46;
+  background-color: #d2ab46;
 }
 
 .roll {
-    position: absolute;
-    opacity: 0;
-    margin-left: 180px;
-    margin-top: 420px;
-    border: none;
-    background-color: rgb(173, 153, 21);
-    border-radius: 4px;
-    width: 100px;
-    height: 30px;
-    transition: 0.7s;
-} 
+  position: absolute;
+  opacity: 0;
+  margin-left: 180px;
+  margin-top: 420px;
+  border: none;
+  background-color: rgb(173, 153, 21);
+  border-radius: 4px;
+  width: 100px;
+  height: 30px;
+  transition: 0.7s;
+}
 
 .RC1 {
-    height: 47px;
-    width: 90px;
-    background-color: #d2ab46;
-    display: inline-block;
-    border: 1px black solid;
-    font-size: 20px;
-    color: black;
-    margin-left: 0;
-    padding-top: 20px;
+  height: 47px;
+  width: 90px;
+  background-color: #d2ab46;
+  display: inline-block;
+  border: 1px black solid;
+  font-size: 20px;
+  color: black;
+  margin-left: 0;
+  padding-top: 20px;
 }
 
 .RC2 {
-    height: 47px;
-    width: 90px;
-    background-color: #ffffff;
-    display: inline-block;
-    border: 1px black solid;
-    margin-left: 0; 
-    font-size: 20px;
-    color: black;
-    padding-top: 20px;
+  height: 47px;
+  width: 90px;
+  background-color: #ffffff;
+  display: inline-block;
+  border: 1px black solid;
+  margin-left: 0;
+  font-size: 20px;
+  color: black;
+  padding-top: 20px;
 }
 
 .RC {
-    height: 47px;
-    width: 90px;
-    background-color: hsl(104, 63%, 74%);
-    display: inline-block;
-    border: 1px black solid;
-    font-size: 20px;
-    color: black;
-    margin-left: 0;
-    padding-top: 20px;
+  height: 47px;
+  width: 90px;
+  background-color: hsl(104, 63%, 74%);
+  display: inline-block;
+  border: 1px black solid;
+  font-size: 20px;
+  color: black;
+  margin-left: 0;
+  padding-top: 20px;
 }
 
 .RC100 {
-    height: 47px;
-    width: 90px;
-    background-color: hsl(284, 100%, 89%);
-    display: inline-block;
-    border: 1px black solid;
-    margin-left: 0; 
-    font-size: 20px;
-    color: black;
-    padding-top: 20px;
+  height: 47px;
+  width: 90px;
+  background-color: hsl(284, 100%, 89%);
+  display: inline-block;
+  border: 1px black solid;
+  margin-left: 0;
+  font-size: 20px;
+  color: black;
+  padding-top: 20px;
 }
 
 .ladder {
-    position: absolute;
+  position: absolute;
 }
 
 .ladder1 {
-    position: absolute;
-    rotate: 42deg;
-    bottom: 30px;
-    margin-left: 380px;
+  position: absolute;
+  rotate: 42deg;
+  bottom: 30px;
+  margin-left: 380px;
 }
 
 .ladder2 {
-    rotate: -32deg;
-    bottom: 120px;
-    margin-left: 210px;
+  rotate: -32deg;
+  bottom: 120px;
+  margin-left: 210px;
 }
 
 .ladder3 {
-    rotate: -5deg;
-    bottom: 240px;
-    margin-left: 580px;
+  rotate: -5deg;
+  bottom: 240px;
+  margin-left: 580px;
 }
 
 .ladder4 {
-    margin-top: 22px;
-    rotate: -46deg;
-    margin-left: 100px;
+  margin-top: 22px;
+  rotate: -46deg;
+  margin-left: 100px;
 }
 
 .ladder5 {
-    margin-top: 255px;
-    rotate: 30deg;
-    margin-left: 204px;
+  margin-top: 255px;
+  rotate: 30deg;
+  margin-left: 204px;
 }
 
 .ladder6 {
-    margin-top: 190px;
-    margin-left: 535px;
+  margin-top: 190px;
+  margin-left: 535px;
 }
 
 .snake {
-    position: absolute;
+  position: absolute;
 }
 
 .snake1 {
-    margin-left: 605px;
-    rotate: 44deg;
-    bottom: 38px;
+  margin-left: 605px;
+  rotate: 44deg;
+  bottom: 38px;
 }
 
 .snake2 {
-    margin-top: 230px;
-    margin-left: 272px;
+  margin-top: 230px;
+  margin-left: 272px;
 }
 
 .snake3 {
-    rotate: 10deg;
-    margin-left: 270px;
-    margin-top: -5px;
+  rotate: 10deg;
+  margin-left: 270px;
+  margin-top: -5px;
 }
 
 .snake4 {
-    scale: 0.8;
-    bottom: 18px;
-    rotate: 12deg;
-    margin-left: 83px;
+  scale: 0.8;
+  bottom: 18px;
+  rotate: 12deg;
+  margin-left: 83px;
 }
 
 .snake5 {
-    scale: 0.6;
-    rotate: 20deg;
-    margin-top: 65px;
-    margin-left: -36px;
+  scale: 0.6;
+  rotate: 20deg;
+  margin-top: 65px;
+  margin-left: -36px;
 }
 
 .player1 {
-    position: absolute;
-    scale: 0.15;
-    margin-top: 280px;
-    transition: 0.6s;
-    margin-left: -80px;
+  position: absolute;
+  scale: 0.15;
+  margin-top: 280px;
+  transition: 0.6s;
+  margin-left: -80px;
 }
 
 .player2 {
-    position: absolute;
-    scale: 0.15;
-    margin-top: 280px;
-    margin-left: 200px;
-    transition: 0.6s;
+  position: absolute;
+  scale: 0.15;
+  margin-top: 280px;
+  margin-left: 200px;
+  transition: 0.6s;
 }
 
 .player1Name {
-    position: absolute;
-    display: inline-block;
-    right: 240px;
-    bottom: 40px;
-    opacity: 0;
-    transition: 0.6s;
-    font-family: 'Nunito', sans-serif;
+  position: absolute;
+  display: inline-block;
+  right: 240px;
+  bottom: 40px;
+  opacity: 0;
+  transition: 0.6s;
+  font-family: "Nunito", sans-serif;
 }
-
-
-
 
 /* CodePen Dice*/
 
 h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-  }
-  
-  #cube .front {
-    transform: 
-      translateZ(100px);
-  }
-  
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+#cube .front {
+  transform: translateZ(100px);
+}
+
 #cube .back {
-transform: 
-    rotateX(-180deg)
-    translateZ(100px);
+  transform: rotateX(-180deg) translateZ(100px);
 }
 
 #cube .right {
-transform:
-    rotateY(90deg)
-    translateZ(100px);
+  transform: rotateY(90deg) translateZ(100px);
 }
 
 #cube .left {
-transform:
-    rotateY(-90deg)
-    translateZ(100px);
+  transform: rotateY(-90deg) translateZ(100px);
 }
 
 #cube .top {
-transform:
-    rotateX(90deg)
-    translateZ(100px);
+  transform: rotateX(90deg) translateZ(100px);
 }
 
 #cube .bottom {
-transform:
-    rotateX(-90deg)
-    translateZ(100px);
+  transform: rotateX(-90deg) translateZ(100px);
 }
 
 .container {
-width: 200px;
-height: 200px;
-position: fixed;
-margin: 0 auto 40px;
-right: 130px;
-opacity: 0;
-transition: 0.6s;
-perspective: 1000px;
-perspective-origin: 50% 100%;
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  margin: 0 auto 40px;
+  right: 130px;
+  opacity: 0;
+  transition: 0.6s;
+  perspective: 1000px;
+  perspective-origin: 50% 100%;
 }
 
 #cube {
-width: 100%;
-height: 100%;
-top: 100px;
-position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 100px;
+  position: absolute;
 
-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 
-transition: transform 5s;
+  transition: transform 5s;
 }
 
 #cube:hover {
-cursor: pointer;
+  cursor: pointer;
 }
 
 #cube div {
-background: hsla(0, 85%, 50%, 0.8);
-display: block;
-position: absolute;
-width: 200px;
-height: 100px;
-border: 2px solid #ab1a1a;
+  background: hsla(0, 85%, 50%, 0.8);
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  border: 2px solid #ab1a1a;
 
-margin: 0 auto;  
+  margin: 0 auto;
 
-font-family: Arial, Helvetica, sans-serif;
-font-size: 500%;
-text-align: center;
-padding: 50px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 500%;
+  text-align: center;
+  padding: 50px 0;
 }
 
 .dot {
-display: block;
-position: absolute;
-width: 30px;
-height: 30px;
-background: #fff;
-border-radius: 15px;  
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 15px;
 }
 
-.front .dot1 { top: 85px; left: 85px; }
-.back .dot1 { top: 45px; left: 45px; }
-.back .dot2 { top: 125px; left: 125px; }
-.right .dot1 { top: 45px; left: 45px; }
-.right .dot2 { top: 85px; left: 85px; }
-.right .dot3 { top: 125px; left: 125px; }
-.left .dot1 { top: 45px; left: 45px; }
-.left .dot2 { top: 45px; left: 125px; }
-.left .dot3 { top: 125px; left: 45px; }
-.left .dot4 { top: 125px; left: 125px; }
-.top .dot1 { top: 45px; left: 45px; }
-.top .dot2 { top: 45px; left: 125px; }
-.top .dot3 { top: 85px; left: 85px; }
-.top .dot4 { top: 125px; left: 45px; }
-.top .dot5 { top: 125px; left: 125px; }
-.bottom .dot1 { top: 45px; left: 45px; }
-.bottom .dot2 { top: 45px; left: 85px; }
-.bottom .dot3 { top: 45px; left: 125px; }
-.bottom .dot4 { top: 125px; left: 45px; }
-.bottom .dot5 { top: 125px; left: 85px; }
-.bottom .dot6 { top: 125px; left: 125px; }
+.front .dot1 {
+  top: 85px;
+  left: 85px;
+}
+.back .dot1 {
+  top: 45px;
+  left: 45px;
+}
+.back .dot2 {
+  top: 125px;
+  left: 125px;
+}
+.right .dot1 {
+  top: 45px;
+  left: 45px;
+}
+.right .dot2 {
+  top: 85px;
+  left: 85px;
+}
+.right .dot3 {
+  top: 125px;
+  left: 125px;
+}
+.left .dot1 {
+  top: 45px;
+  left: 45px;
+}
+.left .dot2 {
+  top: 45px;
+  left: 125px;
+}
+.left .dot3 {
+  top: 125px;
+  left: 45px;
+}
+.left .dot4 {
+  top: 125px;
+  left: 125px;
+}
+.top .dot1 {
+  top: 45px;
+  left: 45px;
+}
+.top .dot2 {
+  top: 45px;
+  left: 125px;
+}
+.top .dot3 {
+  top: 85px;
+  left: 85px;
+}
+.top .dot4 {
+  top: 125px;
+  left: 45px;
+}
+.top .dot5 {
+  top: 125px;
+  left: 125px;
+}
+.bottom .dot1 {
+  top: 45px;
+  left: 45px;
+}
+.bottom .dot2 {
+  top: 45px;
+  left: 85px;
+}
+.bottom .dot3 {
+  top: 45px;
+  left: 125px;
+}
+.bottom .dot4 {
+  top: 125px;
+  left: 45px;
+}
+.bottom .dot5 {
+  top: 125px;
+  left: 85px;
+}
+.bottom .dot6 {
+  top: 125px;
+  left: 125px;
+}
 
 /* End of codepen dice */
 
-
 .chanceShow {
-    position: absolute;
-    display: inline-block;
-    font-family: 'Nunito', sans-serif;
-    font-size: 22px;
-    margin-top: 440px;
-    right: 150px;
-    opacity: 0;
+  position: absolute;
+  display: inline-block;
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  margin-top: 440px;
+  right: 150px;
+  opacity: 0;
 }
 
 .playerDice1 {
-    scale: 0.09;
-    z-index: 4;
-    position: absolute;
-    margin-left: -140px;
-    margin-top: 355px;
-    transition: 1.2s;
+  scale: 0.09;
+  z-index: 4;
+  position: absolute;
+  margin-left: -140px;
+  margin-top: 355px;
+  transition: 1.2s;
 }
 
 .playerDice2 {
-    scale: 0.09;
-    z-index: 4;
-    position: absolute;
-    margin-top: 355px;
-    margin-left: -130px;
-    transition: 1.2s;
+  scale: 0.09;
+  z-index: 4;
+  position: absolute;
+  margin-top: 355px;
+  margin-left: -130px;
+  transition: 1.2s;
 }
 
 .playerWon {
-    position: absolute;
-    background-color: white;
-    height: 100px;
-    width: 300px;
-    margin-left: 40%;
-    margin-top: 280px;
-    z-index: 6;
-    border-radius: 8px;
-    border: solid 5px rgb(253, 250, 52);
-    padding-top: 30px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 22px;
-    opacity: 0;
-    transition:0.5s;
+  position: absolute;
+  background-color: white;
+  height: 100px;
+  width: 300px;
+  margin-left: 40%;
+  margin-top: 280px;
+  z-index: 6;
+  border-radius: 8px;
+  border: solid 5px rgb(253, 250, 52);
+  padding-top: 30px;
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  opacity: 0;
+  transition: 0.5s;
 }
 
 .restartBtn {
-    margin-top: 20px;
-    background-color: rgb(253, 250, 52);
-    border: none;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    border-radius: 4px;
+  margin-top: 20px;
+  background-color: rgb(253, 250, 52);
+  border: none;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  border-radius: 4px;
 }
