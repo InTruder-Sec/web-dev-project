@@ -1,78 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <script src="./js/script.js" async></script>
     <title>Clock</title>
-</head>
-<body>
-    <div class="switchMode" id="switchMode" onclick="switchMode()">
+  </head>
+  <body>
+    <!-- <div class="switchMode" id="switchMode" onclick="switchMode()">
         <div class="darkSVG" id="darkSVG"><svg fill="#000000" viewBox="0 0 35 35" data-name="Layer 2" id="Layer_2" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M18.44,34.68a18.22,18.22,0,0,1-2.94-.24,18.18,18.18,0,0,1-15-20.86A18.06,18.06,0,0,1,9.59.63,2.42,2.42,0,0,1,12.2.79a2.39,2.39,0,0,1,1,2.41L11.9,3.1l1.23.22A15.66,15.66,0,0,0,23.34,21h0a15.82,15.82,0,0,0,8.47.53A2.44,2.44,0,0,1,34.47,25,18.18,18.18,0,0,1,18.44,34.68ZM10.67,2.89a15.67,15.67,0,0,0-5,22.77A15.66,15.66,0,0,0,32.18,24a18.49,18.49,0,0,1-9.65-.64A18.18,18.18,0,0,1,10.67,2.89Z"></path></g></svg></div>
         <div class="lightSVG" id="lightSVG"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#ffffffa)" fill="#ffffff"> <path d="M12 0a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1ZM4.929 3.515a1 1 0 0 0-1.414 1.414l2.828 2.828a1 1 0 0 0 1.414-1.414L4.93 3.515ZM1 11a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2H1ZM18 12a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1ZM17.657 16.243a1 1 0 0 0-1.414 1.414l2.828 2.828a1 1 0 1 0 1.414-1.414l-2.828-2.828ZM7.757 17.657a1 1 0 1 0-1.414-1.414L3.515 19.07a1 1 0 1 0 1.414 1.414l2.828-2.828ZM20.485 4.929a1 1 0 0 0-1.414-1.414l-2.828 2.828a1 1 0 1 0 1.414 1.414l2.828-2.828ZM13 19a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0v-4ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"></path> </g> <defs> <clipPath id="a"> <path fill="#ffffffffffff" d="M0 0h24v24H0z"></path> </clipPath> </defs> </g></svg></div>
-    </div>
+    </div> -->
     <div class="wrapper">
-        <div class="background-clock" id="backgroundClock">
-            <center>
-            <div id="displayTime" class="time">00 : 00 : 00</div>
-            <div class="stat" id="stat">AM</div>
-            <div class="date" id="date">Thursday 06 March </div>
-            </center>
-        </div>
-        <div class="background-stop" id="backgroundStop">
-            <center>
-                <div id="stoptime" class="stoptime">00 : 00 : 00</div>
-                <button class="stopstart" onclick="swStart()">
-                    <svg class="stopSVG" id="stopSVG" height="30px" width="30px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_iconCarrier"> <path fill="#231F20" d="M9.27,41.224h30c0.553,0,1-0.447,1-1v-30c0-0.552-0.447-1-1-1h-30c-0.553,0-1,0.448-1,1v30 C8.27,40.776,8.717,41.224,9.27,41.224z M10.27,11.224h28v28h-28V11.224z"></path> </g></svg>
-                    <svg width="30px" class="playSvg" id="playSvg" fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 38.083 38.083" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M6.655,36.904V1.177c0-0.461,0.269-0.879,0.687-1.07c0.419-0.191,0.911-0.121,1.26,0.178l22.416,17.568 c0.258,0.223,0.406,0.545,0.41,0.885c0.004,0.326-0.143,0.663-0.396,0.889L8.616,37.784c-0.347,0.31-0.842,0.385-1.265,0.194 C6.927,37.787,6.655,37.368,6.655,36.904z M9.01,3.744v30.535l19.449-15.52L9.01,3.744z"></path> </g> </g> </g></svg>
-                </button>
-            </center>
-        </div>
+      <div class="background-clock" id="backgroundClock">
         <center>
-            <div class="background-timer" id="backgroundTimer">
-                
-                    <table class="timerTable">
-                        <tr>
-                            <td class="timertd">
-                                <input type="number" id="hrsInput" class="hrsInput numInput" disabled placeholder="00" vlaue=0> 
-                            </td>
-                            <td class="timertd">
-                                <svg class="increaseSvg" id="changeButton" onclick="hrsIncrease()" fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"></path> </g> </g> </g></svg><br>
-                                <svg class="decreaseSvg" id="changeButton2" onclick="hrsDecrease()" fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"></path> </g> </g> </g></svg>
-                            </td>
-                            <td class="timertd">:</td>
-                            <td class="timertd"><input type="number" id="minInput" class="minInput numInput" disabled placeholder="00" vlaue="0"></td>
-                            <td class="timertd">
-                                <svg class="increaseSvg" id="changeButton3" onclick="minIncrease()" fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"></path> </g> </g> </g></svg><br>
-                                <svg class="decreaseSvg" id="changeButton4" onclick="minDecrease()" fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"></path> </g> </g> </g></svg>
-                            </td>
-                            <td class="timertd">:</td>
-                            <td class="timertd"><input type="number" id="secInput" class="secInput numInput" disabled placeholder="00" vlaue="0"></td>
-                            <td class="timertd">
-                                <svg class="increaseSvg" id="changeButton5" onclick="secIncrease()" fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"></path> </g> </g> </g></svg><br>
-                                <svg class="decreaseSvg" id="changeButton6" onclick="secDecrease()" fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"></path> </g> </g> </g></svg>
-                            </td>
-                        </tr>
-                    </table>
-                    <button class="stopstart tss" id="stopstart2" onclick="tStart()">
-                        <svg class="stopSVG" id="stopSVG2" height="30px" width="30px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_iconCarrier"> <path fill="#231F20" d="M9.27,41.224h30c0.553,0,1-0.447,1-1v-30c0-0.552-0.447-1-1-1h-30c-0.553,0-1,0.448-1,1v30 C8.27,40.776,8.717,41.224,9.27,41.224z M10.27,11.224h28v28h-28V11.224z"></path> </g></svg>
-                        <svg width="30px" class="playSvg" id="playSvg2" fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 38.083 38.083" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M6.655,36.904V1.177c0-0.461,0.269-0.879,0.687-1.07c0.419-0.191,0.911-0.121,1.26,0.178l22.416,17.568 c0.258,0.223,0.406,0.545,0.41,0.885c0.004,0.326-0.143,0.663-0.396,0.889L8.616,37.784c-0.347,0.31-0.842,0.385-1.265,0.194 C6.927,37.787,6.655,37.368,6.655,36.904z M9.01,3.744v30.535l19.449-15.52L9.01,3.744z"></path> </g> </g> </g></svg>
-                    </button>
-                
-            </div>
+          <div id="displayTime" class="time">00 : 00 : 00</div>
+          <div class="stat" id="stat">AM</div>
+          <div class="date" id="date">Thursday 06 March</div>
         </center>
+      </div>
+      <div class="background-stop" id="backgroundStop">
         <center>
-        
-            <table class="disTable" id="disTable">
-                <tr>
-                    <td class="displayClock" id="displayClock" onclick="changeClock()"><div >Clock</div></td>
-                    <td class="displayStop" id="displayStop" onclick="changeStop()"><div >Stopwatch</div></td>
-                    <td class="displayTimer" id="displayTimer" onclick="changeTimer()"><div>Timer</div></td>
-                </tr>
-            </table>
-        </center> 
+          <div id="stoptime" class="stoptime">00 : 00 : 00</div>
+          <button class="stopstart" onclick="swStart()">
+            <svg
+              class="stopSVG"
+              id="stopSVG"
+              height="30px"
+              width="30px"
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 50 50"
+              enable-background="new 0 0 50 50"
+              xml:space="preserve"
+              fill="#000000"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  fill="#231F20"
+                  d="M9.27,41.224h30c0.553,0,1-0.447,1-1v-30c0-0.552-0.447-1-1-1h-30c-0.553,0-1,0.448-1,1v30 C8.27,40.776,8.717,41.224,9.27,41.224z M10.27,11.224h28v28h-28V11.224z"
+                ></path>
+              </g>
+            </svg>
+            <svg
+              width="30px"
+              class="playSvg"
+              id="playSvg"
+              fill="#000000"
+              version="1.1"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 38.083 38.083"
+              xml:space="preserve"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <g>
+                    <path
+                      d="M6.655,36.904V1.177c0-0.461,0.269-0.879,0.687-1.07c0.419-0.191,0.911-0.121,1.26,0.178l22.416,17.568 c0.258,0.223,0.406,0.545,0.41,0.885c0.004,0.326-0.143,0.663-0.396,0.889L8.616,37.784c-0.347,0.31-0.842,0.385-1.265,0.194 C6.927,37.787,6.655,37.368,6.655,36.904z M9.01,3.744v30.535l19.449-15.52L9.01,3.744z"
+                    ></path>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </button>
+        </center>
+      </div>
+      <center>
+        <div class="background-timer" id="backgroundTimer">
+          <table class="timerTable">
+            <tr>
+              <td class="timertd">
+                <input
+                  type="number"
+                  id="hrsInput"
+                  class="hrsInput numInput"
+                  disabled
+                  placeholder="00"
+                  vlaue="0"
+                />
+              </td>
+              <td class="timertd">
+                <svg
+                  class="increaseSvg"
+                  id="changeButton"
+                  onclick="hrsIncrease()"
+                  fill="#ffffff"
+                  height="20px"
+                  width="20px"
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g>
+                      <g>
+                        <path
+                          d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"
+                        ></path>
+                      </g>
+                    </g>
+                  </g></svg
+                ><br />
+                <svg
+                  class="decreaseSvg"
+                  id="changeButton2"
+                  onclick="hrsDecrease()"
+                  fill="#ffffff"
+                  height="20px"
+                  width="20px"
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g>
+                      <g>
+                        <path
+                          d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"
+                        ></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </td>
+              <td class="timertd">:</td>
+              <td class="timertd">
+                <input
+                  type="number"
+                  id="minInput"
+                  class="minInput numInput"
+                  disabled
+                  placeholder="00"
+                  vlaue="0"
+                />
+              </td>
+              <td class="timertd">
+                <svg
+                  class="increaseSvg"
+                  id="changeButton3"
+                  onclick="minIncrease()"
+                  fill="#ffffff"
+                  height="20px"
+                  width="20px"
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g>
+                      <g>
+                        <path
+                          d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"
+                        ></path>
+                      </g>
+                    </g>
+                  </g></svg
+                ><br />
+                <svg
+                  class="decreaseSvg"
+                  id="changeButton4"
+                  onclick="minDecrease()"
+                  fill="#ffffff"
+                  height="20px"
+                  width="20px"
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g>
+                      <g>
+                        <path
+                          d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"
+                        ></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </td>
+              <td class="timertd">:</td>
+              <td class="timertd">
+                <input
+                  type="number"
+                  id="secInput"
+                  class="secInput numInput"
+                  disabled
+                  placeholder="00"
+                  vlaue="0"
+                />
+              </td>
+              <td class="timertd">
+                <svg
+                  class="increaseSvg"
+                  id="changeButton5"
+                  onclick="secIncrease()"
+                  fill="#ffffff"
+                  height="20px"
+                  width="20px"
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g>
+                      <g>
+                        <path
+                          d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"
+                        ></path>
+                      </g>
+                    </g>
+                  </g></svg
+                ><br />
+                <svg
+                  class="decreaseSvg"
+                  id="changeButton6"
+                  onclick="secDecrease()"
+                  fill="#ffffff"
+                  height="20px"
+                  width="20px"
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g>
+                      <g>
+                        <path
+                          d="M508.8,278.947L263.467,35.107c-4.16-4.16-10.88-4.16-15.04,0L3.2,279.053c-2.027,2.027-3.093,4.693-3.2,7.573v182.72 c0,5.867,4.8,10.667,10.667,10.667c2.88,0,5.547-1.173,7.573-3.093L256,238.947l237.867,237.76 c4.16,4.16,10.987,4.053,15.04-0.107c1.92-1.92,2.987-4.587,3.093-7.36V286.52C512,283.64,510.827,280.867,508.8,278.947z M490.667,443.427l-227.2-227.093c-4.267-4.053-10.88-4.053-15.04,0L21.333,443.64V291.107L256,57.72l234.667,233.173V443.427z"
+                        ></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </td>
+            </tr>
+          </table>
+          <button class="stopstart tss" id="stopstart2" onclick="tStart()">
+            <svg
+              class="stopSVG"
+              id="stopSVG2"
+              height="30px"
+              width="30px"
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 50 50"
+              enable-background="new 0 0 50 50"
+              xml:space="preserve"
+              fill="#000000"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  fill="#231F20"
+                  d="M9.27,41.224h30c0.553,0,1-0.447,1-1v-30c0-0.552-0.447-1-1-1h-30c-0.553,0-1,0.448-1,1v30 C8.27,40.776,8.717,41.224,9.27,41.224z M10.27,11.224h28v28h-28V11.224z"
+                ></path>
+              </g>
+            </svg>
+            <svg
+              width="30px"
+              class="playSvg"
+              id="playSvg2"
+              fill="#000000"
+              version="1.1"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 38.083 38.083"
+              xml:space="preserve"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <g>
+                    <path
+                      d="M6.655,36.904V1.177c0-0.461,0.269-0.879,0.687-1.07c0.419-0.191,0.911-0.121,1.26,0.178l22.416,17.568 c0.258,0.223,0.406,0.545,0.41,0.885c0.004,0.326-0.143,0.663-0.396,0.889L8.616,37.784c-0.347,0.31-0.842,0.385-1.265,0.194 C6.927,37.787,6.655,37.368,6.655,36.904z M9.01,3.744v30.535l19.449-15.52L9.01,3.744z"
+                    ></path>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </center>
+      <center>
+        <table class="disTable" id="disTable">
+          <tr>
+            <td class="displayClock" id="displayClock" onclick="changeClock()">
+              <div>Clock</div>
+            </td>
+            <td class="displayStop" id="displayStop" onclick="changeStop()">
+              <div>Stopwatch</div>
+            </td>
+            <td class="displayTimer" id="displayTimer" onclick="changeTimer()">
+              <div>Timer</div>
+            </td>
+          </tr>
+        </table>
+      </center>
     </div>
-</body>
+  </body>
 </html>
