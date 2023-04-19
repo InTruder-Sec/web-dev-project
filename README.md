@@ -4,7 +4,7 @@
 
 1. [Contact Form](./Html-CSS/Contact-form)
 2. [Laptop Buying Page](./Html-CSS/Laptop-buying%20site)
-3. [Portfolio](intruder-security.systems)
+3. [Portfolio](https://intruder-sec.github.io/deep.github.io/)
 
 <hr>
 
@@ -18,6 +18,7 @@
 6. [Virtual Keyboard](./JavaScript-Projects/Virtual_keyboard/)
 7. [Snake Game](./JavaScript-Projects/Snake_Game/)
 8. [QRcode Generator](./JavaScript-Projects/QrCode/)
+9. [OWASP PCCOE Team Site](https://owasp-pccoe.web.app/)
 
 <hr>
 
@@ -26,4 +27,6 @@
 1. [Weather App](https://intruder-sec.github.io/Weather-App-React/)
 2. [Travel Diary](https://travel-diary-intruder.netlify.app/)
 3. [Book Store](https://thebookmark.netlify.app/)
-4. [Resume Builder](https://resumebuilder-intruder.netlify.app/) [Currently working]
+4. [Playifyi](https://playifyi.netlify.app/)
+5. [Health Care App](https://healthcare-service.netlify.app/)
+6. [Portfolio (Using react)](https://intruder-security.systems/)
