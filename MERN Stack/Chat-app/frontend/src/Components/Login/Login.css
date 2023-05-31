@@ -1,22 +1,56 @@
 .main {
-  width: 80vw;
-  height: 90vh;
   background-color: #fff;
-  border-radius: 15px;
-  margin: 5vh auto;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.signup {
-  width: 50%;
-  background-color: red;
-  height: 100%;
 }
 
 .login {
-  width: 50%;
-  background-color: blue;
-  height: 100%;
+  width: 480px;
+  height: 75vh;
+  border: solid 4px black;
+  margin: 10vh auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.login::after,
+.login::before {
+  width: 200px;
+  height: 300px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -10;
+}
+
+.login::before {
+  left: -10px;
+  top: -10px;
+  border-top: solid 2px black;
+  border-left: solid 2px black;
+}
+
+.login::after {
+  right: -10px;
+  bottom: -10px;
+  border-right: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.login--main {
+  margin-top: 40px;
+}
+
+.input--box {
+  width: 90%;
+  height: 10px;
+  background-color: white;
+  border: solid 2px black;
+  font-family: "Space Grotesk", sans-serif;
+  padding: 10px;
+  font-size: 13px;
+  margin: 10px auto;
+}
+
+input:focus {
+  outline: none;
 }
