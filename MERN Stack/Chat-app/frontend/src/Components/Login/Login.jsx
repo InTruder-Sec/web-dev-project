@@ -6,17 +6,30 @@ function Login() {
   return (
     <div className="main">
       <div className="login">
-        <img className="logo" alt="logo" src={logo}></img>
+        <div className="header">
+          <img className="logo" alt="logo" src={logo}></img>
+          <div className="logo--header">Login</div>
+        </div>
         <div className="login--main">
           <form>
-            <label className="label--input">Username: </label>
-            <input className="input--box" placeholder="username"></input>
-            <label className="label--input">Password: </label>
-            <input
-              className="input--box"
-              type="password"
-              placeholder="********"
-            ></input>
+            <div className="padding">
+              <label className="label--input">Username: </label>
+              <input className="input--box" placeholder="username"></input>
+            </div>
+            <div className="padding">
+              <label className="label--input">Password: </label>
+              <input
+                className="input--box"
+                type="password"
+                placeholder="********"
+              ></input>
+            </div>
+            <div className="forgot--div">
+              <div className="forgot">forgot password?</div>
+            </div>
+            <div className="padding">
+              <input type="button" className="login--btn" value="Login"></input>
+            </div>
           </form>
         </div>
       </div>
