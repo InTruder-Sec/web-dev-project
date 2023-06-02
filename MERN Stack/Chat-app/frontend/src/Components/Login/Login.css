@@ -2,6 +2,25 @@
   background-color: #fff;
 }
 
+.background--head {
+  position: absolute;
+  margin-top: 18vh;
+  font-size: 180px;
+  margin-left: 9vw;
+  letter-spacing: 1px;
+}
+.background--head--filter {
+  width: 450px;
+  height: 75vh;
+  margin-left: 34vw;
+  padding: 20px;
+  position: absolute;
+  background-color: white;
+  /* opacity: 0.9; */
+  z-index: 2;
+  padding-left: 30px;
+}
+
 .login {
   width: 450px;
   height: 75vh;
@@ -9,7 +28,7 @@
   margin: 10vh auto;
   padding: 20px;
   position: relative;
-  z-index: 1;
+  z-index: 3;
   padding-left: 30px;
 }
 
@@ -70,6 +89,7 @@
 
 input:focus {
   outline: none;
+  border: solid 3px black;
 }
 
 .forgot--div {
@@ -106,9 +126,9 @@ input:focus {
 
 .oauth {
   display: flex;
-  width: 180px;
+  width: 200px;
   margin: 20px auto;
-  padding-right: 10px;
+  padding-right: 30px;
   justify-content: space-between;
 }
 
@@ -117,4 +137,15 @@ input:focus {
   height: 45px;
   border: solid 2px black;
   border-radius: 50%;
+  transition: 0.6s;
+}
+
+.oauth--icon:hover {
+  background-color: #000000;
+  filter: invert(1);
+}
+
+.oauth svg {
+  z-index: -1;
+  position: relative;
 }
