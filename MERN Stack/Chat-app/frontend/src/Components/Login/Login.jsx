@@ -31,6 +31,11 @@ function Login() {
               <input type="button" className="login--btn" value="Login"></input>
             </div>
           </form>
+          <div className="oauth">
+            <div className="oauth--icon"></div>
+            <div className="oauth--icon"></div>
+            <div className="oauth--icon"></div>
+          </div>
         </div>
       </div>
     </div>

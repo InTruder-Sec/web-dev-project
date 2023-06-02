@@ -103,3 +103,18 @@ input:focus {
   color: #fff;
   cursor: pointer;
 }
+
+.oauth {
+  display: flex;
+  width: 180px;
+  margin: 20px auto;
+  padding-right: 10px;
+  justify-content: space-between;
+}
+
+.oauth--icon {
+  width: 45px;
+  height: 45px;
+  border: solid 2px black;
+  border-radius: 50%;
+}
