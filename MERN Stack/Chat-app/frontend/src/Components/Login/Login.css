@@ -59,6 +59,10 @@
   transition: 0.6s;
 }
 
+.rotate-180 {
+  transform: rotateY(-180deg);
+}
+
 .header {
   display: flex;
   flex-wrap: nowrap;
@@ -111,7 +115,7 @@
 }
 
 .padding {
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 input:focus {
@@ -153,7 +157,7 @@ input:focus {
 .oauth {
   display: flex;
   width: 200px;
-  margin: 30px auto;
+  margin: 35px auto;
   padding-right: 30px;
   justify-content: space-between;
 }
@@ -181,4 +185,34 @@ input:focus {
   width: 100%;
   text-align: center;
   margin-left: -10px;
+}
+
+.create--account {
+  transition: 0.6s;
+  transform: rotateY(180deg);
+}
+
+.create--account form {
+  margin-left: 20px;
+}
+
+.remove--margin {
+  margin-top: 0px;
+}
+
+.margin--top {
+  margin: 20px auto;
+}
+
+.fp--video {
+  height: 200px;
+  margin-top: 0px;
+}
+
+.fp--main--video {
+  scale: 0.5;
+}
+
+.forgot--password form {
+  padding-left: 20px;
 }

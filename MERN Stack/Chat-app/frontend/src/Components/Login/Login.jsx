@@ -1,10 +1,17 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Login.css";
 import logo from "./../../images/logo.png";
+import fpVideo from "./../../images/forgotpassword.mp4";
 
 function Main() {
   const [RotateLogin, setRotate] = useState({ rotate: "0 1 0 0deg" });
+  const [ComponentMain, setComponentMain] = useState();
+  useEffect(() => {
+    setComponentMain(
+      <Login setRotate={setRotate} setComponentMain={setComponentMain} />
+    );
+  }, []);
 
   return (
     <div className="main">
@@ -13,7 +20,7 @@ function Main() {
         <span className="animate--block chat--animate">CHAT</span>
       </div>
       <div className="login" style={RotateLogin}>
-        <Login setRotate={setRotate} />
+        {ComponentMain}
       </div>
     </div>
   );
@@ -41,7 +48,14 @@ function Login(props) {
             ></input>
           </div>
           <div className="forgot--div">
-            <div className="forgot">forgot password?</div>
+            <div
+              className="forgot"
+              onClick={(e) => {
+                ChangeToForgotPass(props.setRotate, props.setComponentMain);
+              }}
+            >
+              forgot password?
+            </div>
           </div>
           <div className="padding">
             <input type="button" className="login--btn" value="Login"></input>
@@ -164,7 +178,7 @@ function Login(props) {
             className="login--btn"
             value="Create Account"
             onClick={(e) => {
-              ChangeToCreateAccount(props.setRotate);
+              ChangeToCreateAccount(props.setRotate, props.setComponentMain);
             }}
           ></input>
         </div>
@@ -173,20 +187,132 @@ function Login(props) {
   );
 }
 
-const ChangeToCreateAccount = (setRotate) => {
-  setRotate({ rotate: "0 1 0 180deg" });
-};
-
-function CreateAccount() {
+function CreateAccount(props) {
   return (
-    <div className="login">
+    <div className="create--account">
       <div className="header">
         <img className="logo" alt="logo" src={logo}></img>
         <div className="logo--header">Create account</div>
       </div>
-      <div className="login--main"></div>
+      <div className="login--main remove--margin">
+        <form>
+          <div className="padding">
+            <label className="label--input">Email: </label>
+            <input
+              className="input--box"
+              placeholder="johndoe@gmail.com"
+            ></input>
+          </div>
+          <div className="padding">
+            <label className="label--input">Username: </label>
+            <input className="input--box" placeholder="username"></input>
+          </div>
+          <div className="padding">
+            <label className="label--input">Password: </label>
+            <input
+              className="input--box"
+              type="password"
+              placeholder="********"
+            ></input>
+          </div>
+          <div className="padding">
+            <label className="label--input">Confirm password: </label>
+            <input
+              className="input--box"
+              type="password"
+              placeholder="********"
+            ></input>
+          </div>
+          <input
+            type="button"
+            className="login--btn"
+            value="Create Account"
+          ></input>
+
+          <div className="no--account margin--top">
+            Already have an account?
+          </div>
+          <input
+            type="button"
+            className="login--btn remove--margin"
+            value="Login"
+            onClick={(e) => {
+              ChangeToLogin(props.setRotate, props.setComponentMain);
+            }}
+          ></input>
+        </form>
+      </div>
     </div>
   );
 }
+
+function ForgotPassword(props) {
+  return (
+    <div className="rotate-180">
+      <div className="header">
+        <img className="logo" alt="logo" src={logo}></img>
+        <div className="logo--header">Forgot Password?</div>
+      </div>
+      <div className="fp--video">
+        <video
+          className="fp--main--video"
+          src={fpVideo}
+          autoPlay="true"
+          loop
+        ></video>
+      </div>
+      <div className="forgot--password">
+        <form>
+          <div className="padding">
+            <label className="label--input">Email: </label>
+            <input
+              className="input--box"
+              type="email"
+              placeholder="johndoe@gmail.com"
+            ></input>
+          </div>
+
+          <div className="padding">
+            <input
+              type="button"
+              className="login--btn"
+              value="Change Password"
+            ></input>
+            <div className="no--account margin--top">Get back to login?</div>
+            <input
+              type="button"
+              className="login--btn remove--margin"
+              value="Login"
+              onClick={(e) => {
+                ChangeToLogin(props.setRotate, props.setComponentMain);
+              }}
+            ></input>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+const ChangeToLogin = (setRotate, setComponentMain) => {
+  setRotate({ rotate: "0 1 0 0deg" });
+  setComponentMain(
+    <Login setRotate={setRotate} setComponentMain={setComponentMain} />
+  );
+};
+
+const ChangeToForgotPass = (setRotate, setComponentMain) => {
+  setRotate({ rotate: "0 1 0 -180deg" });
+  setComponentMain(
+    <ForgotPassword setRotate={setRotate} setComponentMain={setComponentMain} />
+  );
+};
+
+const ChangeToCreateAccount = (setRotate, setComponentMain) => {
+  setRotate({ rotate: "0 1 0 180deg" });
+  setComponentMain(
+    <CreateAccount setRotate={setRotate} setComponentMain={setComponentMain} />
+  );
+};
 
 export default Main;
