@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { ReactSketchCanvas } from "react-sketch-canvas";
+
 import "./Login.css";
 import logo from "./../../images/logo.png";
 import fpVideo from "./../../images/forgotpassword.mp4";
@@ -13,16 +15,36 @@ function Main() {
     );
   }, []);
 
+  // Canvas styles
+
+  const styles = {
+    border: "0.0625rem solid #9c9c9c",
+    borderRadius: "0.25rem",
+    position: "absolute",
+    zIndex: 1,
+    opacity: 0.5,
+  };
+
   return (
-    <div className="main">
-      <div className="background--head">
-        <span className="animate--block scribble--animate">SCRIBBLE</span>
-        <span className="animate--block chat--animate">CHAT</span>
+    <>
+      <ReactSketchCanvas
+        style={styles}
+        width="100vw"
+        height="100vh"
+        strokeWidth={4}
+        strokeColor="black"
+        canvasColor="white"
+      />
+      <div className="main">
+        <div className="background--head">
+          <span className="animate--block scribble--animate">SCRIBBLE</span>
+          <span className="animate--block chat--animate">CHAT</span>
+        </div>
+        <div className="login" style={RotateLogin}>
+          {ComponentMain}
+        </div>
       </div>
-      <div className="login" style={RotateLogin}>
-        {ComponentMain}
-      </div>
-    </div>
+    </>
   );
 }
 

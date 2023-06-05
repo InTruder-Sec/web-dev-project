@@ -1,0 +1,13 @@
+.messenger {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.dashboard {
+  width: 440px;
+  height: 100vh;
+  border: solid 2px black;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}

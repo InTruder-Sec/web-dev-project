@@ -1,14 +1,14 @@
 .main {
   background-color: #fff;
+  padding: 9vh;
 }
 
 .background--head {
   position: absolute;
-  margin-top: 10vh;
   font-size: 180px;
   letter-spacing: 1px;
   width: 100vw;
-  height: 100vh;
+  padding-top: 80px;
 }
 
 .scribble--animate {
@@ -48,9 +48,9 @@
 
 .login {
   width: 450px;
-  height: 75vh;
+  height: 570px;
   border: solid 4px black;
-  margin: 10vh auto;
+  margin: 0vh auto;
   padding: 20px;
   position: relative;
   z-index: 3;
