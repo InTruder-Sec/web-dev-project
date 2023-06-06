@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
-
 import "./Login.css";
 import logo from "./../../images/logo.png";
 import fpVideo from "./../../images/forgotpassword.mp4";

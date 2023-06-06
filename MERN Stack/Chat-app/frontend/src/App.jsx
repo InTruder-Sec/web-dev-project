@@ -49,3 +49,4 @@ function getCookie(cname) {
 }
 
 export default App;
+export { ToggleTheme };

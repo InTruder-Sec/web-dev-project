@@ -1,0 +1,65 @@
+.settings {
+  width: 400px;
+  background-color: #fff;
+  border: solid 2px black;
+  margin: 100px auto;
+  padding: 20px;
+}
+
+.s--title {
+  font-size: 30px;
+  text-align: center;
+}
+
+.s--userdetails {
+  padding: 30px;
+}
+
+.s--user {
+  margin-top: 50px;
+}
+
+.s--photo {
+  width: fit-content;
+  margin: 10px auto;
+  scale: 1.5;
+}
+
+.s--input--user {
+  width: 300px;
+  background-color: white;
+  border: 2px solid;
+  padding: 6px;
+  margin-top: 10px;
+}
+
+.s--useremail {
+  margin-top: 20px;
+}
+
+.btns {
+  width: 140px;
+  height: 30px;
+  background-color: #fff;
+  border: solid 2px black;
+}
+
+.theme--btns {
+  padding-right: 27px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btns:hover {
+  background-color: #000;
+  color: white;
+}
+
+.save--btn {
+  padding-right: 10px;
+  width: fit-content;
+  margin: 0px auto;
+  margin-top: 60px;
+}
