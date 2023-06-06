@@ -34,6 +34,7 @@ function Settings(props) {
               className="theme-light btns"
               onClick={(e) => {
                 ToggleTheme("false");
+                document.cookie = "theme=false";
               }}
             >
               Light
@@ -41,6 +42,7 @@ function Settings(props) {
             <button
               className="theme-dark btns"
               onClick={(e) => {
+                document.cookie = "theme=true";
                 ToggleTheme("true");
               }}
             >

@@ -84,6 +84,14 @@
   outline: solid 1px black;
 }
 
+.user--name {
+  font-weight: 700;
+}
+
+.user--email {
+  font-size: 15px;
+}
+
 .user--logo {
   width: 50px;
   height: 42px;

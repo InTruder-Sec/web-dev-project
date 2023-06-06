@@ -4,6 +4,7 @@ import { ReactSketchCanvas } from "react-sketch-canvas";
 import logo from "./../../images/logo.png";
 import "./messenger.css";
 import Settings from "./Settings";
+import UserChats from "./UserChats";
 
 function Messenger() {
   const styles = {
@@ -87,20 +88,29 @@ function Messenger() {
       </div>
       <div className="message">
         <div className="message--layout">
-          <ReactSketchCanvas
-            style={styles}
-            width="100%"
-            height="100%"
-            strokeWidth={4}
-            strokeColor="black"
-            canvasColor="white"
-          />
-          <WelcomePage />
+          <UserChats />
+          {/* <LandingPage styles={styles} /> */}
         </div>
       </div>
     </div>
   );
 }
+
+const LandingPage = (props) => {
+  return (
+    <>
+      <ReactSketchCanvas
+        style={props.styles}
+        width="100%"
+        height="100%"
+        strokeWidth={5}
+        strokeColor="black"
+        canvasColor="white"
+      />
+      <WelcomePage />
+    </>
+  );
+};
 
 const WelcomePage = () => {
   return (
@@ -124,7 +134,7 @@ const UserProfile = () => {
       <div className="user--logo">A</div>
       <div className="user--information">
         <div className="limitlength user--name">Deep Dhakate</div>
-        <div className="limitlength user--email">dhakatedeep14@gmail.com</div>
+        <div className="limitlength user--email">Active 3hrs ago </div>
       </div>
     </div>
   );
