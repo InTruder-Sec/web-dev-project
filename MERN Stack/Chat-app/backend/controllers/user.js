@@ -11,11 +11,16 @@ export const getUser = async (req, res) => {
 };
 
 export const createUser = async (req, res) => {
+  const { username, email, password } = req.body;
+
+  const cryptRounds = 10;
+
   let newUser = new UsersData({
-    username: "",
-    email: "",
-    p: "",
+    username: username,
+    email: email,
+    password: password,
   });
+  console.log(req);
   await newUser.save();
   try {
   } catch (error) {

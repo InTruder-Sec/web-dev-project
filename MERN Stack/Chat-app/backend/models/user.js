@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const usersSchema = {
   username: String,
   email: String,
-  p: String,
+  password: String,
 };
 
 const UsersData = mongoose.model("UserData", usersSchema);

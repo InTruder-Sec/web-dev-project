@@ -209,6 +209,25 @@ function Login(props) {
 }
 
 function CreateAccount(props) {
+  const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
+  const [email, setemail] = useState("");
+
+  async function CreateNewUser(username, password, email) {
+    const res = await fetch("http://localhost:5000/users/create", {
+      method: "POST",
+      mode: "cors",
+
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({ username, password, email }),
+    });
+    const data = await res.json();
+    console.log(data);
+  }
+
   return (
     <div className="create--account">
       <div className="header">
@@ -222,11 +241,22 @@ function CreateAccount(props) {
             <input
               className="input--box"
               placeholder="johndoe@gmail.com"
+              value={email}
+              onChange={(e) => {
+                setemail(e.target.value);
+              }}
             ></input>
           </div>
           <div className="padding">
             <label className="label--input">Username: </label>
-            <input className="input--box" placeholder="username"></input>
+            <input
+              className="input--box"
+              placeholder="username"
+              value={username}
+              onChange={(e) => {
+                setusername(e.target.value);
+              }}
+            ></input>
           </div>
           <div className="padding">
             <label className="label--input">Password: </label>
@@ -234,21 +264,25 @@ function CreateAccount(props) {
               className="input--box"
               type="password"
               placeholder="********"
+              value={password}
+              onChange={(e) => {
+                setpassword(e.target.value);
+              }}
             ></input>
           </div>
+
           <div className="padding">
-            <label className="label--input">Confirm password: </label>
             <input
-              className="input--box"
-              type="password"
-              placeholder="********"
+              type="submit"
+              className="login--btn"
+              value="Create Account"
+              onClick={(e) => {
+                e.preventDefault();
+                CreateNewUser(username, email, password);
+              }}
             ></input>
           </div>
-          <input
-            type="button"
-            className="login--btn"
-            value="Create Account"
-          ></input>
+          <div className="padding"></div>
 
           <div className="no--account margin--top">
             Already have an account?
