@@ -48,6 +48,17 @@ function Main() {
 }
 
 function Login(props) {
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+
+  const VerifyUser = async (email, password) => {
+    const response = await fetch(
+      `http://localhost:5000/users/verify?email=${email}&pass=${password}`
+    );
+    const data = await response.json();
+    console.log(data);
+  };
+
   return (
     <>
       <div className="header">
@@ -57,8 +68,15 @@ function Login(props) {
       <div className="login--main">
         <form>
           <div className="padding">
-            <label className="label--input">Username: </label>
-            <input className="input--box" placeholder="username"></input>
+            <label className="label--input">Email: </label>
+            <input
+              className="input--box"
+              placeholder="email"
+              value={email}
+              onChange={(e) => {
+                setemail(e.target.value);
+              }}
+            ></input>
           </div>
           <div className="padding">
             <label className="label--input">Password: </label>
@@ -66,6 +84,10 @@ function Login(props) {
               className="input--box"
               type="password"
               placeholder="********"
+              value={password}
+              onChange={(e) => {
+                setpassword(e.target.value);
+              }}
             ></input>
           </div>
           <div className="forgot--div">
@@ -79,7 +101,14 @@ function Login(props) {
             </div>
           </div>
           <div className="padding">
-            <input type="button" className="login--btn" value="Login"></input>
+            <input
+              type="button"
+              className="login--btn"
+              value="Login"
+              onClick={(e) => {
+                VerifyUser(email, password);
+              }}
+            ></input>
           </div>
         </form>
         <div className="oauth">
@@ -213,16 +242,15 @@ function CreateAccount(props) {
   const [password, setpassword] = useState("");
   const [email, setemail] = useState("");
 
-  async function CreateNewUser(username, password, email) {
+  async function CreateNewUser() {
     const res = await fetch("http://localhost:5000/users/create", {
       method: "POST",
       mode: "cors",
-
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify({ username, password, email }),
+      body: JSON.stringify({ email, username, password }),
     });
     const data = await res.json();
     console.log(data);
@@ -278,7 +306,7 @@ function CreateAccount(props) {
               value="Create Account"
               onClick={(e) => {
                 e.preventDefault();
-                CreateNewUser(username, email, password);
+                CreateNewUser();
               }}
             ></input>
           </div>

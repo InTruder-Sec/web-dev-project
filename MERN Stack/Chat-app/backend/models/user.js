@@ -1,8 +1,14 @@
 import mongoose from "mongoose";
 
 const usersSchema = {
-  username: String,
-  email: String,
+  username: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
   password: String,
 };
 
