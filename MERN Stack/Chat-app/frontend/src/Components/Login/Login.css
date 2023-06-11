@@ -216,3 +216,8 @@ input:focus {
 .forgot--password form {
   padding-left: 20px;
 }
+
+.invalidpass {
+  padding-top: 10px;
+  text-align: center;
+}

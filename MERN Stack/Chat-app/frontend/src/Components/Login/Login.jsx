@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import "./Login.css";
 import logo from "./../../images/logo.png";
@@ -48,15 +49,30 @@ function Main() {
 }
 
 function Login(props) {
+  const displayNone = {
+    display: "none",
+  };
+  const [invalidStyles, setinvalidStyles] = useState(displayNone);
+
+  const navigate = useNavigate();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
   const VerifyUser = async (email, password) => {
-    const response = await fetch(
-      `http://localhost:5000/users/verify?email=${email}&pass=${password}`
-    );
-    const data = await response.json();
-    console.log(data);
+    try {
+      const response = await fetch(
+        `http://localhost:5000/users/verify?email=${email}&pass=${password}`
+      );
+      const data = await response.json();
+      if (data.data.id === null) {
+        setinvalidStyles({ display: "block" });
+        console.log("Error");
+      } else {
+        navigate("./messenger");
+      }
+    } catch (err) {
+      console.log("Error: " + err);
+    }
   };
 
   return (
@@ -102,13 +118,17 @@ function Login(props) {
           </div>
           <div className="padding">
             <input
-              type="button"
+              type="submit"
               className="login--btn"
               value="Login"
               onClick={(e) => {
+                e.preventDefault();
                 VerifyUser(email, password);
               }}
             ></input>
+          </div>
+          <div className="invalidpass" style={invalidStyles}>
+            Invalid username or password!
           </div>
         </form>
         <div className="oauth">
@@ -238,6 +258,11 @@ function Login(props) {
 }
 
 function CreateAccount(props) {
+  const displayNone = {
+    display: "none",
+  };
+
+  const [invalidStyles, setinvalidStyles] = useState(displayNone);
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
   const [email, setemail] = useState("");
@@ -253,7 +278,11 @@ function CreateAccount(props) {
       body: JSON.stringify({ email, username, password }),
     });
     const data = await res.json();
-    console.log(data);
+    if (data === null) {
+      setinvalidStyles({ display: "block" });
+    } else {
+      ChangeToLogin(props.setRotate, props.setComponentMain);
+    }
   }
 
   return (
@@ -311,6 +340,9 @@ function CreateAccount(props) {
             ></input>
           </div>
           <div className="padding"></div>
+          <div className="invalidpass" style={invalidStyles}>
+            Somthing went wrong! Please try again.
+          </div>
 
           <div className="no--account margin--top">
             Already have an account?
