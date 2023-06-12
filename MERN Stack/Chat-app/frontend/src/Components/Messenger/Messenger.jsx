@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
-
 import logo from "./../../images/logo.png";
 import "./messenger.css";
 import Settings from "./Settings";
 import UserChats from "./UserChats";
 
 function Messenger() {
-  const styles = {
-    position: "absolute",
-    zIndex: 1,
-  };
   const CloseModalStyles = { display: "none", zIndex: "-1" };
   const OpenModalStyles = { display: "block", zIndex: "10" };
   const [ModalStyle, setModalStyle] = useState(CloseModalStyles);
@@ -97,6 +92,7 @@ function Messenger() {
 }
 
 const LandingPage = (props) => {
+  
   return (
     <>
       <ReactSketchCanvas

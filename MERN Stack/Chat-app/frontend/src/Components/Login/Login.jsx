@@ -82,12 +82,19 @@ function Login(props) {
         <div className="logo--header">Login</div>
       </div>
       <div className="login--main">
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            VerifyUser(email, password);
+          }}
+        >
           <div className="padding">
             <label className="label--input">Email: </label>
             <input
               className="input--box"
               placeholder="email"
+              type="email"
+              required
               value={email}
               onChange={(e) => {
                 setemail(e.target.value);
@@ -99,6 +106,7 @@ function Login(props) {
             <input
               className="input--box"
               type="password"
+              required
               placeholder="********"
               value={password}
               onChange={(e) => {
@@ -117,15 +125,7 @@ function Login(props) {
             </div>
           </div>
           <div className="padding">
-            <input
-              type="submit"
-              className="login--btn"
-              value="Login"
-              onClick={(e) => {
-                e.preventDefault();
-                VerifyUser(email, password);
-              }}
-            ></input>
+            <input type="submit" className="login--btn" value="Login"></input>
           </div>
           <div className="invalidpass" style={invalidStyles}>
             Invalid username or password!
@@ -263,6 +263,7 @@ function CreateAccount(props) {
   };
 
   const [invalidStyles, setinvalidStyles] = useState(displayNone);
+  const [ErrState, setErrState] = useState("Something went wrong");
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
   const [email, setemail] = useState("");
@@ -277,11 +278,29 @@ function CreateAccount(props) {
       },
       body: JSON.stringify({ email, username, password }),
     });
-    const data = await res.json();
-    if (data === null) {
+    try {
+      const data = await res.json();
+      console.log(data);
+      if (data.code === 11000) {
+        if (data.keyValue.username === username) {
+          setErrState(`${username} is already used!`);
+          setinvalidStyles({ display: "block" });
+        } else if (data.keyValue.email === email) {
+          setErrState(`${email} is already used!`);
+          setinvalidStyles({ display: "block" });
+        } else {
+          setErrState(`${data.keyValue} already in use!`);
+          setinvalidStyles({ display: "block" });
+        }
+      } else if (data.code === 200) {
+        ChangeToLogin(props.setRotate, props.setComponentMain);
+      } else {
+        setErrState("Something went wrong!");
+        setinvalidStyles({ display: "block" });
+      }
+    } catch (err) {
+      console.log(err);
       setinvalidStyles({ display: "block" });
-    } else {
-      ChangeToLogin(props.setRotate, props.setComponentMain);
     }
   }
 
@@ -292,13 +311,20 @@ function CreateAccount(props) {
         <div className="logo--header">Create account</div>
       </div>
       <div className="login--main remove--margin">
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            CreateNewUser();
+          }}
+        >
           <div className="padding">
             <label className="label--input">Email: </label>
             <input
               className="input--box"
               placeholder="johndoe@gmail.com"
               value={email}
+              required
+              type="email"
               onChange={(e) => {
                 setemail(e.target.value);
               }}
@@ -310,6 +336,7 @@ function CreateAccount(props) {
               className="input--box"
               placeholder="username"
               value={username}
+              required
               onChange={(e) => {
                 setusername(e.target.value);
               }}
@@ -320,6 +347,7 @@ function CreateAccount(props) {
             <input
               className="input--box"
               type="password"
+              required
               placeholder="********"
               value={password}
               onChange={(e) => {
@@ -333,15 +361,11 @@ function CreateAccount(props) {
               type="submit"
               className="login--btn"
               value="Create Account"
-              onClick={(e) => {
-                e.preventDefault();
-                CreateNewUser();
-              }}
             ></input>
           </div>
           <div className="padding"></div>
           <div className="invalidpass" style={invalidStyles}>
-            Somthing went wrong! Please try again.
+            {ErrState}
           </div>
 
           <div className="no--account margin--top">

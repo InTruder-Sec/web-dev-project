@@ -1,12 +1,34 @@
-import React from "react";
+import * as React from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 
 import "./UserChats.css";
 import send from "./../../images/send.png";
+import pen from "./../../images/pen.png";
 
 function UserChats() {
   const styles = {
     zIndex: 4,
+    cursor: `url(${pen}), auto`,
+  };
+
+  const [EraserStatus, setEraserStatus] = React.useState(false);
+
+  const sketchRef = React.useRef(null);
+
+  const ClearHandler = () => {
+    sketchRef.current.clearCanvas();
+  };
+
+  const UndoHandler = () => {
+    sketchRef.current.undo();
+  };
+
+  const RedoHandler = () => {
+    sketchRef.current.redo();
+  };
+
+  const EraserHandler = (status) => {
+    sketchRef.current.eraseMode(status);
   };
 
   return (
@@ -23,27 +45,11 @@ function UserChats() {
         <SenderChats />
         <SenderChats />
         <ReciverChats />
-        <SenderChats />
-        <ReciverChats />
-        <SenderChats />
-        <ReciverChats />
-        <SenderChats />
-        <ReciverChats />
-        <SenderChats />
-        <ReciverChats />
-        <SenderChats />
-        <ReciverChats />
-        <SenderChats />
-        <ReciverChats />
-        <SenderChats />
-        <ReciverChats />
-        <SenderChats />
-        <ReciverChats />
-        <ReciverChats />
       </div>
       <div className="chat--tools">
         <div className="scribble--pad--tools">
           <ReactSketchCanvas
+            ref={sketchRef}
             style={styles}
             width="100%"
             height="100%"
@@ -53,11 +59,33 @@ function UserChats() {
           />
         </div>
         <div className="tools">
-          <div className="tools--btn pen">Pen</div>
-          <div className="tools--btn eraser">Eraser</div>
-          <div className="tools--btn clearall">Clear All</div>
-          <div className="tools--btn redo">Redo</div>
-          <div className="tools--btn undo">Undo</div>
+          <div
+            className="tools--btn pen"
+            onClick={(e) => {
+              setEraserStatus(false);
+              EraserHandler(false);
+            }}
+          >
+            Pen
+          </div>
+          <div
+            className="tools--btn eraser"
+            onClick={(e) => {
+              setEraserStatus(true);
+              EraserHandler(true);
+            }}
+          >
+            Eraser
+          </div>
+          <div className="tools--btn clearall" onClick={ClearHandler}>
+            Clear All
+          </div>
+          <div className="tools--btn redo" onClick={RedoHandler}>
+            Redo
+          </div>
+          <div className="tools--btn undo" onClick={UndoHandler}>
+            Undo
+          </div>
         </div>
         <div className="send">
           <img className="send--img" alt="send" src={send}></img>
