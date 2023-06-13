@@ -45,3 +45,25 @@ export const createUser = async (req, res) => {
 
   return res.status(200).json({ message: "User created", code: 200, newUser });
 };
+
+export const getUsersNames = async (req, res) => {
+  const users = await UsersData.find();
+  let usersNames = [];
+  users.map((user) => {
+    usersNames.push([user.username, user.id]);
+  });
+  return res.status(200).json({ usersNames });
+};
+
+export const CreateChatRoom = async (req, res) => {
+  const users = await UsersData.find();
+  const id = [];
+  users.map((user) => {
+    id.push(user.id);
+  });
+  if (id.includes(req.params.username)) {
+    return res.status(200).json({ message: "User exist", code: 200 });
+  } else {
+    return res.status(200).json({ message: "User does not exist", code: 404 });
+  }
+};

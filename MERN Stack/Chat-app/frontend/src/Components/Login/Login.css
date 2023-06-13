@@ -221,3 +221,32 @@ input:focus {
   padding-top: 10px;
   text-align: center;
 }
+
+.reset--input {
+  width: 240px;
+  border: none;
+  font-size: 50px;
+  letter-spacing: 10px;
+  padding: 0px 20px;
+  margin-top: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.boxes {
+  position: absolute;
+  margin-top: 25px;
+  margin-left: 6px;
+  display: flex;
+  flex-wrap: nowrap;
+  z-index: -10;
+}
+
+.box {
+  position: relative;
+  border: 2px solid black;
+  width: 50px;
+  height: 70px;
+}
