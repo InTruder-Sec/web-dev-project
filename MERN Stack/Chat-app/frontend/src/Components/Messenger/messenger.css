@@ -149,7 +149,6 @@
   position: relative;
   text-align: center;
   margin-top: 28vh;
-  z-index: 3;
 }
 
 .welcome summary {
@@ -162,4 +161,14 @@
   margin-top: -20px;
   border: solid 1px black;
   margin-bottom: 16px;
+}
+
+.search--result {
+  width: 335px;
+  padding: 10px 10px;
+  margin-top: 20px;
+  position: absolute;
+  margin-left: -5px;
+  max-height: calc(100vh - 250px);
+  background-color: black;
 }

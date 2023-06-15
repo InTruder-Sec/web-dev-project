@@ -1,18 +1,43 @@
 import React, { useState } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
+import UserChats from "./UserChats";
 import logo from "./../../images/logo.png";
 import "./messenger.css";
 import Settings from "./Settings";
-import UserChats from "./UserChats";
 
 function Messenger() {
   const CloseModalStyles = { display: "none", zIndex: "-1" };
   const OpenModalStyles = { display: "block", zIndex: "10" };
   const [ModalStyle, setModalStyle] = useState(CloseModalStyles);
+  const [search, setsearch] = useState();
+  const [searchData, setsearchData] = useState([]);
+  const [SearchModalDisplay, setSearchModalDisplay] = useState({
+    display: "none",
+  });
+
+  const [UserChatProfile, setUserChatProfile] = useState(<LandingPage />);
 
   function modalOpen() {
     setModalStyle(OpenModalStyles);
   }
+
+  const SearchForUser = async (val) => {
+    try {
+      const data = await fetch(
+        `http://localhost:5000/users/search?username=${val}`,
+        {
+          method: "get",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const res = await data.json();
+      setsearchData(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="messenger">
@@ -30,20 +55,29 @@ function Messenger() {
           <div className="m-header--title">SCRIBBLE CHAT</div>
         </div>
         <div className="search--box">
-          <input className="search" placeholder="Search"></input>
+          <input
+            className="search"
+            placeholder="Search"
+            value={search}
+            onChange={(e) => {
+              setsearch(e.target.value);
+              SearchForUser(e.target.value);
+            }}
+            onFocus={(e) => {
+              setSearchModalDisplay({ display: "block" });
+            }}
+            onBlur={(e) => {
+              setSearchModalDisplay({ display: "none" });
+            }}
+          ></input>
+          <SearchWindow
+            SearchModalDisplay={SearchModalDisplay}
+            searchData={searchData}
+            ChatProfile={setUserChatProfile}
+          />
         </div>
         <div className="chat--profiles">
-          <UserProfile />
-          <UserProfile />
-          <UserProfile />
-          <UserProfile />
-          <UserProfile />
-          <UserProfile />
-          <UserProfile />
-          <UserProfile />
-          <UserProfile />
-          <UserProfile />
-          <UserProfile />
+          <UserProfile username="Deep Dhakate" />
         </div>
         <hr className="endline" />
         <div className="user--profile">
@@ -82,21 +116,33 @@ function Messenger() {
         </div>
       </div>
       <div className="message">
-        <div className="message--layout">
-          <UserChats />
-          {/* <LandingPage styles={styles} /> */}
-        </div>
+        <div className="message--layout">{UserChatProfile}</div>
       </div>
     </div>
   );
 }
 
+const SearchWindow = (props) => {
+  const users = props.searchData.map((data) => {
+    return (
+      <UserProfile username={data.username} ChatProfile={props.ChatProfile} />
+    );
+  });
+  return (
+    <div className="search--result" style={props.SearchModalDisplay}>
+      {users}
+    </div>
+  );
+};
+
 const LandingPage = (props) => {
-  
+  const styles = {
+    position: "absolute",
+  };
   return (
     <>
       <ReactSketchCanvas
-        style={props.styles}
+        style={styles}
         width="100%"
         height="100%"
         strokeWidth={5}
@@ -124,12 +170,12 @@ const WelcomePage = () => {
   );
 };
 
-const UserProfile = () => {
+const UserProfile = (props) => {
   return (
     <div className="profile">
       <div className="user--logo">A</div>
       <div className="user--information">
-        <div className="limitlength user--name">Deep Dhakate</div>
+        <div className="limitlength user--name">{props.username}</div>
         <div className="limitlength user--email">Active 3hrs ago </div>
       </div>
     </div>

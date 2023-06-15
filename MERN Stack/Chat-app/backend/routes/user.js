@@ -10,7 +10,7 @@ const userRouter = express.Router();
 
 userRouter.get("/verify", getUser);
 userRouter.post("/create", createUser);
-userRouter.get("/usersNames", getUsersNames);
+userRouter.get("/search", getUsersNames);
 userRouter.get("/:username", CreateChatRoom);
 
 export default userRouter;

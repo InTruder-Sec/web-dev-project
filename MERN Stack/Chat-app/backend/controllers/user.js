@@ -54,16 +54,17 @@ export const createUser = async (req, res) => {
 };
 
 export const getUsersNames = async (req, res) => {
-  const users = await UsersData.find({ username: "/ad/i" }, "username");
-  let usersNames = [];
-  users.map((user) => {
-    usersNames.push([user.username, user.id]);
-  });
-  // return res.status(200).json({ usersNames });
-  console.log(usersNames);
+  const param = req.query.username;
+  try {
+    const users = await UsersData.find(
+      { username: { $regex: param } },
+      "username"
+    );
+    return res.status(200).json(users);
+  } catch {
+    return res.status(200).json([]);
+  }
 };
-
-getUsersNames();
 
 export const CreateChatRoom = async (req, res) => {
   const users = await UsersData.find();
