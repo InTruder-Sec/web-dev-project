@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import UserChats from "./UserChats";
 import logo from "./../../images/logo.png";
@@ -16,6 +16,7 @@ function Messenger() {
   });
 
   const [UserChatProfile, setUserChatProfile] = useState(<LandingPage />);
+  const [ishovered, setishovered] = useState(false);
 
   function modalOpen() {
     setModalStyle(OpenModalStyles);
@@ -67,17 +68,24 @@ function Messenger() {
               setSearchModalDisplay({ display: "block" });
             }}
             onBlur={(e) => {
-              setSearchModalDisplay({ display: "none" });
+              if (!ishovered) {
+                setSearchModalDisplay({ display: "none" });
+              }
             }}
           ></input>
           <SearchWindow
+            setishovered={setishovered}
             SearchModalDisplay={SearchModalDisplay}
             searchData={searchData}
             ChatProfile={setUserChatProfile}
+            setUserChatProfile={setUserChatProfile}
           />
         </div>
         <div className="chat--profiles">
-          <UserProfile username="Deep Dhakate" />
+          <UserProfile
+            username="Deep Dhakate"
+            setUserChatProfile={setUserChatProfile}
+          />
         </div>
         <hr className="endline" />
         <div className="user--profile">
@@ -125,11 +133,21 @@ function Messenger() {
 const SearchWindow = (props) => {
   const users = props.searchData.map((data) => {
     return (
-      <UserProfile username={data.username} ChatProfile={props.ChatProfile} />
+      <UserProfile
+        username={data.username}
+        ChatProfile={props.ChatProfile}
+        setUserChatProfile={props.setUserChatProfile}
+        key={data.username}
+      />
     );
   });
   return (
-    <div className="search--result" style={props.SearchModalDisplay}>
+    <div
+      className="search--result"
+      style={props.SearchModalDisplay}
+      onMouseLeave={props.setishovered(false)}
+      onMouseEnter={props.setishovered(true)}
+    >
       {users}
     </div>
   );
@@ -172,7 +190,12 @@ const WelcomePage = () => {
 
 const UserProfile = (props) => {
   return (
-    <div className="profile">
+    <div
+      className="profile"
+      onClick={(e) => {
+        props.setUserChatProfile(<UserChats />);
+      }}
+    >
       <div className="user--logo">A</div>
       <div className="user--information">
         <div className="limitlength user--name">{props.username}</div>
