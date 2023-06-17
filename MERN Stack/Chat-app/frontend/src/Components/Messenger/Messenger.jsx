@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import UserChats from "./UserChats";
 import logo from "./../../images/logo.png";
@@ -83,6 +83,7 @@ function Messenger() {
         </div>
         <div className="chat--profiles">
           <UserProfile
+            setSearchModalDisplay={setSearchModalDisplay}
             username="Deep Dhakate"
             setUserChatProfile={setUserChatProfile}
           />
@@ -134,6 +135,7 @@ const SearchWindow = (props) => {
   const users = props.searchData.map((data) => {
     return (
       <UserProfile
+        setSearchModalDisplay={props.setSearchModalDisplay}
         username={data.username}
         ChatProfile={props.ChatProfile}
         setUserChatProfile={props.setUserChatProfile}
@@ -194,6 +196,7 @@ const UserProfile = (props) => {
       className="profile"
       onClick={(e) => {
         props.setUserChatProfile(<UserChats />);
+        props.setSearchModalDisplay({ display: "none" });
       }}
     >
       <div className="user--logo">A</div>
