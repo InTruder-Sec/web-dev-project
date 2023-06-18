@@ -172,3 +172,8 @@
   max-height: calc(100vh - 250px);
   background-color: black;
 }
+
+.no--users {
+  color: #fff;
+  text-align: center;
+}

@@ -21,7 +21,6 @@ function Settings(props) {
     <div>
       <Modal
         open={props.open}
-        onClose={props.handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -66,15 +65,13 @@ function Settings(props) {
                   Dark
                 </button>
               </div>
-              <div className="save--btn"></div>
+              <div className="save--btn">
+                <button className="save btns" onClick={props.handleClose}>
+                  Save
+                </button>
+              </div>
             </div>
           </div>
-          {/* <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography> */}
         </Box>
       </Modal>
     </div>

@@ -6,14 +6,34 @@ import "./messenger.css";
 import Settings from "./Settings";
 
 function Messenger() {
+  // Search user state
   const [search, setsearch] = useState("");
   const [searchData, setsearchData] = useState([]);
+
+  // User chat profile state
   const [UserChatProfile, setUserChatProfile] = useState(<LandingPage />);
 
+  // Profile Setting State
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  // Seacrch window state handler
+  const [searchWindow, setsearchWindow] = useState(false);
+  const openSearchWindow = () => setsearchWindow(true);
+  const closeSearchWindow = () => setsearchWindow(false);
+  // Search window component style
+  const openSearchWindowStyle = {
+    display: "block",
+    zIndex: "3",
+  };
+
+  const closeSearchWindowStyle = {
+    display: "none",
+    zIndex: "-3",
+  };
+
+  // User Search function
   const SearchForUser = async (val) => {
     try {
       const data = await fetch(
@@ -49,11 +69,17 @@ function Messenger() {
             placeholder="Search"
             value={search}
             onChange={(e) => {
+              openSearchWindow();
               setsearch(e.target.value);
               SearchForUser(e.target.value);
             }}
           ></input>
           <SearchWindow
+            style={
+              searchWindow ? openSearchWindowStyle : closeSearchWindowStyle
+            }
+            openSearchWindow={openSearchWindow}
+            closeSearchWindow={closeSearchWindow}
             searchData={searchData}
             ChatProfile={setUserChatProfile}
             setUserChatProfile={setUserChatProfile}
@@ -61,6 +87,7 @@ function Messenger() {
         </div>
         <div className="chat--profiles">
           <UserProfile
+            closeSearchWindow={closeSearchWindow}
             username="Deep Dhakate"
             setUserChatProfile={setUserChatProfile}
           />
@@ -105,11 +132,16 @@ function Messenger() {
 
 const SearchWindow = (props) => {
   if (props.searchData.length === 0) {
-    return <></>;
+    return (
+      <div className="search--result" style={props.style}>
+        <div className="no--users"> No user found</div>
+      </div>
+    );
   }
   const users = props.searchData.map((data) => {
     return (
       <UserProfile
+        closeSearchWindow={props.closeSearchWindow}
         username={data.username}
         ChatProfile={props.ChatProfile}
         setUserChatProfile={props.setUserChatProfile}
@@ -117,7 +149,11 @@ const SearchWindow = (props) => {
       />
     );
   });
-  return <div className="search--result">{users}</div>;
+  return (
+    <div className="search--result" style={props.style}>
+      {users}
+    </div>
+  );
 };
 
 const LandingPage = (props) => {
@@ -161,6 +197,7 @@ const UserProfile = (props) => {
       className="profile"
       onClick={(e) => {
         props.setUserChatProfile(<UserChats />);
+        props.closeSearchWindow();
       }}
     >
       <div className="user--logo">A</div>
