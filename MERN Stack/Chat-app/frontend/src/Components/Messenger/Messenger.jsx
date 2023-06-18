@@ -6,21 +6,13 @@ import "./messenger.css";
 import Settings from "./Settings";
 
 function Messenger() {
-  const CloseModalStyles = { display: "none", zIndex: "-1" };
-  const OpenModalStyles = { display: "block", zIndex: "10" };
-  const [ModalStyle, setModalStyle] = useState(CloseModalStyles);
-  const [search, setsearch] = useState();
+  const [search, setsearch] = useState("");
   const [searchData, setsearchData] = useState([]);
-  const [SearchModalDisplay, setSearchModalDisplay] = useState({
-    display: "none",
-  });
-
   const [UserChatProfile, setUserChatProfile] = useState(<LandingPage />);
-  const [ishovered, setishovered] = useState(false);
 
-  function modalOpen() {
-    setModalStyle(OpenModalStyles);
-  }
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const SearchForUser = async (val) => {
     try {
@@ -42,12 +34,8 @@ function Messenger() {
 
   return (
     <div className="messenger">
-      <div className="settings--div" style={ModalStyle}>
-        <Settings
-          ModalStyle={ModalStyle}
-          setModalStyle={setModalStyle}
-          CloseModalStyles={CloseModalStyles}
-        />
+      <div className="settings--div">
+        <Settings open={open} handleClose={handleClose} />
       </div>
 
       <div className="dashboard">
@@ -64,18 +52,8 @@ function Messenger() {
               setsearch(e.target.value);
               SearchForUser(e.target.value);
             }}
-            onFocus={(e) => {
-              setSearchModalDisplay({ display: "block" });
-            }}
-            onBlur={(e) => {
-              if (!ishovered) {
-                setSearchModalDisplay({ display: "none" });
-              }
-            }}
           ></input>
           <SearchWindow
-            setishovered={setishovered}
-            SearchModalDisplay={SearchModalDisplay}
             searchData={searchData}
             ChatProfile={setUserChatProfile}
             setUserChatProfile={setUserChatProfile}
@@ -83,7 +61,6 @@ function Messenger() {
         </div>
         <div className="chat--profiles">
           <UserProfile
-            setSearchModalDisplay={setSearchModalDisplay}
             username="Deep Dhakate"
             setUserChatProfile={setUserChatProfile}
           />
@@ -97,12 +74,7 @@ function Messenger() {
               dhakatedeep14@gmail.com
             </div>
           </div>
-          <div
-            className="options"
-            onClick={(e) => {
-              modalOpen();
-            }}
-          >
+          <div className="options" onClick={handleOpen}>
             <svg
               fill="#000000"
               width="35px"
@@ -132,10 +104,12 @@ function Messenger() {
 }
 
 const SearchWindow = (props) => {
+  if (props.searchData.length === 0) {
+    return <></>;
+  }
   const users = props.searchData.map((data) => {
     return (
       <UserProfile
-        setSearchModalDisplay={props.setSearchModalDisplay}
         username={data.username}
         ChatProfile={props.ChatProfile}
         setUserChatProfile={props.setUserChatProfile}
@@ -143,16 +117,7 @@ const SearchWindow = (props) => {
       />
     );
   });
-  return (
-    <div
-      className="search--result"
-      style={props.SearchModalDisplay}
-      onMouseLeave={props.setishovered(false)}
-      onMouseEnter={props.setishovered(true)}
-    >
-      {users}
-    </div>
-  );
+  return <div className="search--result">{users}</div>;
 };
 
 const LandingPage = (props) => {
@@ -196,7 +161,6 @@ const UserProfile = (props) => {
       className="profile"
       onClick={(e) => {
         props.setUserChatProfile(<UserChats />);
-        props.setSearchModalDisplay({ display: "none" });
       }}
     >
       <div className="user--logo">A</div>
