@@ -13,7 +13,12 @@ function Messenger() {
   // User chat profile state
   const [UserChatProfile, setUserChatProfile] = useState(<LandingPage />);
 
-  // Profile Setting State
+  // Current user details state
+  const [CurrentUserDetails, setCurrentUserDetails] = useState({
+    username: "",
+  });
+
+  //  Profile Setting State
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -83,10 +88,14 @@ function Messenger() {
             searchData={searchData}
             ChatProfile={setUserChatProfile}
             setUserChatProfile={setUserChatProfile}
+            setCurrentUserDetails={setCurrentUserDetails}
+            CurrentUserDetails={CurrentUserDetails}
           />
         </div>
         <div className="chat--profiles">
           <UserProfile
+            setCurrentUserDetails={setCurrentUserDetails}
+            CurrentUserDetails={CurrentUserDetails}
             closeSearchWindow={closeSearchWindow}
             username="Deep Dhakate"
             setUserChatProfile={setUserChatProfile}
@@ -141,6 +150,8 @@ const SearchWindow = (props) => {
   const users = props.searchData.map((data) => {
     return (
       <UserProfile
+        setCurrentUserDetails={props.setCurrentUserDetails}
+        CurrentUserDetails={props.CurrentUserDetails}
         closeSearchWindow={props.closeSearchWindow}
         username={data.username}
         ChatProfile={props.ChatProfile}
@@ -196,8 +207,11 @@ const UserProfile = (props) => {
     <div
       className="profile"
       onClick={(e) => {
-        props.setUserChatProfile(<UserChats />);
+        props.setCurrentUserDetails({
+          username: props.username,
+        });
         props.closeSearchWindow();
+        props.setUserChatProfile(<UserChats username={props.username} />);
       }}
     >
       <div className="user--logo">A</div>

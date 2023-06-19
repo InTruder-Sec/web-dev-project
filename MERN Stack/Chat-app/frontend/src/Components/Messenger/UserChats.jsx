@@ -5,7 +5,7 @@ import "./UserChats.css";
 import send from "./../../images/send.png";
 import pen from "./../../images/pen.png";
 
-function UserChats() {
+function UserChats(props) {
   const styles = {
     zIndex: 4,
     cursor: `url(${pen}), auto`,
@@ -42,7 +42,7 @@ function UserChats() {
       <div className="user--profile--chats">
         <div className="user--logo">A</div>
         <div className="user--information padding--left">
-          <div className="limitlength user--name">Deep Dhakate</div>
+          <div className="limitlength user--name">{props.username}</div>
           <div className="limitlength user--email">Active 3hrs ago</div>
         </div>
       </div>
