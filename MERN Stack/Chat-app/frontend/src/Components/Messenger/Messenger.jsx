@@ -93,13 +93,15 @@ function Messenger() {
           />
         </div>
         <div className="chat--profiles">
-          <UserProfile
+          {/* <UserProfile
             setCurrentUserDetails={setCurrentUserDetails}
             CurrentUserDetails={CurrentUserDetails}
             closeSearchWindow={closeSearchWindow}
             username="Deep Dhakate"
             setUserChatProfile={setUserChatProfile}
-          />
+          /> */}
+
+          {/* History of chats */}
         </div>
         <hr className="endline" />
         <div className="user--profile">

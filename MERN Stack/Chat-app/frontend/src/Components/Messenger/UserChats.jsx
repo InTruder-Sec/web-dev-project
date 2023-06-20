@@ -92,7 +92,7 @@ function UserChats(props) {
             Undo
           </div>
         </div>
-        <div className="send">
+        <div className="send" onClick={SVGhandler}>
           <img
             className="send--img"
             alt="send"
