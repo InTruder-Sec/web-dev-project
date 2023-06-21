@@ -386,6 +386,12 @@ function CreateAccount(props) {
 }
 
 function ForgotPassword(props) {
+  const navigate = useNavigate();
+  const [Email, setEmail] = useState("");
+  function SendOTP() {
+    console.log("OTP sent!");
+    navigate(`/reset?email=${Email}`);
+  }
   return (
     <div className="rotate-180">
       <div className="header">
@@ -396,38 +402,44 @@ function ForgotPassword(props) {
         <video
           className="fp--main--video"
           src={fpVideo}
-          autoPlay="true"
+          autoPlay={true}
           loop
         ></video>
       </div>
       <div className="forgot--password">
-        <form>
+        <form
+          onSubmit={(e) => {
+            SendOTP();
+          }}
+        >
           <div className="padding">
             <label className="label--input">Email: </label>
             <input
               className="input--box"
-              type="email"
+              value={Email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               placeholder="johndoe@gmail.com"
             ></input>
           </div>
 
-          <div className="padding">
-            <input
-              type="button"
-              className="login--btn"
-              value="Change Password"
-            ></input>
-            <div className="no--account margin--top">Get back to login?</div>
-            <input
-              type="button"
-              className="login--btn remove--margin"
-              value="Login"
-              onClick={(e) => {
-                ChangeToLogin(props.setRotate, props.setComponentMain);
-              }}
-            ></input>
-          </div>
+          <input
+            type="button"
+            className="login--btn"
+            value="Change Password"
+          ></input>
         </form>
+        <div className="no--account margin--top">Get back to login?</div>
+
+        <input
+          type="button"
+          className="login--btn padding--left"
+          value="Login"
+          onClick={(e) => {
+            ChangeToLogin(props.setRotate, props.setComponentMain);
+          }}
+        ></input>
       </div>
     </div>
   );

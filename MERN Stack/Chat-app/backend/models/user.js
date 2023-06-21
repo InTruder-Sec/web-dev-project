@@ -12,6 +12,14 @@ const usersSchema = {
     unique: true,
   },
   password: String,
+  chat_history: {
+    type: Array,
+    default: [],
+  },
+  magic_token: {
+    type: String,
+    unique: true,
+  },
 };
 
 const UsersData = mongoose.model("UserData", usersSchema);

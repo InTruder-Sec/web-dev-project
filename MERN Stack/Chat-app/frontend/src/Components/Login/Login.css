@@ -209,6 +209,10 @@ input:focus {
   margin-top: 0px;
 }
 
+.padding--left {
+  margin-left: 10px;
+}
+
 .fp--main--video {
   scale: 0.5;
 }
@@ -236,17 +240,29 @@ input:focus {
 }
 
 .boxes {
-  position: absolute;
-  margin-top: 25px;
-  margin-left: 6px;
+  padding-right: 10px;
+  width: fit-content;
+  margin: 25px auto;
   display: flex;
   flex-wrap: nowrap;
   z-index: -10;
 }
 
-.box {
+.otp {
   position: relative;
   border: 2px solid black;
   width: 50px;
-  height: 70px;
+  height: 50px;
+  font-size: 30px;
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
