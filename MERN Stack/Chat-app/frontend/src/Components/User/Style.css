@@ -1,0 +1,276 @@
+.main {
+  background-color: #fff;
+  padding: 9vh;
+}
+
+.background--head {
+  position: absolute;
+  font-size: 180px;
+  letter-spacing: 1px;
+  width: 100vw;
+  padding-top: 80px;
+}
+
+.scribble--animate {
+  position: relative;
+  animation: moveright 8s ease-in infinite;
+}
+
+@keyframes moveright {
+  0% {
+    left: -900px;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+.animate--block {
+  display: block;
+}
+
+.chat--animate {
+  position: absolute;
+  right: 0;
+  animation: moveleft 8s ease-in infinite;
+}
+
+@keyframes moveleft {
+  0% {
+    right: -500px;
+  }
+
+  100% {
+    right: 100%;
+  }
+}
+
+.login {
+  width: 450px;
+  height: 570px;
+  border: solid 4px black;
+  margin: 0vh auto;
+  padding: 20px;
+  position: relative;
+  z-index: 3;
+  padding-left: 30px;
+  background-color: #fff;
+  transition: 0.6s;
+}
+
+.rotate-180 {
+  transform: rotateY(-180deg);
+}
+
+.header {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.logo--header {
+  font-size: 35px;
+  font-weight: 700;
+  padding-left: 20px;
+  padding-top: 6px;
+}
+
+.login::after,
+.login::before {
+  width: 200px;
+  height: 300px;
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -10;
+}
+
+.login::before {
+  left: -10px;
+  top: -10px;
+  border-top: solid 2px black;
+  border-left: solid 2px black;
+}
+
+.login::after {
+  right: -10px;
+  bottom: -10px;
+  border-right: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.login--main {
+  margin-top: 30px;
+}
+
+.input--box {
+  width: 90%;
+  height: 10px;
+  background-color: white;
+  border: solid 2px black;
+  font-family: "Space Grotesk", sans-serif;
+  padding: 10px;
+  font-size: 13px;
+  margin: 10px auto;
+}
+
+.padding {
+  padding-top: 15px;
+}
+
+input:focus {
+  outline: solid 1px black;
+}
+
+.forgot--div {
+  width: 95%;
+  position: relative;
+}
+
+.forgot {
+  font-size: 13px;
+  position: absolute;
+  right: 0;
+}
+
+.forgot:hover {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login--btn {
+  width: 95%;
+  height: 30px;
+  margin-top: 20px;
+  background-color: #fff;
+  border: 2px solid black;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.login--btn:hover {
+  background-color: #000000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.oauth {
+  display: flex;
+  width: 200px;
+  margin: 35px auto;
+  padding-right: 30px;
+  justify-content: space-between;
+}
+
+.oauth--icon {
+  width: 45px;
+  height: 45px;
+  border: solid 2px black;
+  border-radius: 50%;
+  transition: 0.6s;
+}
+
+.oauth--icon:hover {
+  background-color: #000000;
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.oauth svg {
+  z-index: -1;
+  position: relative;
+}
+
+.no--account {
+  width: 100%;
+  text-align: center;
+  margin-left: -10px;
+}
+
+.create--account {
+  transition: 0.6s;
+  transform: rotateY(180deg);
+}
+
+.create--account form {
+  margin-left: 20px;
+}
+
+.remove--margin {
+  margin-top: 0px;
+}
+
+.margin--top {
+  margin: 30px auto;
+}
+
+.fp--video {
+  height: 200px;
+  margin-top: 0px;
+}
+
+.padding--left {
+  margin-left: 10px;
+}
+
+.mt--top--6 {
+  margin-top: 60px;
+}
+
+.mr--left {
+  margin-left: 10px;
+}
+
+.fp--main--video {
+  scale: 0.5;
+}
+
+.forgot--password form {
+  padding-left: 20px;
+}
+
+.invalidpass {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.reset--input {
+  width: 240px;
+  border: none;
+  font-size: 50px;
+  letter-spacing: 10px;
+  padding: 0px 20px;
+  margin-top: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.boxes {
+  width: fit-content;
+  margin: 25px auto;
+  display: flex;
+  flex-wrap: nowrap;
+  z-index: -10;
+}
+
+.otp {
+  position: relative;
+  margin-right: 2.5px;
+  border: 2px solid black;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

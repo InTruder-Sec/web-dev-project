@@ -16,9 +16,8 @@ const usersSchema = {
     type: Array,
     default: [],
   },
-  magic_token: {
-    type: String,
-    unique: true,
+  otp: {
+    type: Number,
   },
 };
 

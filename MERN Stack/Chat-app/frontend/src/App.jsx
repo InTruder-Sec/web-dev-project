@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Main from "./Components/Login/Login";
 import Messenger from "./Components/Messenger/Messenger";
-import ResetPass from "./Components/Login/ResetPass";
+import Main from "./Components/User/Main";
+import ResetPass from "./Components/User/ResetPass";
 
 const ToggleTheme = (theme) => {
   if (theme === "false") {
