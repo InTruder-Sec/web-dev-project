@@ -2,8 +2,7 @@ import React from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import logo from "./../../images/logo.png";
 import "./Style.css";
-import { ChangeToLogin } from "./Main";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ResetPass(props) {
   const navigate = useNavigate();
@@ -21,6 +20,7 @@ function ResetPass(props) {
     let otp3 = document.querySelector(".otp3");
     let otp4 = document.querySelector(".otp4");
     let btn = document.querySelector(".submit--btn");
+    let Form = document.querySelector("form");
 
     if (otp1.value.length === 1) {
       otp2.focus();
@@ -32,7 +32,8 @@ function ResetPass(props) {
       otp4.focus();
     }
     if (otp4.value.length === 1) {
-      otp4.blur();
+      btn.focus();
+      Form.submit();
     }
 
     if (
@@ -86,8 +87,8 @@ function ResetPass(props) {
                     onChange={verifyNum}
                     className="otp otp2"
                     type="number"
-                    min="0"
-                    max="9"
+                    min={0}
+                    max={9}
                     placeholder="-"
                     required
                   />

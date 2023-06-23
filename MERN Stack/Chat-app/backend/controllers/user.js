@@ -1,12 +1,7 @@
 import UsersData from "../models/user.js";
-import { Client } from "appwrite";
 import bcrypt from "bcrypt";
 
-const client = new Client();
 
-client
-  .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("64883afc256f51801463");
 
 export const getUser = async (req, res) => {
   console.log("req recived");
@@ -63,18 +58,5 @@ export const getUsersNames = async (req, res) => {
     return res.status(200).json(users);
   } catch {
     return res.status(200).json([]);
-  }
-};
-
-export const CreateChatRoom = async (req, res) => {
-  const users = await UsersData.find();
-  const id = [];
-  users.map((user) => {
-    id.push(user.id);
-  });
-  if (id.includes(req.params.username)) {
-    return res.status(200).json({ message: "User exist", code: 200 });
-  } else {
-    return res.status(200).json({ message: "User does not exist", code: 404 });
   }
 };

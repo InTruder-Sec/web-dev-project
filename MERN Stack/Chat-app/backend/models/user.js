@@ -17,7 +17,8 @@ const usersSchema = {
     default: [],
   },
   otp: {
-    type: Number,
+    type: Array,
+    default: [],
   },
 };
 
