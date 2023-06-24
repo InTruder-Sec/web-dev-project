@@ -27,7 +27,6 @@ export const sendOtp = async (req, res) => {
 export const verifyOtp = async (req, res) => {
   const email = req.query.email;
   const otp = req.query.otp;
-  console.log(email, otp);
   try {
     const data = await UsersData.findOne({ email: email });
     if (data != null) {
