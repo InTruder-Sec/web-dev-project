@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import logo from "./../../images/logo.png";
 import "./Style.css";
 import { useNavigate } from "react-router-dom";
 
 function ResetPass(props) {
+  let otp;
   const navigate = useNavigate();
   const styles = {
     border: "0.0625rem solid #9c9c9c",
@@ -13,27 +14,50 @@ function ResetPass(props) {
     zIndex: 1,
     opacity: 0.5,
   };
+  const displayNone = {
+    display: "none",
+  };
+  const [invalidStyles, setinvalidStyles] = useState(displayNone);
 
-  const verifyNum = () => {
+  const verifyNum = (key) => {
     let otp1 = document.querySelector(".otp1");
     let otp2 = document.querySelector(".otp2");
     let otp3 = document.querySelector(".otp3");
     let otp4 = document.querySelector(".otp4");
     let btn = document.querySelector(".submit--btn");
-    let Form = document.querySelector("form");
+    otp = otp1.value + otp2.value + otp3.value + otp4.value;
+    let pass = document.querySelector(".input--box");
+
+    if (key === "Backspace") {
+      if (otp4.value.length === 0) {
+        otp3.focus();
+        otp = otp1.value + otp2.value + otp3.value + otp4.value;
+      }
+      if (otp3.value.length === 0) {
+        otp2.focus();
+        otp = otp1.value + otp2.value + otp3.value + otp4.value;
+      }
+      if (otp2.value.length === 0) {
+        otp1.focus();
+        otp = otp1.value + otp2.value + otp3.value + otp4.value;
+      }
+    }
 
     if (otp1.value.length === 1) {
       otp2.focus();
+      otp = otp1.value + otp2.value + otp3.value + otp4.value;
     }
     if (otp2.value.length === 1) {
       otp3.focus();
+      otp = otp1.value + otp2.value + otp3.value + otp4.value;
     }
     if (otp3.value.length === 1) {
       otp4.focus();
+      otp = otp1.value + otp2.value + otp3.value + otp4.value;
     }
     if (otp4.value.length === 1) {
-      btn.focus();
-      Form.submit();
+      otp4.blur();
+      btn.disabled = false;
     }
 
     if (
@@ -43,8 +67,31 @@ function ResetPass(props) {
       otp4.value.length === 1
     ) {
       btn.disabled = false;
+      pass.focus();
     }
   };
+
+  const verifyOTP = async () => {
+    var token = window.location.search;
+    token = token.substring(1);
+    token = token.split("=")[1];
+    try {
+      const response = await fetch(
+        `http://localhost:5000/users/verifyOTP?otp=${otp}&token=${token}&${password}`
+      );
+      const data = await response.json();
+      console.log(data);
+      if (data.code === 200) {
+        navigate(`/`);
+      } else {
+        setinvalidStyles({ display: "block" });
+      }
+    } catch (err) {
+      console.log("Error: " + err);
+    }
+  };
+
+  const [password, setpassword] = useState("");
 
   return (
     <div>
@@ -68,14 +115,21 @@ function ResetPass(props) {
               <div className="logo--header">Reset password</div>
             </div>
 
-            <form>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                verifyOTP();
+              }}
+            >
               <div className="major--input">
                 <div className="no--account margin--top p--d mt--top--6">
                   Enter the OTP sent to your email
                 </div>
                 <div className="boxes">
                   <input
-                    onChange={verifyNum}
+                    onChange={(e) => {
+                      verifyNum(e);
+                    }}
                     className="otp otp1"
                     type="number"
                     min="0"
@@ -84,7 +138,9 @@ function ResetPass(props) {
                     required
                   />
                   <input
-                    onChange={verifyNum}
+                    onChange={(e) => {
+                      verifyNum(e);
+                    }}
                     className="otp otp2"
                     type="number"
                     min={0}
@@ -93,7 +149,9 @@ function ResetPass(props) {
                     required
                   />
                   <input
-                    onChange={verifyNum}
+                    onChange={(e) => {
+                      verifyNum(e);
+                    }}
                     className="otp otp3"
                     type="number"
                     min="0"
@@ -102,7 +160,9 @@ function ResetPass(props) {
                     required
                   />
                   <input
-                    onChange={verifyNum}
+                    onChange={(e) => {
+                      verifyNum(e);
+                    }}
                     className="otp otp4"
                     type="number"
                     min="0"
@@ -112,6 +172,19 @@ function ResetPass(props) {
                   />
                 </div>
               </div>
+              <div className="padding">
+                <label className="label--input">New Password: </label>
+                <input
+                  className="input--box"
+                  type="password"
+                  required
+                  placeholder="********"
+                  value={password}
+                  onChange={(e) => {
+                    setpassword(e.target.value);
+                  }}
+                ></input>
+              </div>
               <button
                 className="submit--btn login--btn"
                 type="submit"
@@ -120,6 +193,9 @@ function ResetPass(props) {
                 Submit
               </button>
             </form>
+            <div className="invalidpass" style={invalidStyles}>
+              Invalid OTP!
+            </div>
             <div className="no--account margin--top p--d">
               Get back to login?
             </div>

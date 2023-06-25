@@ -10,13 +10,21 @@ export const sendOtp = async (req, res) => {
   try {
     UsersData.findOne({ email: email }).then((data) => {
       if (data != null) {
-        // Send otp to email
+        // Send otp data email
         data.otp = { otp: otp, date: [today, month, year] };
         data.toJSON();
         data.save();
-        res.status(200).json({ message: "OTP Sent", code: 200 });
+        res.status(200).json({ message: "OTP Sent", code: 200, id: data._id });
       } else {
-        res.status(200).json({ message: "OTP Sent", code: 200 });
+        let randomid = Math.floor(Math.random() * 0xfffffffffff)
+          .toString(16)
+          .padEnd(6, "0");
+        let randomid2 = Math.floor(Math.random() * 0xfffffffffff)
+          .toString(16)
+          .padEnd(6, "0");
+        res
+          .status(200)
+          .json({ message: "OTP Sent", code: 200, id: randomid + randomid2 });
       }
     });
   } catch {
@@ -25,12 +33,11 @@ export const sendOtp = async (req, res) => {
 };
 
 export const verifyOtp = async (req, res) => {
-  const email = req.query.email;
+  const id = req.query.token;
   const otp = req.query.otp;
   try {
-    const data = await UsersData.findOne({ email: email });
+    const data = await UsersData.findById(id);
     if (data != null) {
-      // verify otp
       let today = new Date().getDate();
       let month = new Date().getMonth();
       let year = new Date().getFullYear();
@@ -43,6 +50,9 @@ export const verifyOtp = async (req, res) => {
           res.status(200).json({ message: "OTP expired", code: 500 });
         } else {
           res.status(200).json({ message: "OTP verified", code: 200 });
+          data.otp = [];
+          data.toJSON();
+          data.save();
         }
       } else {
         res.status(200).json({ message: "Invalid OTP", code: 500 });

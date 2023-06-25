@@ -7,11 +7,27 @@ import fpVideo from "./../../images/forgotpassword.mp4";
 import { ChangeToLogin } from "./Main";
 
 function ForgotPassword(props) {
+  const displayNone = {
+    display: "none",
+  };
+  const [invalidStyles, setinvalidStyles] = useState(displayNone);
   const navigate = useNavigate();
   const [Email, setEmail] = useState("");
-  function SendOTP() {
-    // Send OTP to email
-    navigate(`./reset?email=${Email}`);
+  async function SendOTP() {
+    try {
+      const res = await fetch(
+        `http://localhost:5000/users/sendotp?email=${Email}`
+      );
+      const data = await res.json();
+      if (data.code === 200) {
+        console.log(data);
+        navigate(`/reset?token=${data.id}`);
+      } else {
+        setinvalidStyles({ display: "block" });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <div className="rotate-180">
@@ -53,6 +69,7 @@ function ForgotPassword(props) {
             value="Change Password"
           ></input>
         </form>
+        <div className="invalidpass" style={invalidStyles}></div>
         <div className="no--account margin--top">Get back to login?</div>
 
         <input
