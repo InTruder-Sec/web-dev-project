@@ -73,11 +73,16 @@ function ResetPass(props) {
 
   const verifyOTP = async () => {
     var token = window.location.search;
+    let otp1 = document.querySelector(".otp1");
+    let otp2 = document.querySelector(".otp2");
+    let otp3 = document.querySelector(".otp3");
+    let otp4 = document.querySelector(".otp4");
+    otp = otp1.value + otp2.value + otp3.value + otp4.value;
     token = token.substring(1);
     token = token.split("=")[1];
     try {
       const response = await fetch(
-        `http://localhost:5000/users/verifyOTP?otp=${otp}&token=${token}&${password}`
+        `http://localhost:5000/users/verifyOTP?otp=${otp}&token=${token}&pass=${password}`
       );
       const data = await response.json();
       console.log(data);

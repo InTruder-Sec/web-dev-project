@@ -1,8 +1,6 @@
 import UsersData from "../models/user.js";
 import bcrypt from "bcrypt";
 
-
-
 export const getUser = async (req, res) => {
   console.log("req recived");
   const { email, pass } = req.query;

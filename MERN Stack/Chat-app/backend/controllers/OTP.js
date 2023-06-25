@@ -1,3 +1,5 @@
+import nodemailer from "nodemailer";
+import bcrypt from "bcrypt";
 import UsersData from "../models/user.js";
 
 export const sendOtp = async (req, res) => {
@@ -11,6 +13,30 @@ export const sendOtp = async (req, res) => {
     UsersData.findOne({ email: email }).then((data) => {
       if (data != null) {
         // Send otp data email
+        const transpoter = nodemailer.createTransport({
+          host: process.env.MAIL_SERVER,
+          port: process.env.MAIL_PORT,
+          secure: false,
+          auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS,
+          },
+        });
+
+        const mailOptions = {
+          from: process.env.MAIL_USER,
+          to: email,
+          subject: "OTP for verification",
+          text: `We have received a request to reset your password. Your OTP is ${otp}. It  will expire on ${today}/${month}/${year}. If you did not make this request, please ignore this email.`,
+        };
+
+        transpoter.sendMail(mailOptions, (err, info) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("Email sent: " + info.response);
+          }
+        });
         data.otp = { otp: otp, date: [today, month, year] };
         data.toJSON();
         data.save();
@@ -35,9 +61,11 @@ export const sendOtp = async (req, res) => {
 export const verifyOtp = async (req, res) => {
   const id = req.query.token;
   const otp = req.query.otp;
+  const password = req.query.pass;
   try {
     const data = await UsersData.findById(id);
     if (data != null) {
+      const hashedPassword = await bcrypt.hash(password, 10);
       let today = new Date().getDate();
       let month = new Date().getMonth();
       let year = new Date().getFullYear();
@@ -50,6 +78,7 @@ export const verifyOtp = async (req, res) => {
           res.status(200).json({ message: "OTP expired", code: 500 });
         } else {
           res.status(200).json({ message: "OTP verified", code: 200 });
+          data.password = hashedPassword;
           data.otp = [];
           data.toJSON();
           data.save();
