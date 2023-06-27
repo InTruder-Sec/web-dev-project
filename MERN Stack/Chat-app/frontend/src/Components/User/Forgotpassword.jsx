@@ -11,21 +11,28 @@ function ForgotPassword(props) {
     display: "none",
   };
   const [invalidStyles, setinvalidStyles] = useState(displayNone);
+
   const navigate = useNavigate();
+
+  const [loading, setloading] = useState(false);
+
   const [Email, setEmail] = useState("");
   async function SendOTP() {
+    setloading(true);
     try {
       const res = await fetch(
         `http://localhost:5000/users/sendotp?email=${Email}`
       );
       const data = await res.json();
       if (data.code === 200) {
-        console.log(data);
+        setloading(false);
         navigate(`/reset?token=${data.id}`);
       } else {
+        setloading(false);
         setinvalidStyles({ display: "block" });
       }
     } catch (error) {
+      setloading(false);
       console.log(error);
     }
   }
@@ -66,7 +73,8 @@ function ForgotPassword(props) {
           <input
             type="submit"
             className="login--btn"
-            value="Change Password"
+            value={`${loading ? "Loading..." : "Change Password"}`}
+            disabled={loading}
           ></input>
         </form>
         <div className="invalidpass" style={invalidStyles}></div>

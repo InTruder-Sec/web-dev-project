@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import UserChats from "./UserChats";
 import logo from "./../../images/logo.png";
 import "./messenger.css";
 import Settings from "./Settings";
+import { useNavigate } from "react-router-dom";
 
 function Messenger() {
+  const navigate = useNavigate();
   // Search user state
   const [search, setsearch] = useState("");
   const [searchData, setsearchData] = useState([]);
 
   // User chat profile state
   const [UserChatProfile, setUserChatProfile] = useState(<LandingPage />);
+
+  // User session details state
+  const [UserSessionDetails, setUserSessionDetails] = useState({
+    username: " ",
+  });
 
   // Current user details state
   const [CurrentUserDetails, setCurrentUserDetails] = useState({
@@ -56,6 +63,34 @@ function Messenger() {
       console.log(err);
     }
   };
+
+  // Session check
+  useEffect(() => {
+    const CheckSession = async () => {
+      try {
+        const data = await fetch(`http://localhost:5000/users/session`, {
+          method: "get",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const res = await data.json();
+        console.log(res);
+        if (res.code === 500) {
+          navigate("/");
+        } else {
+          setUserSessionDetails(res.data);
+        }
+      } catch (err) {
+        console.log(err);
+        navigate("/");
+      }
+    };
+    CheckSession();
+  }, [navigate]);
+
+  // Landing page component
 
   return (
     <div className="messenger">
@@ -105,11 +140,15 @@ function Messenger() {
         </div>
         <hr className="endline" />
         <div className="user--profile">
-          <div className="user--logo">A</div>
+          <div className="user--logo">
+            {UserSessionDetails.username[0].toUpperCase()}
+          </div>
           <div className="user--information">
-            <div className="limitlength user--name">Deep Dhakate</div>
+            <div className="limitlength user--name">
+              {UserSessionDetails.username}
+            </div>
             <div className="limitlength user--email">
-              dhakatedeep14@gmail.com
+              {UserSessionDetails.email}
             </div>
           </div>
           <div className="options" onClick={handleOpen}>
@@ -216,7 +255,7 @@ const UserProfile = (props) => {
         props.setUserChatProfile(<UserChats username={props.username} />);
       }}
     >
-      <div className="user--logo">A</div>
+      <div className="user--logo">{props.username[0].toUpperCase()}</div>
       <div className="user--information">
         <div className="limitlength user--name">{props.username}</div>
         <div className="limitlength user--email">Active 3hrs ago </div>

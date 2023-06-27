@@ -6,32 +6,52 @@ import logo from "./../../images/logo.png";
 import { ChangeToCreateAccount, ChangeToForgotPass } from "./Main";
 
 function Login(props) {
+  // Invalid username password styles
   const displayNone = {
     display: "none",
   };
   const [invalidStyles, setinvalidStyles] = useState(displayNone);
 
+  // Navigation
   const navigate = useNavigate();
+
+  // Loading state
+  const [loading, setloading] = useState(false);
+
+  // Input details states
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
+  // Verify user
   const VerifyUser = async (email, password) => {
+    setloading(true);
     try {
       const response = await fetch(
-        `http://localhost:5000/users/verify?email=${email}&pass=${password}`
+        `http://localhost:5000/users/verify?email=${email}&pass=${password}`,
+        {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
       const data = await response.json();
       if (data.data.id === null) {
         setinvalidStyles({ display: "block" });
+        setloading(false);
         console.log("Error");
       } else {
         navigate("./messenger");
+        setloading(false);
       }
     } catch (err) {
       console.log("Error: " + err);
+      setloading(false);
     }
   };
 
+  // Render
   return (
     <>
       <div className="header">
@@ -82,7 +102,12 @@ function Login(props) {
             </div>
           </div>
           <div className="padding">
-            <input type="submit" className="login--btn" value="Login"></input>
+            <input
+              type="submit"
+              className="login--btn"
+              value={`${loading ? "Loading..." : "Login"}`}
+              disabled={loading}
+            ></input>
           </div>
           <div className="invalidpass" style={invalidStyles}>
             Invalid username or password!

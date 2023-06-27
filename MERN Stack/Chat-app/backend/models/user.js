@@ -12,6 +12,10 @@ const usersSchema = {
     unique: true,
   },
   password: String,
+  session: {
+    type: String,
+    default: "",
+  },
   chat_history: {
     type: Array,
     default: [],

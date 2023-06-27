@@ -3,8 +3,10 @@ import Box from "@mui/material/Box";
 import { ToggleTheme } from "../../App";
 import Modal from "@mui/material/Modal";
 import "./settings.css";
+import { useNavigate } from "react-router-dom";
 
 function Settings(props) {
+  const navigate = useNavigate();
   const style = {
     position: "absolute",
     top: "50%",
@@ -15,6 +17,19 @@ function Settings(props) {
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
+  };
+
+  // Logout function remove cookie and redirect to login page
+  const Logout = async () => {
+    try {
+      await fetch("http://localhost:5000/users/logout", {
+        method: "GET",
+        credentials: "include",
+      });
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -68,6 +83,11 @@ function Settings(props) {
               <div className="save--btn">
                 <button className="save btns" onClick={props.handleClose}>
                   Save
+                </button>
+              </div>
+              <div className="save--btn rm--margin">
+                <button className="save btns" onClick={Logout}>
+                  Logout
                 </button>
               </div>
             </div>

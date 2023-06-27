@@ -1,14 +1,27 @@
 import UsersData from "../models/user.js";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 export const getUser = async (req, res) => {
-  console.log("req recived");
   const { email, pass } = req.query;
   try {
-    const data = await UsersData.findOne({ email: email });
+    const data = await UsersData.findOne({ email: email.toLowerCase() });
     if (data != null) {
       const match = await bcrypt.compare(pass, data.password);
       if (match) {
+        const token = jwt.sign(
+          { id: data._id, email: data.email },
+          process.env.JWT_SECRET,
+          {
+            expiresIn: "7d",
+          }
+        );
+        data.session = token;
+        data.save();
+        res.cookie("token", token, {
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+          httpOnly: true,
+        });
         return res
           .status(200)
           .json({ data: { message: "Logged in successfully", id: data.id } });
@@ -32,7 +45,7 @@ export const createUser = async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, 10);
   let newUser = new UsersData({
     username: username,
-    email: email,
+    email: email.toLowerCase(),
     password: hashedPassword,
   });
 

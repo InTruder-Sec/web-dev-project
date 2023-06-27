@@ -27,7 +27,7 @@ export const sendOtp = async (req, res) => {
           from: process.env.MAIL_USER,
           to: email,
           subject: "OTP for verification",
-          text: `We have received a request to reset your password. Your OTP is ${otp}. It  will expire on ${today}/${month}/${year}. If you did not make this request, please ignore this email.`,
+          text: `We have received a request to reset your password. Your OTP is ${otp}. It  will expire on ${today}/${month}/${year}. If you did not make this request, please ignore this email. Please follow the below link to reset your password: http://localhost:3000/reset?token=${data._id}`,
         };
 
         transpoter.sendMail(mailOptions, (err, info) => {
