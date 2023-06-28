@@ -68,6 +68,14 @@
   display: none;
 }
 
+.display--none {
+  display: none;
+}
+
+.getin--started {
+  margin-left: 20px;
+}
+
 .profile {
   display: flex;
   height: 55px;

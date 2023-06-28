@@ -2,6 +2,8 @@ import UsersData from "../models/user.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
+// Login user
+
 export const getUser = async (req, res) => {
   const { email, pass } = req.query;
   try {
@@ -40,6 +42,8 @@ export const getUser = async (req, res) => {
   }
 };
 
+// Create a new user
+
 export const createUser = async (req, res) => {
   const { email, username, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -59,11 +63,14 @@ export const createUser = async (req, res) => {
   return res.status(200).json({ message: "User created", code: 200, newUser });
 };
 
+// Search for users
+
 export const getUsersNames = async (req, res) => {
   const param = req.query.username;
+  const userId = req.query.userId;
   try {
     const users = await UsersData.find(
-      { username: { $regex: param } },
+      { username: { $regex: param }, _id: { $ne: userId } },
       "username"
     );
     return res.status(200).json(users);

@@ -3,6 +3,7 @@ import { ReactSketchCanvas } from "react-sketch-canvas";
 import UserChats from "./UserChats";
 import logo from "./../../images/logo.png";
 import "./messenger.css";
+import Popup from "../PopUp/Popup";
 import Settings from "./Settings";
 import { useNavigate } from "react-router-dom";
 
@@ -45,11 +46,14 @@ function Messenger() {
     zIndex: "-3",
   };
 
+  // Walkthrough state handler\
+  const [walkthrough, setwalkthrough] = useState("");
+
   // User Search function
   const SearchForUser = async (val) => {
     try {
       const data = await fetch(
-        `http://localhost:5000/users/search?username=${val}`,
+        `http://localhost:5000/users/search?username=${val}&userId=${UserSessionDetails.id}`,
         {
           method: "get",
           headers: {
@@ -81,6 +85,15 @@ function Messenger() {
           navigate("/");
         } else {
           setUserSessionDetails(res.data);
+          if (res.data.chat_history.length === 0) {
+            setwalkthrough(
+              <Popup
+                content="Get started by searching for your friends by their username and start chatting with them."
+                position={{ mt: "170px", ml: "50px" }}
+                setwalkthrough={setwalkthrough}
+              />
+            );
+          }
         }
       } catch (err) {
         console.log(err);
@@ -97,7 +110,7 @@ function Messenger() {
       <div className="settings--div">
         <Settings open={open} handleClose={handleClose} />
       </div>
-
+      {walkthrough}
       <div className="dashboard">
         <div className="m--header">
           <img className="m-header--logo" alt="logo" src={logo}></img>
