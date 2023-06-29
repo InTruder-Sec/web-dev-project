@@ -208,6 +208,7 @@ const SearchWindow = (props) => {
         CurrentUserDetails={props.CurrentUserDetails}
         closeSearchWindow={props.closeSearchWindow}
         username={data.username}
+        lastActive={data.updated_at}
         ChatProfile={props.ChatProfile}
         setUserChatProfile={props.setUserChatProfile}
         key={data.username}
@@ -257,6 +258,7 @@ const WelcomePage = () => {
 };
 
 const UserProfile = (props) => {
+  console.log(props);
   return (
     <div
       className="profile"
@@ -271,7 +273,7 @@ const UserProfile = (props) => {
       <div className="user--logo">{props.username[0].toUpperCase()}</div>
       <div className="user--information">
         <div className="limitlength user--name">{props.username}</div>
-        <div className="limitlength user--email">Active 3hrs ago </div>
+        <div className="limitlength user--email">{props.lastActive} </div>
       </div>
     </div>
   );

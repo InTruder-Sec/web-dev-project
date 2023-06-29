@@ -11,6 +11,8 @@ export const userSession = async (req, res) => {
       try {
         UsersData.findById(decoded.id).then((data) => {
           if (data != null) {
+            data.updatedAt = new Date();
+            data.save();
             res.status(200).json({
               message: "Valid token",
               code: 200,
@@ -46,6 +48,7 @@ export const userLogout = async (req, res) => {
       try {
         UsersData.findById(decoded.id).then((data) => {
           if (data != null) {
+            data.last_seen = new Date();
             res.clearCookie("token");
             res.status(200).json({
               message: "Logout successful",

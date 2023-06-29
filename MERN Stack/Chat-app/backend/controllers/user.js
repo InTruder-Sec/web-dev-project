@@ -2,6 +2,8 @@ import UsersData from "../models/user.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
+import { UserActivity } from "../JS/UserActivity.js";
+
 // Login user
 
 export const getUser = async (req, res) => {
@@ -69,11 +71,24 @@ export const getUsersNames = async (req, res) => {
   const param = req.query.username;
   const userId = req.query.userId;
   try {
-    const users = await UsersData.find(
-      { username: { $regex: param }, _id: { $ne: userId } },
-      "username"
-    );
-    return res.status(200).json(users);
+    const users = await UsersData.find({
+      username: { $regex: param },
+      _id: { $ne: userId },
+    });
+
+    const returnData = users.map((user) => {
+      // Call middleware function to check last onilne time
+
+      const lastActive = UserActivity(user.updatedAt);
+      return {
+        username: user.username,
+        id: user._id,
+        updated_at: lastActive,
+      };
+    });
+
+    console.log(returnData);
+    return res.status(200).json(returnData);
   } catch {
     return res.status(200).json([]);
   }

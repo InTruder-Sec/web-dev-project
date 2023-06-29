@@ -22,7 +22,6 @@ function Main() {
     borderRadius: "0.25rem",
     position: "absolute",
     zIndex: 1,
-    opacity: 0.5,
   };
 
   return (
@@ -33,7 +32,7 @@ function Main() {
         height="100vh"
         strokeWidth={4}
         strokeColor="black"
-        canvasColor="white"
+        canvasColor="transparent"
       />
       <div className="main">
         <div className="background--head">

@@ -24,6 +24,10 @@ const usersSchema = {
     type: Array,
     default: [],
   },
+  last_seen: {
+    type: Date,
+    default: new Date(),
+  },
 };
 
 const schema = new mongoose.Schema(usersSchema, { timestamps: true });
