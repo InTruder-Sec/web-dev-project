@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
-import UserChats from "./UserChats";
 import logo from "./../../images/logo.png";
 import "./messenger.css";
 import Popup from "../PopUp/Popup";
 import Settings from "./Settings";
 import { useNavigate } from "react-router-dom";
+import SearchWindow from "./SearchWindow";
 
 function Messenger() {
   const navigate = useNavigate();
   // Search user state
   const [search, setsearch] = useState("");
   const [searchData, setsearchData] = useState([]);
+  // Search Window click Handler
 
   // User chat profile state
   const [UserChatProfile, setUserChatProfile] = useState(<LandingPage />);
@@ -116,29 +117,31 @@ function Messenger() {
           <img className="m-header--logo" alt="logo" src={logo}></img>
           <div className="m-header--title">SCRIBBLE CHAT</div>
         </div>
-        <div className="search--box">
-          <input
-            className="search"
-            placeholder="Search"
-            value={search}
-            onChange={(e) => {
-              openSearchWindow();
-              setsearch(e.target.value);
-              SearchForUser(e.target.value);
-            }}
-          ></input>
-          <SearchWindow
-            style={
-              searchWindow ? openSearchWindowStyle : closeSearchWindowStyle
-            }
-            openSearchWindow={openSearchWindow}
-            closeSearchWindow={closeSearchWindow}
-            searchData={searchData}
-            ChatProfile={setUserChatProfile}
-            setUserChatProfile={setUserChatProfile}
-            setCurrentUserDetails={setCurrentUserDetails}
-            CurrentUserDetails={CurrentUserDetails}
-          />
+        <div className="search--windowBox">
+          <div className="search--box">
+            <input
+              className="search"
+              placeholder="Search"
+              value={search}
+              onChange={(e) => {
+                openSearchWindow();
+                setsearch(e.target.value);
+                SearchForUser(e.target.value);
+              }}
+            ></input>
+            <SearchWindow
+              style={
+                searchWindow ? openSearchWindowStyle : closeSearchWindowStyle
+              }
+              openSearchWindow={openSearchWindow}
+              closeSearchWindow={closeSearchWindow}
+              searchData={searchData}
+              ChatProfile={setUserChatProfile}
+              setUserChatProfile={setUserChatProfile}
+              setCurrentUserDetails={setCurrentUserDetails}
+              CurrentUserDetails={CurrentUserDetails}
+            />
+          </div>
         </div>
         <div className="chat--profiles">
           {/* <UserProfile
@@ -193,35 +196,6 @@ function Messenger() {
   );
 }
 
-const SearchWindow = (props) => {
-  if (props.searchData.length === 0) {
-    return (
-      <div className="search--result" style={props.style}>
-        <div className="no--users"> No user found</div>
-      </div>
-    );
-  }
-  const users = props.searchData.map((data) => {
-    return (
-      <UserProfile
-        setCurrentUserDetails={props.setCurrentUserDetails}
-        CurrentUserDetails={props.CurrentUserDetails}
-        closeSearchWindow={props.closeSearchWindow}
-        username={data.username}
-        lastActive={data.updated_at}
-        ChatProfile={props.ChatProfile}
-        setUserChatProfile={props.setUserChatProfile}
-        key={data.username}
-      />
-    );
-  });
-  return (
-    <div className="search--result" style={props.style}>
-      {users}
-    </div>
-  );
-};
-
 const LandingPage = (props) => {
   const styles = {
     position: "absolute",
@@ -253,28 +227,6 @@ const WelcomePage = () => {
         connect with your friends in real-time, using a peer-to-peer connection
         that doesn't store any data on a centralized database.
       </summary>
-    </div>
-  );
-};
-
-const UserProfile = (props) => {
-  console.log(props);
-  return (
-    <div
-      className="profile"
-      onClick={(e) => {
-        props.setCurrentUserDetails({
-          username: props.username,
-        });
-        props.closeSearchWindow();
-        props.setUserChatProfile(<UserChats username={props.username} />);
-      }}
-    >
-      <div className="user--logo">{props.username[0].toUpperCase()}</div>
-      <div className="user--information">
-        <div className="limitlength user--name">{props.username}</div>
-        <div className="limitlength user--email">{props.lastActive} </div>
-      </div>
     </div>
   );
 };
