@@ -13,6 +13,44 @@
   z-index: -5;
 }
 
+.loading {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  background-color: #fff;
+}
+
+.loading--wrap {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.outer--loader {
+  padding: 2px 3px;
+  border: 2px solid #000;
+  margin-top: 10px;
+  border-radius: 15px;
+}
+
+.loader {
+  border: 2px solid #000;
+  border-radius: 10px;
+  width: 200px;
+  height: 20px;
+  background: linear-gradient(130deg, #000000 8%, #474747 18%, #000000 33%);
+  background-size: 200% 100%;
+  animation: shine 1s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
+
 .dashboard {
   width: 380px;
   height: 99.6vh;

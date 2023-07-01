@@ -16,6 +16,7 @@ const SearchWindow = (props) => {
         CurrentUserDetails={props.CurrentUserDetails}
         closeSearchWindow={props.closeSearchWindow}
         username={data.username}
+        setsearch={props.setsearch}
         lastActive={data.updated_at}
         ChatProfile={props.ChatProfile}
         setUserChatProfile={props.setUserChatProfile}

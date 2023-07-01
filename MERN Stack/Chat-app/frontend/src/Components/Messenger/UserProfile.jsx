@@ -10,6 +10,7 @@ const UserProfile = (props) => {
         props.setCurrentUserDetails({
           username: props.username,
         });
+        props.setsearch("");
         props.closeSearchWindow();
         props.setUserChatProfile(<UserChats username={props.username} />);
       }}
