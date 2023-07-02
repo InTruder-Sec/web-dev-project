@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import logo from "./../../images/logo.png";
 import "./messenger.css";
 import Popup from "../PopUp/Popup";
 import Settings from "./Settings";
+import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import SearchWindow from "./SearchWindow";
 
 function Messenger() {
   const navigate = useNavigate();
+  const socket = useRef();
 
   // Search user state
   const [search, setsearch] = useState("");
@@ -16,7 +18,6 @@ function Messenger() {
 
   // Search Window click Handler
   const HandleCloseSearchWindow = (e) => {
-    console.log(e.target.className);
     if (e.target.className !== "search" || !e.target.className !== "profile") {
       closeSearchWindow();
     }
@@ -37,6 +38,15 @@ function Messenger() {
   const [CurrentUserDetails, setCurrentUserDetails] = useState({
     username: "",
   });
+
+  // IO connection
+
+  useEffect(() => {
+    if (CurrentUserDetails.id) {
+      socket.current = io("http://localhost:5000");
+      socket.current.emit("add-user", CurrentUserDetails.id);
+    }
+  }, [CurrentUserDetails]);
 
   //  Profile Setting State
   const [open, setOpen] = React.useState(false);
@@ -93,7 +103,7 @@ function Messenger() {
           },
         });
         const res = await data.json();
-        console.log(res);
+
         if (res.code === 500) {
           navigate("/");
           setloading(false);
@@ -166,6 +176,8 @@ function Messenger() {
                 style={
                   searchWindow ? openSearchWindowStyle : closeSearchWindowStyle
                 }
+                socket={socket}
+                CurrentSession={UserSessionDetails}
                 openSearchWindow={openSearchWindow}
                 closeSearchWindow={closeSearchWindow}
                 searchData={searchData}

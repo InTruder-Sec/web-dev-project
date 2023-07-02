@@ -6,6 +6,22 @@ import send from "./../../images/send.png";
 import pen from "./../../images/pen.png";
 
 function UserChats(props) {
+  // Logged in user details
+  const [LoggedInUserDetails, setLoggedInUserDetails] = React.useState({
+    username: "",
+    id: "",
+    email: "",
+  });
+
+  React.useEffect(() => {
+    setLoggedInUserDetails({
+      username: props.CurrentSession.username,
+      id: props.CurrentSession.id,
+      email: props.CurrentSession.email,
+    });
+  }, [props.CurrentSession]);
+
+  const socket = props.socket;
   const styles = {
     zIndex: 4,
     cursor: `url(${pen}), auto`,
@@ -33,6 +49,11 @@ function UserChats(props) {
     sketchRef.current.exportSvg().then((data) => {
       console.log(data);
       // trigger socket.io
+      socket.current.emit("send-message", {
+        to: props.id,
+        from: LoggedInUserDetails.id,
+        message: data,
+      });
       // trigger database to save messeages
     });
   };

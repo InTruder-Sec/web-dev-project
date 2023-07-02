@@ -2,6 +2,7 @@ import express from "express";
 import { createUser, getUser, getUsersNames } from "../controllers/user.js";
 import { sendOtp, verifyOtp } from "../controllers/OTP.js";
 import { userLogout, userSession } from "../controllers/session.js";
+import ChatRoom from "../chatrooms/controllers/ChatRoom.js";
 
 const userRouter = express.Router();
 
@@ -13,4 +14,8 @@ userRouter.get("/verifyotp", verifyOtp);
 userRouter.get("/session", userSession);
 userRouter.get("/logout", userLogout);
 
-export default userRouter;
+const ChatServer = express.Router();
+
+ChatServer.get("/chatroom", ChatRoom);
+
+export { userRouter, ChatServer };
