@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import cors from "cors";
 import { Server } from "socket.io";
-import { userRouter, ChatServer } from "./routes/user.js";
+import { userRouter } from "./routes/user.js";
 
 dotenv.config();
 const app = express();
@@ -24,7 +24,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // Use the routers
 app.use("/users", userRouter);
-app.use("/chat", ChatServer);
 
 // Connect to MongoDB
 mongoose.connect(process.env.SERVER_URL, { useNewUrlParser: true });
