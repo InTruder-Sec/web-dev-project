@@ -35,4 +35,4 @@
    <hr>
 
    <h3>Full-Stack-Project</h3>
-1.[Chat-App](https://scribble.netlify.app)
+1.[Chat-App](https://scribblechat.netlify.app)
