@@ -21,6 +21,26 @@ function UserChats(props) {
     });
   }, [props.CurrentSession]);
 
+  // Upload SVG to Database
+
+  const SvgUpload = async (data) => {
+    try {
+      const res = await fetch("http://localhost:5000/users/sendChat", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({ svg: data }),
+      });
+      const newData = await res.json();
+      console.log(newData);
+    } catch {
+      console.log("Something went wrong!");
+    }
+  };
+
   const socket = props.socket;
   const styles = {
     zIndex: 4,
@@ -45,18 +65,20 @@ function UserChats(props) {
     sketchRef.current.eraseMode(status);
   };
 
-  const SVGhandler = () => {
+  function SVGhandler() {
     sketchRef.current.exportSvg().then((data) => {
-      console.log(data);
       // trigger socket.io
       socket.current.emit("send-message", {
         to: props.id,
         from: LoggedInUserDetails.id,
         message: data,
       });
+
       // trigger database to save messeages
+
+      SvgUpload(data);
     });
-  };
+  }
 
   return (
     <div className="userchats">
@@ -64,7 +86,7 @@ function UserChats(props) {
         <div className="user--logo">A</div>
         <div className="user--information padding--left">
           <div className="limitlength user--name">{props.username}</div>
-          <div className="limitlength user--email">Active 3hrs ago</div>
+          <div className="limitlength user--email">{props.lastActive}</div>
         </div>
       </div>
       <div className="chats--space">

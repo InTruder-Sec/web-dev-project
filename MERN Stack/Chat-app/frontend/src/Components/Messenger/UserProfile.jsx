@@ -19,6 +19,7 @@ const UserProfile = (props) => {
             username={props.username}
             socket={props.socket}
             id={props.id}
+            lastActive={props.lastActive}
             CurrentSession={props.CurrentSession}
           />
         );
