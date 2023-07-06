@@ -1,22 +1,37 @@
-import { Client, ID, Storage } from "appwrite";
+import sdk from "node-appwrite";
+import { ID, InputFile } from "node-appwrite";
+import { writeFile } from "fs/promises";
+import fs from "fs";
 
-const client = new Client()
+const client = new sdk.Client();
+const storage = new sdk.Storage(client);
+
+client
   .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject(process.env.PROJECT_ID);
+  .setProject(process.env.PROJECT_ID)
+  .setKey(process.env.FILE_CREATION_API);
 
-const storage = new Storage(client);
-
-export const ChatHandeler = async (req, res) => {
-  const svg = req.body.svg;
+export const ChatHandeler = (req, res) => {
+  const svgCode = req.body.svg;
   try {
-    const data = await storage.createFile(
-      process.env.BUCKET_ID,
-      ID.unique
-      // File data in binary
-    );
-    await res
-      .status(200)
-      .json({ message: "File Successfully added!", data: data });
+    writeFile("temp/image.svg", svgCode).then((file) => {
+      const promise = storage.createFile(
+        process.env.BUCKET_ID,
+        ID.unique(),
+        InputFile.fromPath("temp/image.svg", "image.svg")
+      );
+
+      promise.then(
+        function (response) {
+          console.log(response);
+        },
+        function (error) {
+          console.log(error);
+        }
+      );
+    });
+
+    res.status(200).json({ message: "File succesfully created!" });
   } catch (err) {
     console.log(err);
     res.status(200).json({ message: "Something went wrong!", err: err });
