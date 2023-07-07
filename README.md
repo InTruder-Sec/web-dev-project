@@ -32,7 +32,8 @@
 6. [Portfolio (Using react)](https://intruder-security.systems/)
 7. [Expense tracker](https://phoeinix.netlify.app/)
 
-   <hr>
+<hr>
 
-   <h3>Full-Stack-Project</h3>
-1.[Chat-App](https://scribblechat.netlify.app)
+<h3>Full-Stack-Project</h3>
+
+1. [Chat-App](https://scribblechat.netlify.app)
