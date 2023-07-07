@@ -87,7 +87,6 @@ export const getUsersNames = async (req, res) => {
       };
     });
 
-    console.log(returnData);
     return res.status(200).json(returnData);
   } catch {
     return res.status(200).json([]);

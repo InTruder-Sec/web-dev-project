@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, createContext } from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import logo from "./../../images/logo.png";
 import "./messenger.css";
@@ -7,6 +7,7 @@ import Settings from "./Settings";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import SearchWindow from "./SearchWindow";
+let SessionUserDetails;
 
 function Messenger() {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ function Messenger() {
   const [UserSessionDetails, setUserSessionDetails] = useState({
     username: " ",
   });
-
+  SessionUserDetails = createContext(UserSessionDetails);
   // Current user details state
   const [CurrentUserDetails, setCurrentUserDetails] = useState({
     username: "",
@@ -279,3 +280,4 @@ const WelcomePage = () => {
 };
 
 export default Messenger;
+export { SessionUserDetails };

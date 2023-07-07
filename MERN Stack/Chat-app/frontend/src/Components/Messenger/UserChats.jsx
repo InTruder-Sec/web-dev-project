@@ -4,22 +4,21 @@ import { ReactSketchCanvas } from "react-sketch-canvas";
 import "./UserChats.css";
 import send from "./../../images/send.png";
 import pen from "./../../images/pen.png";
+import { SessionUserDetails } from "./Messenger";
 
 function UserChats(props) {
   // Logged in user details
-  const [LoggedInUserDetails, setLoggedInUserDetails] = React.useState({
-    username: "",
-    id: "",
-    email: "",
-  });
+  const SessionUser = React.useContext(SessionUserDetails);
+
+  // Reciver user Details
+  const [ReciverDetails, setReciverDetails] = React.useState({});
 
   React.useEffect(() => {
-    setLoggedInUserDetails({
-      username: props.CurrentSession.username,
-      id: props.CurrentSession.id,
-      email: props.CurrentSession.email,
+    setReciverDetails({
+      id: props.id,
+      username: props.username,
     });
-  }, [props.CurrentSession]);
+  }, [props.id, props.username]);
 
   // Upload SVG to Database
 
@@ -32,7 +31,11 @@ function UserChats(props) {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
         },
-        body: JSON.stringify({ svg: data }),
+        body: JSON.stringify({
+          svg: data,
+          SessionUser: SessionUser,
+          ReciverDetails: ReciverDetails,
+        }),
       });
       const newData = await res.json();
       console.log(newData);
@@ -66,11 +69,11 @@ function UserChats(props) {
   };
 
   function SVGhandler() {
-    sketchRef.current.exportSvg().then((data) => {
+    sketchRef.current.exportImage("png").then((data) => {
       // trigger socket.io
       socket.current.emit("send-message", {
         to: props.id,
-        from: LoggedInUserDetails.id,
+        from: SessionUser.id,
         message: data,
       });
 
@@ -136,12 +139,7 @@ function UserChats(props) {
           </div>
         </div>
         <div className="send" onClick={SVGhandler}>
-          <img
-            className="send--img"
-            alt="send"
-            onClick={SVGhandler}
-            src={send}
-          ></img>
+          <img className="send--img" alt="send" src={send}></img>
         </div>
       </div>
     </div>
