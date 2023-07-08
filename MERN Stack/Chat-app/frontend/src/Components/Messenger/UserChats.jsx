@@ -9,7 +9,6 @@ import { SessionUserDetails } from "./Messenger";
 function UserChats(props) {
   // Logged in user details
   const SessionUser = React.useContext(SessionUserDetails);
-
   // Reciver user Details
   const [ReciverDetails, setReciverDetails] = React.useState({});
 
@@ -86,7 +85,7 @@ function UserChats(props) {
   return (
     <div className="userchats">
       <div className="user--profile--chats">
-        <div className="user--logo">A</div>
+        <div className="user--logo">{props.username[0].toUpperCase()}</div>
         <div className="user--information padding--left">
           <div className="limitlength user--name">{props.username}</div>
           <div className="limitlength user--email">{props.lastActive}</div>

@@ -2,7 +2,7 @@ import UsersData from "../models/user.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
-import { UserActivity } from "../JS/UserActivity.js";
+import { UserActivity } from "../utils/UserActivity.js";
 
 // Login user
 

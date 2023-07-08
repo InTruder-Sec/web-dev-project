@@ -12,7 +12,7 @@ session
 otp
 chat_history: [
 {
-username:
+userId:
 databaseId:
 },
 ]
