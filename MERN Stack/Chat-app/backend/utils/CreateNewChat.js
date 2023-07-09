@@ -13,12 +13,17 @@ client
 async function CreateNewChat() {
   const NewUnique = ID.unique();
   try {
-    const promise = await databases.createDocument(
-      process.env.DATABASE_ID,
-      process.env.COLLECTION_ID,
-      NewUnique
-    );
-    return NewUnique;
+    databases
+      .createDocument(
+        process.env.DATABASE_ID,
+        process.env.COLLECTION_ID,
+        NewUnique,
+        { History: [] }
+      )
+      .then((e) => {
+        return e.$id;
+      });
+    // return NewUnique;
   } catch (error) {
     console.log(Error);
   }
