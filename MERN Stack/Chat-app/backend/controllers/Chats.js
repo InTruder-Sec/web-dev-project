@@ -41,15 +41,10 @@ export const ChatHandeler = async (req, res) => {
             // Update the document, Other Users's Chat History
           } else {
             // Create new Document, Add to current, other users's Chat History
-            const NewChat = CreateNewChat(R_ID, URL).then((docId) => {
-              // Push to senders, recivers database\
-              // console.log(docId);
-              NewChat.then(function (docId) {
-                console.log(docId);
-                // PushReciptentArray(R_ID, S_ID, docId);
-                // PushReciptentArray(S_ID, R_ID, docId);
-              });
-            });
+            CreateNewChat(R_ID, S_ID);
+            // Push to senders, recivers database\
+            // console.log(docId);
+
             // console.log(docId);
           }
           res.status(200).json({ message: "OK" });

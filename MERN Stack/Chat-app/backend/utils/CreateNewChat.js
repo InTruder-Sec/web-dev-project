@@ -1,4 +1,5 @@
 import sdk, { ID } from "node-appwrite";
+import { PushReciptentArray } from "./PushReciptentDatabase.js";
 
 // Init SDK
 const client = new sdk.Client();
@@ -10,7 +11,7 @@ client
   .setProject("64a7ac5899392aecc83b")
   .setKey(process.env.API_KEY);
 
-async function CreateNewChat() {
+async function CreateNewChat(R_ID, S_ID) {
   const NewUnique = ID.unique();
   try {
     databases
@@ -21,9 +22,9 @@ async function CreateNewChat() {
         { History: [] }
       )
       .then((e) => {
-        return e.$id;
+        PushReciptentArray(R_ID, S_ID, e.$id);
+        PushReciptentArray(S_ID, R_ID, e.$id);
       });
-    // return NewUnique;
   } catch (error) {
     console.log(Error);
   }
