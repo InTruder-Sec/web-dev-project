@@ -39,15 +39,15 @@ export const ChatHandeler = async (req, res) => {
           const DoesExist = UserHistoryMap(S_CH, R_ID);
           if (DoesExist) {
             // Update the document, Other Users's Chat History
+            console.log(DoesExist);
           } else {
             // Create new Document, Add to current, other users's Chat History
-            CreateNewChat(R_ID, S_ID);
-            // Push to senders, recivers database\
-            // console.log(docId);
-
-            // console.log(docId);
+            const NewChatDetails = CreateNewChat(R_ID, S_ID, S_CH);
+            res.status(200).json({
+              messeage: "Chat successfully added",
+              chats: NewChatDetails,
+            });
           }
-          res.status(200).json({ message: "OK" });
         },
         function (error) {
           res.status(200).json({ message: "NO" });

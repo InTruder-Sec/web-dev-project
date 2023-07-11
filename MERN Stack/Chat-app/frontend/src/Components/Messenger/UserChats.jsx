@@ -4,13 +4,15 @@ import { ReactSketchCanvas } from "react-sketch-canvas";
 import "./UserChats.css";
 import send from "./../../images/send.png";
 import pen from "./../../images/pen.png";
-import { SessionUserDetails } from "./Messenger";
+import { SessionUserDetails, setSessionUserDetails } from "./Messenger";
 
 function UserChats(props) {
   // Logged in user details
-  const SessionUser = React.useContext(SessionUserDetails);
+  let SessionUser = React.useContext(SessionUserDetails);
+  const setSessionDetails = React.useContext(setSessionUserDetails);
   // Reciver user Details
   const [ReciverDetails, setReciverDetails] = React.useState({});
+  console.log(SessionUser);
 
   React.useEffect(() => {
     setReciverDetails({
@@ -37,7 +39,9 @@ function UserChats(props) {
         }),
       });
       const newData = await res.json();
-      console.log(newData);
+      let Data = SessionUser;
+      Data.chat_history = newData.chat;
+      setSessionDetails(Data);
     } catch {
       console.log("Something went wrong!");
     }

@@ -8,6 +8,7 @@ import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import SearchWindow from "./SearchWindow";
 let SessionUserDetails;
+let setSessionUserDetails;
 
 function Messenger() {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ function Messenger() {
     username: " ",
   });
   SessionUserDetails = createContext(UserSessionDetails);
+  setSessionUserDetails = createContext(setUserSessionDetails);
   // Current user details state
   const [CurrentUserDetails, setCurrentUserDetails] = useState({
     username: "",
@@ -280,4 +282,4 @@ const WelcomePage = () => {
 };
 
 export default Messenger;
-export { SessionUserDetails };
+export { SessionUserDetails, setSessionUserDetails };
