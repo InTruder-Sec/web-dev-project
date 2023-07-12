@@ -6,7 +6,6 @@ async function PushReciptentArray(ReciverId, SendersId, DocId) {
   data.chat_history.push(details);
   data.toJSON();
   data.save();
-  // console.log(data);
 }
 
 export { PushReciptentArray };

@@ -24,7 +24,7 @@ Appwrite document structure:
 
 ChatHistory: [
 {
-svgLink:
+imgLink:
 senderId:
 }
 ]

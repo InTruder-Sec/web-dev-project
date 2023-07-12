@@ -4,7 +4,8 @@ import { InputFile } from "node-appwrite";
 import { writeFile, unlink } from "fs/promises";
 import { UserHistoryMap } from "./../utils/UserHistoryMap.js";
 import { CreateNewChat } from "../utils/CreateNewChat.js";
-import { PushReciptentArray } from "../utils/PushReciptentDatabase.js";
+import UsersData from "../models/user.js";
+import { PushToAppwrite } from "../utils/PushToAppwrite.js";
 
 // Init SDK
 const client = new sdk.Client();
@@ -31,22 +32,21 @@ export const ChatHandeler = async (req, res) => {
           unlink("temp/image.png");
           const URL = `https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=64a7ac5899392aecc83b`;
           // User Details
-          let S_CH = req.body.SessionUser.chat_history;
           let S_ID = req.body.SessionUser.id;
-
+          let d = await UsersData.findById(S_ID);
+          let S_CH = d.chat_history;
           let R_ID = req.body.ReciverDetails.id;
           //   Check whether the chat history of user exist ? Update the document : Create an new object inside the same document
-          const DoesExist = UserHistoryMap(S_CH, R_ID);
+          let DoesExist = UserHistoryMap(S_CH, R_ID);
           if (DoesExist) {
             // Update the document, Other Users's Chat History
-            console.log(DoesExist);
+            PushToAppwrite(DoesExist, S_ID, URL);
+            // PushMessage to history in appwrite database
           } else {
             // Create new Document, Add to current, other users's Chat History
-            const NewChatDetails = CreateNewChat(R_ID, S_ID, S_CH);
-            res.status(200).json({
-              messeage: "Chat successfully added",
-              chats: NewChatDetails,
-            });
+
+            CreateNewChat(R_ID, S_ID, URL);
+            await res.status(200).json({ message: "Chat successfilly added!" });
           }
         },
         function (error) {

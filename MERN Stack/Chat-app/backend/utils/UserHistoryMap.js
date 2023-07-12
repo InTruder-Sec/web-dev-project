@@ -1,8 +1,7 @@
 function UserHistoryMap(UserHistory, Id) {
-  const DoesExist = false;
-  console.log(UserHistory);
+  let DoesExist = false;
   UserHistory?.map((e) => {
-    if (e === Id) {
+    if (e.userId === Id) {
       DoesExist = e.databaseId;
     }
   });

@@ -9,6 +9,7 @@ import { SessionUserDetails, setSessionUserDetails } from "./Messenger";
 function UserChats(props) {
   // Logged in user details
   let SessionUser = React.useContext(SessionUserDetails);
+  console.log(SessionUser);
   const setSessionDetails = React.useContext(setSessionUserDetails);
   // Reciver user Details
   const [ReciverDetails, setReciverDetails] = React.useState({});
@@ -35,6 +36,7 @@ function UserChats(props) {
         body: JSON.stringify({
           svg: data,
           SessionUser: SessionUser,
+          chat_history: SessionUser.chat_history,
           ReciverDetails: ReciverDetails,
         }),
       });
