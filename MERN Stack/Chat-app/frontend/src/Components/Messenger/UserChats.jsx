@@ -41,9 +41,8 @@ function UserChats(props) {
         }),
       });
       const newData = await res.json();
-      let Data = SessionUser;
-      Data.chat_history = newData.chat;
-      setSessionDetails(Data);
+      console.log(newData);
+      // Fetch live chat
     } catch {
       console.log("Something went wrong!");
     }
