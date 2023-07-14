@@ -12,11 +12,15 @@ client
   .setKey(process.env.API_KEY);
 
 const GetChats = (req, res) => {
+  const docId = req.query.id;
   try {
-    UsersData.findById(req.query.id).then((e) => {
-      console.log(e);
-      res.status(200).json({ message: "OK" });
-    });
+    databases
+      .getDocument(process.env.DATABASE_ID, process.env.COLLECTION_ID, docId)
+      .then((response) => {
+        let chat_history = response.History;
+
+        res.status(200).json({ message: "OK", data: chat_history });
+      });
   } catch {
     res.status(200).json({ message: "NO" });
   }
