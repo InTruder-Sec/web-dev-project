@@ -32,10 +32,13 @@ export const ChatHandeler = async (req, res) => {
           unlink("temp/image.png");
           const URL = `https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=64a7ac5899392aecc83b`;
           // User Details
+          console.log(req.body);
           let S_ID = req.body.SessionUser.id;
+          let S_USERNAME = req.body.SessionUser.username;
           let d = await UsersData.findById(S_ID);
           let S_CH = d.chat_history;
           let R_ID = req.body.ReciverDetails.id;
+          let R_USERNAME = req.body.ReciverDetails.username;
           //   Check whether the chat history of user exist ? Update the document : Create an new object inside the same document
           let DoesExist = UserHistoryMap(S_CH, R_ID);
           if (DoesExist) {
@@ -45,7 +48,7 @@ export const ChatHandeler = async (req, res) => {
           } else {
             // Create new Document, Add to current, other users's Chat History
 
-            CreateNewChat(R_ID, S_ID, URL);
+            CreateNewChat(R_ID, S_ID, URL, S_USERNAME, R_USERNAME);
             await res.status(200).json({ message: "Chat successfilly added!" });
           }
         },

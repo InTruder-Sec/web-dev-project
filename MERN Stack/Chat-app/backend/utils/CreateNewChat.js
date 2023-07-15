@@ -12,7 +12,7 @@ client
   .setProject("64a7ac5899392aecc83b")
   .setKey(process.env.API_KEY);
 
-function CreateNewChat(R_ID, S_ID, URL) {
+function CreateNewChat(R_ID, S_ID, URL, S_USERNAME, R_USERNAME) {
   const NewUnique = ID.unique();
   try {
     databases
@@ -23,8 +23,8 @@ function CreateNewChat(R_ID, S_ID, URL) {
         { History: [] }
       )
       .then((e) => {
-        PushReciptentArray(R_ID, S_ID, e.$id);
-        PushReciptentArray(S_ID, R_ID, e.$id);
+        PushReciptentArray(R_ID, S_ID, e.$id, S_USERNAME);
+        PushReciptentArray(S_ID, R_ID, e.$id, R_USERNAME);
         PushToAppwrite(e.$id, S_ID, URL);
       });
   } catch (error) {

@@ -7,6 +7,7 @@ import Settings from "./Settings";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import SearchWindow from "./SearchWindow";
+import { MapChatHistory } from "../../utils/MapChatHistory";
 let SessionUserDetails;
 let setSessionUserDetails;
 
@@ -34,6 +35,7 @@ function Messenger() {
   // User session details state
   const [UserSessionDetails, setUserSessionDetails] = useState({
     username: " ",
+    chat_history: [],
   });
   SessionUserDetails = createContext(UserSessionDetails);
   setSessionUserDetails = createContext(setUserSessionDetails);
@@ -131,6 +133,18 @@ function Messenger() {
     CheckSession();
   }, [navigate]);
 
+  // Chat History Map
+  let ChatMap = MapChatHistory(
+    UserSessionDetails,
+    setCurrentUserDetails,
+    CurrentUserDetails,
+    closeSearchWindow,
+    setUserChatProfile,
+    searchData,
+    setsearch,
+    setUserChatProfile
+  );
+
   // Landing page component
 
   return (
@@ -193,15 +207,8 @@ function Messenger() {
             </div>
           </div>
           <div className="chat--profiles">
-            {/* <UserProfile
-            setCurrentUserDetails={setCurrentUserDetails}
-            CurrentUserDetails={CurrentUserDetails}
-            closeSearchWindow={closeSearchWindow}
-            username="Deep Dhakate"
-            setUserChatProfile={setUserChatProfile}
-          /> */}
-
             {/* History of chats */}
+            {ChatMap}
           </div>
           <hr className="endline" />
           <div className="user--profile">
