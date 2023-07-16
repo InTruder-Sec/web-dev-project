@@ -11,6 +11,7 @@ const UserProfile = (props) => {
           username: props.username,
           id: props.id,
           lastActive: props.lastActive,
+          databaseId: props.databaseId,
         });
         props.setsearch("");
         props.closeSearchWindow();
@@ -21,6 +22,7 @@ const UserProfile = (props) => {
             id={props.id}
             lastActive={props.lastActive}
             CurrentSession={props.CurrentSession}
+            databaseId={props.databaseId}
           />
         );
       }}

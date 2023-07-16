@@ -9,11 +9,30 @@ import { SessionUserDetails, setSessionUserDetails } from "./Messenger";
 function UserChats(props) {
   // Logged in user details
   let SessionUser = React.useContext(SessionUserDetails);
-  console.log(SessionUser);
   const setSessionDetails = React.useContext(setSessionUserDetails);
   // Reciver user Details
   const [ReciverDetails, setReciverDetails] = React.useState({});
-  console.log(SessionUser);
+
+  // Get Chats from databaseId
+
+  const GetChats = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:5000/users/getChats?id=${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+      const response = await res.json();
+      return response;
+    } catch {
+      console.log("Something went wrong!");
+    }
+  };
+  React.useEffect(() => {
+    const res = GetChats(props.databaseId);
+    // Map res.data
+  }, [props.databaseId]);
 
   React.useEffect(() => {
     setReciverDetails({

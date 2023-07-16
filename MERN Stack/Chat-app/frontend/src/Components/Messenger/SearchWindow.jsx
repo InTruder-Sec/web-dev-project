@@ -19,6 +19,7 @@ const SearchWindow = (props) => {
         socket={props.socket}
         closeSearchWindow={props.closeSearchWindow}
         username={data.username}
+        databaseId={null}
         setsearch={props.setsearch}
         lastActive={data.updated_at}
         ChatProfile={props.ChatProfile}

@@ -15,6 +15,7 @@ function MapChatHistory(
         setCurrentUserDetails={setCurrentUserDetails}
         CurrentUserDetails={CurrentUserDetails}
         closeSearchWindow={closeSearchWindow}
+        databaseId={e.databaseId}
         username={e.username}
         setsearch={setsearch}
         searchData={searchData}
