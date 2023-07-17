@@ -9,7 +9,6 @@ import { SessionUserDetails, setSessionUserDetails } from "./Messenger";
 function UserChats(props) {
   // Logged in user details
   let SessionUser = React.useContext(SessionUserDetails);
-  const setSessionDetails = React.useContext(setSessionUserDetails);
   // Reciver user Details
   const [ReciverDetails, setReciverDetails] = React.useState({});
 
@@ -29,10 +28,8 @@ function UserChats(props) {
       console.log("Something went wrong!");
     }
   };
-  React.useEffect(() => {
-    const res = GetChats(props.databaseId);
-    // Map res.data
-  }, [props.databaseId]);
+  let res = <></>;
+  // Call GetChats and map chats
 
   React.useEffect(() => {
     setReciverDetails({
@@ -115,13 +112,7 @@ function UserChats(props) {
           <div className="limitlength user--email">{props.lastActive}</div>
         </div>
       </div>
-      <div className="chats--space">
-        <ReciverChats />
-
-        <SenderChats />
-        <SenderChats />
-        <ReciverChats />
-      </div>
+      <div className="chats--space">{res}</div>
       <div className="chat--tools">
         <div className="scribble--pad--tools">
           <ReactSketchCanvas
