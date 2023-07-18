@@ -12,24 +12,41 @@ function UserChats(props) {
   // Reciver user Details
   const [ReciverDetails, setReciverDetails] = React.useState({});
 
-  // Get Chats from databaseId
+  // Get Chats from databaseId and set Chats
+  const [resultChats, setresultChats] = React.useState(<></>);
 
   const GetChats = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/users/getChats?id=${id}`, {
+      const r = await fetch(`http://localhost:5000/users/getChats?id=${id}`, {
+        method: "GET",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
         },
       });
-      const response = await res.json();
-      return response;
+      const data = await r.json();
+      let Chats = data.data.map(async (e) => {
+        const ObjectData = JSON.parse(e);
+
+        if (ObjectData.sendersId === SessionUser.id) {
+          return <ReciverChats pngLink={ObjectData.imgLink} />;
+        } else {
+          return <SenderChats pngLink={ObjectData.imgLink} />;
+        }
+      });
+      setresultChats(Chats);
     } catch {
       console.log("Something went wrong!");
     }
   };
-  let res = <></>;
-  // Call GetChats and map chats
+
+  React.useEffect(() => {
+    GetChats(props.databaseId);
+  }, [props.databaseId]);
 
   React.useEffect(() => {
     setReciverDetails({
@@ -112,7 +129,7 @@ function UserChats(props) {
           <div className="limitlength user--email">{props.lastActive}</div>
         </div>
       </div>
-      <div className="chats--space">{res}</div>
+      <div className="chats--space">{resultChats}</div>
       <div className="chat--tools">
         <div className="scribble--pad--tools">
           <ReactSketchCanvas
@@ -176,7 +193,7 @@ const ReciverChats = () => {
     <>
       <div className="s--chat--main reciver">
         <div className="user--logo">A</div>
-        <div className="user--chat--content"></div>
+        <img alt="" className="user--chat--content"></img>
       </div>
     </>
   );
