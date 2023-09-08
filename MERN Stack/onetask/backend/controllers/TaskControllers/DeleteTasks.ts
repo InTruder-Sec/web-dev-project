@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import Users from "../../models/users";
 import tasks from "../../models/tasks";
 import userSession from "../UserControlers/userSession";
-import { ObjectId } from "mongodb";
 
 const DeleteTasks = async (req: Request, res: Response) => {
   // Body parameters: taskId
