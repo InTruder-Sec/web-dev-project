@@ -13,7 +13,6 @@ const AddTasks = async (req: Request, res: Response) => {
     } else {
       try {
         // @ts-ignore
-        console.log(req.query);
         if (!req.body.title) {
           res.status(400).json({ Message: "Please provide a title!" });
           return;
@@ -33,7 +32,7 @@ const AddTasks = async (req: Request, res: Response) => {
         console.log(populateUser);
         res.status(200).json({
           Message: "Task Added Successfully!",
-          tasks: populateUser?.Tasks,
+          newTask: userTasks,
         });
       } catch (err) {
         console.log(err);
