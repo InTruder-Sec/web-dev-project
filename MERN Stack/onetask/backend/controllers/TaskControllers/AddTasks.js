@@ -26,7 +26,6 @@ const AddTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         else {
             try {
                 // @ts-ignore
-                console.log(req.query);
                 if (!req.body.title) {
                     res.status(400).json({ Message: "Please provide a title!" });
                     return;
@@ -42,7 +41,7 @@ const AddTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 console.log(populateUser);
                 res.status(200).json({
                     Message: "Task Added Successfully!",
-                    tasks: populateUser === null || populateUser === void 0 ? void 0 : populateUser.Tasks,
+                    newTask: userTasks,
                 });
             }
             catch (err) {
