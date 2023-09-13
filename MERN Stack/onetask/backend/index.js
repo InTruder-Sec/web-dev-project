@@ -8,8 +8,14 @@ const User_1 = __importDefault(require("./routes/User"));
 const Tasks_1 = __importDefault(require("./routes/Tasks"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 dotenv_1.default.config();
+const corsOptions = {
+    origin: "http://localhost:5173",
+    credentials: true,
+};
+app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/api/user", User_1.default);
