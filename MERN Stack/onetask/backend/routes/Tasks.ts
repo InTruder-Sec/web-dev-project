@@ -7,7 +7,7 @@ import UpdateTasks from "../controllers/TaskControllers/UpdateTasks";
 const Tasks = express.Router();
 
 Tasks.get("/get", GetTasks);
-Tasks.get("/add", AddTasks);
+Tasks.post("/add", AddTasks);
 Tasks.post("/delete", DeleteTasks);
 Tasks.post("/update", UpdateTasks);
 
