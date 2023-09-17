@@ -10,7 +10,7 @@ const DeleteTasks_1 = __importDefault(require("../controllers/TaskControllers/De
 const UpdateTasks_1 = __importDefault(require("../controllers/TaskControllers/UpdateTasks"));
 const Tasks = express_1.default.Router();
 Tasks.get("/get", GetTasks_1.default);
-Tasks.get("/add", AddTasks_1.default);
+Tasks.post("/add", AddTasks_1.default);
 Tasks.post("/delete", DeleteTasks_1.default);
 Tasks.post("/update", UpdateTasks_1.default);
 exports.default = Tasks;
