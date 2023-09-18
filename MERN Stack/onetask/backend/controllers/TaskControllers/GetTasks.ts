@@ -12,7 +12,8 @@ const GetTasks = async (req: Request, res: Response) => {
       return;
     } else {
       try {
-        const userTasks = await Users.findById(user.userId);
+        console.log("FInding user");
+        const userTasks = await Users.findById(user.userId).populate("Tasks");
         res.status(200).json({ Tasks: userTasks?.Tasks });
       } catch (err) {
         console.log(err);
