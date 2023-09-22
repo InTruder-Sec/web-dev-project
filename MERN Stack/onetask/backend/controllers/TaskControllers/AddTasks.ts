@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import userSession from "../UserControlers/userSession";
 import Users from "../../models/users";
+import tasks from "../../models/tasks";
 
 const AddTasks = async (req: Request, res: Response) => {
   try {
@@ -13,31 +14,27 @@ const AddTasks = async (req: Request, res: Response) => {
       try {
         // @ts-ignore
         console.log(req.query);
-        res.status(401).json({ Message: "Please Login again!" });
+        if (!req.body.title) {
+          res.status(400).json({ Message: "Please provide a title!" });
+          return;
+        }
+        const task = {
+          title: req.body.title,
+          isCompleted: false,
+        };
+        const _id = user.userId;
+        const userTasks = await tasks.create(task);
+        await userTasks.save();
 
-        //   const task = {
-        //     Title: req.body.Title,
-        //     isCompleted: false,
-        //   };
-        //   console.log(user.userId);
-        //   // Users.findById(user.userId).then((user) => {
-        //   //   if (user) {
-        //   //     user.Tasks.push(task);
-        //   //     user.save();
-        //   //   }
-        //   // });
-
-        //   const userTasks = (await Users.findOneAndUpdate(
-        //     { _id: user.userId?.trim() },
-        //     { $push: { Tasks: task } }
-        //   )) as { isvalid: boolean; userId: string | null };
-
-        //   console.log(userTasks);
-        //   if (true) {
-        //     res.status(200).json({ Message: "Task Added Successfully!" });
-        //   } else {
-        //     res.status(500).json({ Message: "Invalid user!" });
-        //   }
+        const populateUser = await Users.findOneAndUpdate(
+          { _id },
+          { $push: { Tasks: userTasks._id } }
+        );
+        console.log(populateUser);
+        res.status(200).json({
+          Message: "Task Added Successfully!",
+          tasks: populateUser?.Tasks,
+        });
       } catch (err) {
         console.log(err);
         res
