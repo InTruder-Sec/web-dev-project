@@ -29,16 +29,19 @@ function UserChats(props) {
         },
       });
       const data = await r.json();
-      let Chats = data.data.map(async (e) => {
+      let resChats = data.data.map(async (e) => {
         const ObjectData = JSON.parse(e);
 
+        const q = await fetch(ObjectData.pngLink);
+        console.log(q.json());
         if (ObjectData.sendersId === SessionUser.id) {
           return <ReciverChats pngLink={ObjectData.imgLink} />;
         } else {
           return <SenderChats pngLink={ObjectData.imgLink} />;
         }
       });
-      setresultChats(Chats);
+      const finalRes = await Promise.all(resChats);
+      setresultChats(finalRes);
     } catch {
       console.log("Something went wrong!");
     }
@@ -74,14 +77,12 @@ function UserChats(props) {
         }),
       });
       const newData = await res.json();
-      console.log(newData);
       // Fetch live chat
     } catch {
       console.log("Something went wrong!");
     }
   };
 
-  const socket = props.socket;
   const styles = {
     zIndex: 4,
     cursor: `url(${pen}), auto`,
@@ -108,11 +109,6 @@ function UserChats(props) {
   function SVGhandler() {
     sketchRef.current.exportImage("png").then((data) => {
       // trigger socket.io
-      socket.current.emit("send-message", {
-        to: props.id,
-        from: SessionUser.id,
-        message: data,
-      });
 
       // trigger database to save messeages
 
