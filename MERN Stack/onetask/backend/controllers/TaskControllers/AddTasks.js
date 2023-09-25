@@ -13,6 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const userSession_1 = __importDefault(require("../UserControlers/userSession"));
+const users_1 = __importDefault(require("../../models/users"));
+const tasks_1 = __importDefault(require("../../models/tasks"));
 const AddTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const AuthHeader = req.headers.authorization;
@@ -25,28 +27,23 @@ const AddTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             try {
                 // @ts-ignore
                 console.log(req.query);
-                res.status(401).json({ Message: "Please Login again!" });
-                //   const task = {
-                //     Title: req.body.Title,
-                //     isCompleted: false,
-                //   };
-                //   console.log(user.userId);
-                //   // Users.findById(user.userId).then((user) => {
-                //   //   if (user) {
-                //   //     user.Tasks.push(task);
-                //   //     user.save();
-                //   //   }
-                //   // });
-                //   const userTasks = (await Users.findOneAndUpdate(
-                //     { _id: user.userId?.trim() },
-                //     { $push: { Tasks: task } }
-                //   )) as { isvalid: boolean; userId: string | null };
-                //   console.log(userTasks);
-                //   if (true) {
-                //     res.status(200).json({ Message: "Task Added Successfully!" });
-                //   } else {
-                //     res.status(500).json({ Message: "Invalid user!" });
-                //   }
+                if (!req.body.title) {
+                    res.status(400).json({ Message: "Please provide a title!" });
+                    return;
+                }
+                const task = {
+                    title: req.body.title,
+                    isCompleted: false,
+                };
+                const _id = user.userId;
+                const userTasks = yield tasks_1.default.create(task);
+                yield userTasks.save();
+                const populateUser = yield users_1.default.findOneAndUpdate({ _id }, { $push: { Tasks: userTasks._id } });
+                console.log(populateUser);
+                res.status(200).json({
+                    Message: "Task Added Successfully!",
+                    tasks: populateUser === null || populateUser === void 0 ? void 0 : populateUser.Tasks,
+                });
             }
             catch (err) {
                 console.log(err);
