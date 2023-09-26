@@ -19,7 +19,6 @@ client
 
 export const ChatHandeler = async (req, res) => {
   const data = req.body.svg;
-  console.log(data);
   try {
     writeFile("temp/image.png", data).then(() => {
       const promise = storage.createFile(
@@ -37,15 +36,14 @@ export const ChatHandeler = async (req, res) => {
           let S_ID = req.body.SessionUser.id;
           let S_USERNAME = req.body.SessionUser.username;
           let d = await UsersData.findById(S_ID);
-          let S_CH = d.chat_history;
           let R_ID = req.body.ReciverDetails.id;
+          let S_CH = d.chat_history;
           let R_USERNAME = req.body.ReciverDetails.username;
           //   Check whether the chat history of user exist ? Update the document : Create an new object inside the same document
-          let DoesExist = UserHistoryMap(S_CH, R_ID);
+          let DoesExist = await UserHistoryMap(S_CH, R_USERNAME);
           console.log(DoesExist);
           if (DoesExist) {
             // Update the document, Other Users's Chat History
-            console.log("Chat Histort exist");
             PushToAppwrite(DoesExist, S_ID, URL);
             // PushMessage to history in appwrite database
           } else {
