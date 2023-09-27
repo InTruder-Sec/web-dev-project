@@ -20,7 +20,7 @@
   overflow: scroll;
   scrollbar-color: #000 #000;
   position: relative;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .chat--tools {
