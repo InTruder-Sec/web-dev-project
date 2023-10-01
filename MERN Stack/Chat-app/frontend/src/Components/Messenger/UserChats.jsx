@@ -19,76 +19,31 @@ function UserChats(props) {
     try {
       const res = await fetch(`http://localhost:5000/users/getchats?id=${id}`);
       const data = await res.json();
-      await data.data.map(async (e) => {
+      let resChats = await data.data.map(async (e) => {
         const ObjectData = JSON.parse(e);
-        // const q = await fetch(ObjectData.imgLink);
-        // fetch(ObjectData.imgLink).then((q) => {
-        //   const re = q.data.json();
-        //   console.log(re);
-        // });
-        // console.log(q);
-        // const rec = await q.json();
+        console.log(ObjectData.imgLink);
+        const image = await fetch(ObjectData.imgLink);
+        const imageJson = await image.text();
+
         if (ObjectData.sendersId === SessionUser.id) {
-          return <ReciverChats pngLink={ObjectData.imgLink} />;
+          return <ReciverChats pngData={imageJson} />;
         } else {
-          return <SenderChats pngLink={ObjectData.imgLink} />;
+          return <SenderChats pngData={imageJson} />;
         }
       });
+      const finalRes = await Promise.all(resChats);
+      setresultChats(finalRes);
     } catch (err) {
       console.log("error: " + err);
     }
   };
 
-  // const GetChats = async (id) => {
-  //   try {
-  //     fetch(`http://localhost:5000/users/getchats?id=${id}`, {
-  //       method: "GET",
-  //       mode: "cors",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "Access-Control-Allow-Origin": "*",
-  //         "Cache-Control": "no-cache, no-store, must-revalidate",
-  //         Pragma: "no-cache",
-  //         Expires: "0",
-  //       },
-  //     })
-  //       .then((r) => {
-  //         if (!r.ok) {
-  //           throw new Error("Network response was not ok");
-  //         }
-  //         console.log(r.json());
-  //         let resChats = r.data.map(async (e) => {
-  //           console.log(resChats);
-  //           const ObjectData = e;
-
-  //           const q = await fetch(ObjectData.pngLink);
-  //           console.log(q.json());
-  //           if (ObjectData.sendersId === SessionUser.id) {
-  //             return <ReciverChats pngLink={ObjectData.imgLink} />;
-  //           } else {
-  //             return <SenderChats pngLink={ObjectData.imgLink} />;
-  //           }
-  //         });
-  //         return r.json();
-  //       })
-  //       .then((data) => {
-  //         console.log(data);
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error:", error);
-  //       });
-
-  //     // const finalRes = await Promise.all(resChats);
-  //     // setresultChats(finalRes);
-
-  //     // const data = await r.json();
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
+  const fetchChats = async () => {
+    const data = await GetChats(props.databaseId);
+  };
 
   React.useEffect(() => {
-    GetChats(props.databaseId);
+    fetchChats();
   }, [props.databaseId]);
 
   React.useEffect(() => {
@@ -213,23 +168,31 @@ function UserChats(props) {
   );
 }
 
-const SenderChats = () => {
+const SenderChats = ({ pngData }) => {
   return (
     <>
       <div className="s--chat--main">
         <div className="user--logo">A</div>
-        <div className="user--chat--content"></div>
+        <img
+          alt="Something went wrong!"
+          src={pngData}
+          className="user--chat--content"
+        ></img>
       </div>
     </>
   );
 };
 
-const ReciverChats = () => {
+const ReciverChats = ({ pngData }) => {
   return (
     <>
       <div className="s--chat--main reciver">
         <div className="user--logo">A</div>
-        <img alt="" className="user--chat--content"></img>
+        <img
+          alt="Something went wrong!"
+          className="user--chat--content"
+          src={pngData}
+        ></img>
       </div>
     </>
   );
