@@ -43,6 +43,7 @@ export const ChatHandeler = async (req, res) => {
           let DoesExist = UserHistoryMap(S_CH, R_ID);
           if (DoesExist) {
             // Update the document, Other Users's Chat History
+            console.log("Chat Histort exist");
             PushToAppwrite(DoesExist, S_ID, URL);
             // PushMessage to history in appwrite database
           } else {
