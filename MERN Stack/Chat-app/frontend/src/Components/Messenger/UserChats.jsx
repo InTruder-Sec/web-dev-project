@@ -17,7 +17,7 @@ function UserChats(props) {
 
   const GetChats = async (id) => {
     try {
-      const r = await fetch(`http://localhost:5000/users/getChats?id=${id}`, {
+      const r = await fetch(`http://localhost:5000/users/getchats?id=${id}`, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -28,9 +28,11 @@ function UserChats(props) {
           Expires: "0",
         },
       });
-      const data = await r.json();
-      let resChats = data.data.map(async (e) => {
-        const ObjectData = JSON.parse(e);
+      console.log(r);
+      // const data = await r.json();
+      let resChats = r.data.map(async (e) => {
+        console.log(resChats);
+        const ObjectData = e;
 
         const q = await fetch(ObjectData.pngLink);
         console.log(q.json());
