@@ -13,13 +13,8 @@ client
 
 const GetChats = (req, res) => {
   const docId = req.query.id;
-  console.log(docId);
-  if (docId === null) {
-    res.status(200).json({ message: "OK", data: {} });
-  } else {
+  if (docId !== "null") {
     try {
-      console.log("Working");
-
       databases
         .getDocument(process.env.DATABASE_ID, process.env.COLLECTION_ID, docId)
         .then((response) => {
@@ -29,6 +24,8 @@ const GetChats = (req, res) => {
     } catch {
       res.status(200).json({ message: "NO" });
     }
+  } else {
+    res.status(200).json({ message: "OK", data: {} });
   }
 };
 
