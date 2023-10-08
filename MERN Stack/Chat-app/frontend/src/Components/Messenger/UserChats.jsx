@@ -16,12 +16,13 @@ function UserChats(props) {
   const [resultChats, setresultChats] = React.useState(<></>);
 
   const GetChats = async (id) => {
+    console.log(id);
     try {
       const res = await fetch(`http://localhost:5000/users/getchats?id=${id}`);
       const data = await res.json();
       let resChats = await data.data.map(async (e) => {
         const ObjectData = JSON.parse(e);
-        console.log(ObjectData.imgLink);
+        // console.log(ObjectData.imgLink);
         const image = await fetch(ObjectData.imgLink);
         const imageJson = await image.text();
 
@@ -56,6 +57,8 @@ function UserChats(props) {
   // Upload SVG to Database
 
   const SvgUpload = async (data) => {
+    console.log(SessionUser);
+    console.log(ReciverChats);
     try {
       const res = await fetch("http://localhost:5000/users/sendChat", {
         method: "POST",

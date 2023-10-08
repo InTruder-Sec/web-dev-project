@@ -3,6 +3,7 @@ import React from "react";
 import UserChats from "./UserChats";
 
 const UserProfile = (props) => {
+  console.log(props);
   return (
     <div
       className="profile"

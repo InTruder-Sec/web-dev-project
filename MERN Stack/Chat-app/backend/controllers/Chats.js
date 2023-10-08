@@ -19,6 +19,7 @@ client
 
 export const ChatHandeler = async (req, res) => {
   const data = req.body.svg;
+  console.log(data);
   try {
     writeFile("temp/image.png", data).then(() => {
       const promise = storage.createFile(
@@ -32,7 +33,7 @@ export const ChatHandeler = async (req, res) => {
           unlink("temp/image.png");
           const URL = `https://cloud.appwrite.io/v1/storage/buckets/${response.bucketId}/files/${response.$id}/view?project=64a7ac5899392aecc83b`;
           // User Details
-          console.log(req.body);
+
           let S_ID = req.body.SessionUser.id;
           let S_USERNAME = req.body.SessionUser.username;
           let d = await UsersData.findById(S_ID);
@@ -41,6 +42,7 @@ export const ChatHandeler = async (req, res) => {
           let R_USERNAME = req.body.ReciverDetails.username;
           //   Check whether the chat history of user exist ? Update the document : Create an new object inside the same document
           let DoesExist = UserHistoryMap(S_CH, R_ID);
+          console.log(DoesExist);
           if (DoesExist) {
             // Update the document, Other Users's Chat History
             console.log("Chat Histort exist");

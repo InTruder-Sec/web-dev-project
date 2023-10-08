@@ -10,11 +10,12 @@ const SearchWindow = (props) => {
     );
   }
   const users = props.searchData.map((data) => {
+    // console.log(data);
     return (
       <UserProfile
         setCurrentUserDetails={props.setCurrentUserDetails}
         CurrentUserDetails={props.CurrentUserDetails}
-        id={data.id}
+        id={data?.id}
         CurrentSession={props.CurrentSession}
         socket={props.socket}
         closeSearchWindow={props.closeSearchWindow}

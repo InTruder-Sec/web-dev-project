@@ -13,16 +13,22 @@ client
 
 const GetChats = (req, res) => {
   const docId = req.query.id;
-  try {
-    databases
-      .getDocument(process.env.DATABASE_ID, process.env.COLLECTION_ID, docId)
-      .then((response) => {
-        let chat_history = response.History;
+  console.log(docId);
+  if (docId === null) {
+    res.status(200).json({ message: "OK", data: {} });
+  } else {
+    try {
+      console.log("Working");
 
-        res.status(200).json({ message: "OK", data: chat_history });
-      });
-  } catch {
-    res.status(200).json({ message: "NO" });
+      databases
+        .getDocument(process.env.DATABASE_ID, process.env.COLLECTION_ID, docId)
+        .then((response) => {
+          let chat_history = response.History;
+          res.status(200).json({ message: "OK", data: chat_history });
+        });
+    } catch {
+      res.status(200).json({ message: "NO" });
+    }
   }
 };
 

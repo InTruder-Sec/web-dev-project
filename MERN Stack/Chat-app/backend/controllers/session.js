@@ -39,6 +39,7 @@ export const userSession = async (req, res) => {
 };
 
 export const userLogout = async (req, res) => {
+  console.log("Request recived");
   if (!req.cookies.token) {
     res.status(200).json({ message: "Invalid token", code: 500 });
   } else {

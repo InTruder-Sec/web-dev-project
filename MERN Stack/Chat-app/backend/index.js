@@ -29,9 +29,9 @@ app.use("/users", userRouter);
 mongoose.connect(process.env.SERVER_URL, { useNewUrlParser: true });
 
 // Listen for socket.io connections
-const server = app.listen(5000, () =>
-  console.log("Server running on port 5000")
-);
+const server = app.listen(5000, () => {
+  console.log("Server running on port 5000");
+});
 
 const io = new Server(server, {
   cors: {
