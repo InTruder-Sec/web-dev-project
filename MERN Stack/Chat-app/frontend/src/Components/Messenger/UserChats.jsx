@@ -71,7 +71,7 @@ function UserChats(props) {
           ReciverDetails: ReciverDetails,
         }),
       });
-      const newData = await res.json();
+      // const newData = await res.json();
       // Fetch live chat
     } catch {
       console.log("Something went wrong!");
