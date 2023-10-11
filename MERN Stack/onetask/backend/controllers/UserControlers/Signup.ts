@@ -16,10 +16,10 @@ const SignUp = async (req: Request, res: Response): Promise<void> => {
       .status(200)
       .json({ Message: "User created! Please login again.", newUser: newUser });
   } catch (error) {
-    //   if (error.code === 11000)
-    //     res.status(500).json({ Message: "Email already registered!" });
-    //   else
-    //     res.status(500).json({ Message: "Something went wrong on our side :(" });
+    // if (error.code === 11000)
+    //   res.status(500).json({ Message: "Email already registered!" });
+    // else
+    //   res.status(500).json({ Message: "Something went wrong on our side :(" });
     console.log(error);
   }
 };
