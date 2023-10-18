@@ -29,10 +29,10 @@ const SignUp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             .json({ Message: "User created! Please login again.", newUser: newUser });
     }
     catch (error) {
-        //   if (error.code === 11000)
-        //     res.status(500).json({ Message: "Email already registered!" });
-        //   else
-        //     res.status(500).json({ Message: "Something went wrong on our side :(" });
+        // if (error.code === 11000)
+        //   res.status(500).json({ Message: "Email already registered!" });
+        // else
+        //   res.status(500).json({ Message: "Something went wrong on our side :(" });
         console.log(error);
     }
 });
