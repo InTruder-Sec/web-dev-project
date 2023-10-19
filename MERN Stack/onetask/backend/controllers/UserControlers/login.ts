@@ -28,7 +28,7 @@ const Login = async (req: Request, res: Response): Promise<void> => {
               process.env.JWT_SECRET || "",
               {
                 algorithm: "HS256",
-                expiresIn: "7d",
+                expiresIn: "365d",
               }
             ),
             task: userDetails.Tasks,
