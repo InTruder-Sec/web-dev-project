@@ -30,7 +30,7 @@ const Login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                         message: "Login successful!",
                         token: jsonwebtoken_1.default.sign({ userId: userDetails._id, userEmail: userDetails.email }, process.env.JWT_SECRET || "", {
                             algorithm: "HS256",
-                            expiresIn: "7d",
+                            expiresIn: "365d",
                         }),
                         task: userDetails.Tasks,
                     };
