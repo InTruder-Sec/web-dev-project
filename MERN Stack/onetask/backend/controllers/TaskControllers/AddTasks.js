@@ -13,9 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const userSession_1 = __importDefault(require("../UserControlers/userSession"));
-const users_1 = __importDefault(require("../../models/users"));
 const AddTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
     try {
         const AuthHeader = req.headers.authorization;
         const user = (0, userSession_1.default)(AuthHeader || "");
@@ -26,25 +24,29 @@ const AddTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         else {
             try {
                 // @ts-ignore
-                const task = {
-                    Title: req.body.Title,
-                    isCompleted: false,
-                };
-                console.log(user.userId);
-                // Users.findById(user.userId).then((user) => {
-                //   if (user) {
-                //     user.Tasks.push(task);
-                //     user.save();
+                console.log(req.query);
+                res.status(401).json({ Message: "Please Login again!" });
+                //   const task = {
+                //     Title: req.body.Title,
+                //     isCompleted: false,
+                //   };
+                //   console.log(user.userId);
+                //   // Users.findById(user.userId).then((user) => {
+                //   //   if (user) {
+                //   //     user.Tasks.push(task);
+                //   //     user.save();
+                //   //   }
+                //   // });
+                //   const userTasks = (await Users.findOneAndUpdate(
+                //     { _id: user.userId?.trim() },
+                //     { $push: { Tasks: task } }
+                //   )) as { isvalid: boolean; userId: string | null };
+                //   console.log(userTasks);
+                //   if (true) {
+                //     res.status(200).json({ Message: "Task Added Successfully!" });
+                //   } else {
+                //     res.status(500).json({ Message: "Invalid user!" });
                 //   }
-                // });
-                const userTasks = (yield users_1.default.findOneAndUpdate({ _id: (_a = user.userId) === null || _a === void 0 ? void 0 : _a.trim() }, { $push: { Tasks: task } }));
-                console.log(userTasks);
-                if (true) {
-                    res.status(200).json({ Message: "Task Added Successfully!" });
-                }
-                else {
-                    res.status(500).json({ Message: "Invalid user!" });
-                }
             }
             catch (err) {
                 console.log(err);
@@ -56,7 +58,9 @@ const AddTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
     catch (err) {
         console.log(err);
-        res.status(500).json({ Message: "Something went wrong on our side :(" });
+        res
+            .status(500)
+            .json({ Message: "Something went wrong on our side :(", error: err });
     }
 });
 exports.default = AddTasks;
