@@ -5,6 +5,7 @@ import { UserDetailsGlobal, setCurrentUserDetailsGlobal } from "./Messenger";
 import { useContext, useEffect, useRef, useState } from "react";
 import { SvgUpload } from "../../Utils/SendChats";
 import GetChats from "../../Utils/GetChats";
+import { ReciverChats, SenderChats } from "./ChatDesigns";
 
 function UserChats(props) {
   // Logged in user details
@@ -19,11 +20,14 @@ function UserChats(props) {
 
   useEffect(() => {
     const fetchChats = async () => {
-      console.log("function called");
+      console.log("Rendered");
       await GetChats(props.databaseId, setresultChats, SessionUser);
+      var elem = document.getElementById("chat--container");
+      elem.scrollIntoView({ behavior: "smooth" });
+      elem.scrollTop = elem.scrollHeight;
     };
     fetchChats();
-  }, [props.databaseId]);
+  }, [props.databaseId, SessionUser]);
 
   useEffect(() => {
     setReciverDetails({
@@ -31,8 +35,6 @@ function UserChats(props) {
       username: props.username,
     });
   }, [props]);
-
-  // Upload SVG to Database
 
   // Canvas settings
   const styles = {
@@ -59,7 +61,20 @@ function UserChats(props) {
 
   function SVGhandler() {
     sketchRef.current.exportImage("png").then((data) => {
-      SvgUpload(data, SessionUser, ReciverDetails).then(async (e) => {});
+      SvgUpload(data, SessionUser, ReciverDetails).then(async (e) => {
+        e.json().then(async (data) => {
+          const image = await fetch(data.ImageUrl);
+          const imageJson = await image.text();
+          const newChat = <ReciverChats pngData={imageJson} />;
+          setresultChats((prev) => {
+            return [...prev, newChat];
+          });
+          sketchRef.current.clearCanvas();
+          var elem = document.getElementById("chat--container");
+          elem.scrollTop = elem.scrollHeight;
+          elem.scrollIntoView({ behavior: "smooth" });
+        });
+      });
     });
   }
 
@@ -72,7 +87,9 @@ function UserChats(props) {
           <div className="limitlength user--email">{props.lastActive}</div>
         </div>
       </div>
-      <div className="chats--space">{resultChats}</div>
+      <div className="chats--space" id="chat--container">
+        {resultChats}
+      </div>
       <div className="chat--tools">
         <div className="scribble--pad--tools">
           <ReactSketchCanvas
