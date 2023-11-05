@@ -22,7 +22,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/users", userRouter);
 
 // Connect to MongoDB
-mongoose.connect(process.env.SERVER_URL, { useNewUrlParser: true });
+const connection = await mongoose.connect(process.env.SERVER_URL, {
+  useNewUrlParser: true,
+});
 
 // Listen for socket.io connections
 const server = app.listen(5000, () => {
