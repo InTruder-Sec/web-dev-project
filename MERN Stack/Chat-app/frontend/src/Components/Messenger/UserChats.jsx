@@ -59,11 +59,7 @@ function UserChats(props) {
 
   function SVGhandler() {
     sketchRef.current.exportImage("png").then((data) => {
-      SvgUpload(data, SessionUser, ReciverDetails).then(async () => {
-        await GetChats(props.databaseId, setresultChats, SessionUser);
-        // Use result to update chats
-        
-      });
+      SvgUpload(data, SessionUser, ReciverDetails).then(async (e) => {});
     });
   }
 
