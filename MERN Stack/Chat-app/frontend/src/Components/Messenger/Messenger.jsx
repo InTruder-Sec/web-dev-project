@@ -6,7 +6,6 @@ import logo from "../../images/logo.png";
 import SearchForUser from "../../Utils/SearchUser";
 import CheckSession from "../../Utils/UserSession";
 import { MapChatHistory } from "../../Utils/MapChatHistory";
-import { create } from "@mui/material/styles/createTransitions";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import SearchWindow from "./SearchWindow";
 

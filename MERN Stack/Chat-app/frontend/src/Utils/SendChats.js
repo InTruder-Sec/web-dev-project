@@ -14,7 +14,7 @@ export async function SvgUpload(data, SessionUser, ReciverDetails) {
         ReciverDetails: ReciverDetails,
       }),
     });
-
+    console.log(res);
     console.log("Sent successfully!");
   } catch {
     console.log("Something went wrong!");

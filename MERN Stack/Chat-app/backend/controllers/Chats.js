@@ -45,13 +45,17 @@ export const ChatHandeler = async (req, res) => {
           if (DoesExist) {
             // Update the document, Other Users's Chat History
             PushToAppwrite(DoesExist, S_ID, URL);
-            await res.status(200).json({ message: "Chat successfilly added!" });
+            await res
+              .status(200)
+              .json({ message: "Chat successfilly added!", ImageUrl: URL });
             // PushMessage to history in appwrite database
           } else {
             // Create new Document, Add to current, other users's Chat History
 
             CreateNewChat(R_ID, S_ID, URL, S_USERNAME, R_USERNAME);
-            await res.status(200).json({ message: "Chat successfilly added!" });
+            await res
+              .status(200)
+              .json({ message: "Chat successfilly added!", ImageUrl: URL });
           }
         },
         function (error) {
