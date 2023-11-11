@@ -1,90 +1,45 @@
-import * as React from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
-
 import "./UserChats.css";
 import send from "./../../images/send.png";
-import pen from "./../../images/pen.png";
 import { UserDetailsGlobal, setCurrentUserDetailsGlobal } from "./Messenger";
+import { useContext, useEffect, useRef, useState } from "react";
+import { SvgUpload } from "../../Utils/SendChats";
+import GetChats from "../../Utils/GetChats";
 
 function UserChats(props) {
   // Logged in user details
-  let SessionUser = React.useContext(UserDetailsGlobal);
-  let CurrentUserDetails = React.useContext(setCurrentUserDetailsGlobal);
+  let SessionUser = useContext(UserDetailsGlobal);
+
   // Reciver user Details
-  const [ReciverDetails, setReciverDetails] = React.useState({});
+  let CurrentUserDetails = useContext(setCurrentUserDetailsGlobal);
+  const [ReciverDetails, setReciverDetails] = useState({});
 
   // Get Chats from databaseId and set Chats
-  const [resultChats, setresultChats] = React.useState(<></>);
-  const GetChats = async (id) => {
-    try {
-      const res = await fetch(`http://localhost:5000/users/getchats?id=${id}`);
-      const data = await res.json();
-      console.log(data);
-      let resChats = await data.data.map(async (e) => {
-        const ObjectData = JSON.parse(e);
-        const image = await fetch(ObjectData.imgLink);
-        const imageJson = await image.text();
-        if (ObjectData.sendersId === SessionUser.id) {
-          return <ReciverChats pngData={imageJson} />;
-        } else {
-          return <SenderChats pngData={imageJson} />;
-        }
-      });
-      const finalRes = await Promise.all(resChats);
-      setresultChats(finalRes);
-    } catch (err) {
-      console.log("error: " + err);
-    }
-  };
+  const [resultChats, setresultChats] = useState(<></>);
 
-  const fetchChats = async () => {
-    const data = await GetChats(props.databaseId);
-  };
-
-  React.useEffect(() => {
+  useEffect(() => {
+    const fetchChats = async () => {
+      console.log("function called");
+      await GetChats(props.databaseId, setresultChats, SessionUser);
+    };
     fetchChats();
   }, [props.databaseId]);
 
-  React.useEffect(() => {
-    console.log(props);
+  useEffect(() => {
     setReciverDetails({
       id: props.id,
       username: props.username,
     });
-  }, [props.id, props.username]);
+  }, [props]);
+
   // Upload SVG to Database
 
-  const SvgUpload = async (data) => {
-    try {
-      const res = await fetch("http://localhost:5000/users/sendChat", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          svg: data,
-          SessionUser: SessionUser,
-          chat_history: SessionUser.chat_history,
-          ReciverDetails: ReciverDetails,
-        }),
-      });
-
-      console.log("Sent successfully!");
-      // const newData = await res.json();
-      // Fetch live chat
-    } catch {
-      console.log("Something went wrong!");
-    }
-  };
-
+  // Canvas settings
   const styles = {
     zIndex: 4,
-    cursor: `url(${pen}), auto`,
   };
 
-  const sketchRef = React.useRef(null);
+  const sketchRef = useRef(null);
 
   const ClearHandler = () => {
     sketchRef.current.clearCanvas();
@@ -104,23 +59,21 @@ function UserChats(props) {
 
   function SVGhandler() {
     sketchRef.current.exportImage("png").then((data) => {
-      // trigger socket.io
-      // trigger database to save messeages
-      SvgUpload(data).then(() => {
-        console.log("Changing State");
-        props.setUserChatProfile(
-          <UserChats
-            username={props.username}
-            socket={props.socket}
-            id={props.id}
-            lastActive={props.lastActive}
-            CurrentSession={props.CurrentSession}
-            databaseId={props.databaseId}
-            setUserChatProfile={props.setUserChatProfile}
-            setCurrentUserDetails={props.setCurrentUserDetails}
-            updated={true}
-          />
-        );
+      SvgUpload(data, SessionUser, ReciverDetails).then(() => {
+        // console.log("Changing State");
+        // props.setUserChatProfile(
+        //   <UserChats
+        //     username={props.username}
+        //     socket={props.socket}
+        //     id={props.id}
+        //     lastActive={props.lastActive}
+        //     CurrentSession={props.CurrentSession}
+        //     databaseId={props.databaseId}
+        //     setUserChatProfile={props.setUserChatProfile}
+        //     setCurrentUserDetails={props.setCurrentUserDetails}
+        //     updated={true}
+        //   />
+        // );
       });
     });
   }
@@ -182,33 +135,4 @@ function UserChats(props) {
   );
 }
 
-const SenderChats = ({ pngData }) => {
-  return (
-    <>
-      <div className="s--chat--main">
-        <div className="user--logo">A</div>
-        <img
-          alt="Something went wrong!"
-          src={pngData}
-          className="user--chat--content"
-        ></img>
-      </div>
-    </>
-  );
-};
-
-const ReciverChats = ({ pngData }) => {
-  return (
-    <>
-      <div className="s--chat--main reciver">
-        <div className="user--logo">A</div>
-        <img
-          alt="Something went wrong!"
-          className="user--chat--content"
-          src={pngData}
-        ></img>
-      </div>
-    </>
-  );
-};
 export default UserChats;
