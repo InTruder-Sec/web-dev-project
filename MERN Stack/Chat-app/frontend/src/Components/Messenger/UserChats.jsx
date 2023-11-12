@@ -59,7 +59,8 @@ function UserChats(props) {
 
   function SVGhandler() {
     sketchRef.current.exportImage("png").then((data) => {
-      SvgUpload(data, SessionUser, ReciverDetails).then(() => {
+      SvgUpload(data, SessionUser, ReciverDetails).then(async () => {
+        await GetChats(props.databaseId, setresultChats, SessionUser);
         // console.log("Changing State");
         // props.setUserChatProfile(
         //   <UserChats
