@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import Users from "../models/users";
+import Users from "../../models/users";
 import { Types } from "mongoose";
 
 type ReturnData = {

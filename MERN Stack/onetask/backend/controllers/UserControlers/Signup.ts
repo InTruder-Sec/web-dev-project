@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import Users from "../models/users";
+import Users from "../../models/users";
 
 const SignUp = async (req: Request, res: Response): Promise<void> => {
   if (req.body.email === null && req.body.password === null) {

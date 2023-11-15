@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const users_1 = __importDefault(require("../models/users"));
+const users_1 = __importDefault(require("../../models/users"));
 const Login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     if (req.query.email == undefined || req.query.password == undefined) {
