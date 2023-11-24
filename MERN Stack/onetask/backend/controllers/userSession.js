@@ -13,20 +13,36 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const users_1 = __importDefault(require("../models/users"));
 const userSession = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.cookie);
     try {
-        const authToken = req.cookies["auth-token"];
+        const authToken = req.headers["authorization"] || "";
         console.log(authToken);
-        const decoded = jsonwebtoken_1.default.verify(authToken, process.env.JWT_SECRET || "");
-        console.log(decoded);
-        if (!decoded) {
+        try {
+            //ts ignore
+            const jwtPayload = jsonwebtoken_1.default.verify(authToken, process.env.JWT_SECRET || "");
+            // const { decoded } = jwt.verify(
+            //   authToken,
+            //   process.env.JWT_SECRET || ""
+            // ) as JwtPayload;
+            console.log(jwtPayload);
+            // @ts-ignore
+            const userId = jwtPayload.userId;
+            console.log(userId);
+            const UserData = yield users_1.default.findById(userId);
+            const Task = UserData === null || UserData === void 0 ? void 0 : UserData.Tasks;
+            res.status(200).json({
+                message: "Valid auth token!",
+                task: Task,
+            });
+        }
+        catch (error) {
+            console.log(error);
             res.status(500).json({ Message: "Invalid auth token!" });
         }
-        console.log(authToken);
-        res.status(200).json({ Message: "User session verified!" });
     }
     catch (error) {
+        console.log(error);
         res.status(500).json({ Message: "No auth token found!" });
     }
 });
