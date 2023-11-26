@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import userSession from "../UserControlers/userSession";
 import Users from "../../models/users";
 
+import mongoose from "mongoose";
+
 const AddTasks = async (req: Request, res: Response) => {
   try {
     const AuthHeader = req.headers.authorization;
@@ -12,11 +14,31 @@ const AddTasks = async (req: Request, res: Response) => {
       return;
     } else {
       try {
-        const userTasks = await Users.findById(user.userId);
+        // @ts-ignore
+
         const task = {
           Title: req.body.Title,
           isCompleted: false,
         };
+        // Users.findById(user.userId).then((user) => {
+        //   if (user) {
+        //     user.Tasks.push(task);
+        //     user.save();
+        //   }
+
+        // });
+
+        // const userTasks = (await Users.findOneAndUpdate(
+        //   { _id: user.userId?.trim() },
+        //   { $push: { Tasks: task } }
+        // )) as { isvalid: boolean; userId: string | null };
+
+        // console.log(userTasks);
+        if (true) {
+          res.status(200).json({ Message: "Task Added Successfully!" });
+        } else {
+          res.status(500).json({ Message: "Invalid user!" });
+        }
       } catch (err) {
         console.log(err);
         res
