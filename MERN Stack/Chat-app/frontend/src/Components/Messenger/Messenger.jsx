@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./messenger.css";
 import Settings from "./Settings";
 import logo from "../../images/logo.png";
-import SearchForUser from "../../Functions/SearchUser";
+import SearchForUser from "../../Utils/SearchUser";
+import CheckSession from "../../Utils/UserSession";
+import { MapChatHistory } from "../../Utils/MapChatHistory";
+import { create } from "@mui/material/styles/createTransitions";
+import { ReactSketchCanvas } from "react-sketch-canvas";
+
+// Global State
+let UserDetailsGlobal;
+let CurrentUserDetailsGlobal;
+let setCurrentUserDetailsGlobal;
 
 export default function Messenger() {
+  const navigate = useNavigate();
   // Loding Screen
-  const [loading, setloading] = useState(false);
+  const [loading, setloading] = useState(true);
 
   // Search window close handler
   const [searchWindow, setsearchWindow] = useState(false);
@@ -19,26 +29,50 @@ export default function Messenger() {
     }
   };
 
-  // Search settings state
+  // User Settings Modal
   const [open, setOpen] = useState(false);
+
+  // Search settings state
   const [search, setsearch] = useState("");
   const [searchData, setsearchData] = useState([]);
 
-  // User settings State
-
   // User Details State
   const [UserSessionDetails, setUserSessionDetails] = useState({
-    // Currently logged in user details
     _id: "",
     username: " ",
     chat_history: [],
   });
+
+  UserDetailsGlobal = createContext(UserSessionDetails);
 
   const [CurrentUserDetails, setCurrentUserDetails] = useState({
     // Currently selected user details
     _id: "",
     username: "",
   });
+
+  CurrentUserDetailsGlobal = createContext(CurrentUserDetails);
+  setCurrentUserDetailsGlobal = createContext(setCurrentUserDetails);
+
+  // Session check
+  useEffect(() => {
+    async function fetchData() {
+      const data = await CheckSession(setloading);
+      data.redirect ? navigate("/") : setUserSessionDetails(data.data);
+    }
+    fetchData();
+  }, [navigate]);
+
+  // ChatWindow
+  const [UserChatProfile, setUserChatProfile] = useState(<LandingPage />);
+
+  // Map Chat History
+  let ChatMap = MapChatHistory(
+    setsearchWindow,
+    setUserChatProfile,
+    searchData,
+    setsearch
+  );
 
   return (
     <>
@@ -104,23 +138,23 @@ export default function Messenger() {
           </div>
           <div className="chat--profiles">
             {/* History of chats */}
-            {/* {ChatMap} */}
+            {ChatMap}
           </div>
           <hr className="endline" />
           <div className="user--profile">
             <div className="user--logo">
-              {/* {UserSessionDetails.username[0].toUpperCase()} */}
+              {UserSessionDetails.username[0].toUpperCase()}
             </div>
             <div className="user--information">
               <div className="limitlength user--name">
-                {/* {UserSessionDetails.username} */}
+                {UserSessionDetails.username}
               </div>
               <div className="limitlength user--email">
-                {/* {UserSessionDetails.email} */}
+                {UserSessionDetails.email}
               </div>
             </div>
             <div className="options">
-              {/*onClick={handleOpen}*/}
+              {/* onClick={setOpen(true)} */}
               <svg
                 fill="#000000"
                 width="35px"
@@ -143,42 +177,51 @@ export default function Messenger() {
           </div>
         </div>
         <div className="message">
-          {/* <div className="message--layout">{UserChatProfile}</div> */}
+          <div className="message--layout">{UserChatProfile}</div>
         </div>
       </div>
     </>
   );
 }
 
-// const LandingPage = (props) => {
-//   const styles = {
-//     position: "absolute",
-//   };
-//   return (
-//     <>
-//       <ReactSketchCanvas
-//         style={styles}
-//         width="100%"
-//         height="100%"
-//         strokeWidth={5}
-//         strokeColor="black"
-//         canvasColor="white"
-//       />
-//       <WelcomePage />
-//     </>
-//   );
-// };
+const LandingPage = (props) => {
+  const styles = {
+    position: "absolute",
+  };
+  return (
+    <>
+      <ReactSketchCanvas
+        style={styles}
+        width="100%"
+        height="100%"
+        strokeWidth={5}
+        strokeColor="black"
+        canvasColor="white"
+      />
+      <div className="welcome">
+        <h1>Welcome to Scribble Chat!</h1>
+        <h3>Chat with Your Friends, Privately and Securely.</h3>
+        <summary>
+          Scribble Chat is a unique messaging application that puts your privacy
+          first. Our platform ensures that your conversations are confidential,
+          without compromising on user experience. With Scribble Chat, you can
+          connect with your friends in real-time, using a peer-to-peer
+          connection that doesn't store any data on a centralized database.
+        </summary>
+      </div>
+    </>
+  );
+};
+
+export {
+  UserDetailsGlobal,
+  CurrentUserDetailsGlobal,
+  setCurrentUserDetailsGlobal,
+};
 
 // function Messenger() {
 
 //   const socket = useRef();
-
-//   // Search user state
-
-//   // Search Window click Handler
-//
-
-//   // Loading state
 
 //   // User chat profile state
 //   const [UserChatProfile, setUserChatProfile] = useState(<LandingPage />);
@@ -225,39 +268,7 @@ export default function Messenger() {
 
 //   // Session check
 //   useEffect(() => {
-//     const CheckSession = async () => {
-//       setloading(true);
-//       try {
-//         const data = await fetch(`http://localhost:5000/users/session`, {
-//           method: "get",
-//           credentials: "include",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//         });
-//         const res = await data.json();
-
-//         if (res.code === 500) {
-//           navigate("/");
-//           setloading(false);
-//         } else {
-//           setloading(false);
-//           setUserSessionDetails(res.data);
-//           if (res.data.chat_history.length === 0) {
-//             setwalkthrough(
-//               <Popup
-//                 content="Get started by searching for your friends by their username and start chatting with them."
-//                 position={{ mt: "170px", ml: "50px" }}
-//                 setwalkthrough={setwalkthrough}
-//               />
-//             );
-//           }
-//         }
-//       } catch (err) {
-//         console.log(err);
-//         navigate("/");
-//       }
-//     };
+//
 //     CheckSession();
 //   }, [navigate]);
 
@@ -397,22 +408,6 @@ export default function Messenger() {
 //       />
 //       <WelcomePage />
 //     </>
-//   );
-// };
-
-// const WelcomePage = () => {
-//   return (
-//     <div className="welcome">
-//       <h1>Welcome to Scribble Chat!</h1>
-//       <h3>Chat with Your Friends, Privately and Securely.</h3>
-//       <summary>
-//         Scribble Chat is a unique messaging application that puts your privacy
-//         first. Our platform ensures that your conversations are confidential,
-//         without compromising on user experience. With Scribble Chat, you can
-//         connect with your friends in real-time, using a peer-to-peer connection
-//         that doesn't store any data on a centralized database.
-//       </summary>
-//     </div>
 //   );
 // };
 
