@@ -15,9 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const userSession_1 = __importDefault(require("../UserControlers/userSession"));
 const users_1 = __importDefault(require("../../models/users"));
 const AddTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     try {
         const AuthHeader = req.headers.authorization;
-        console.log(AuthHeader);
         const user = (0, userSession_1.default)(AuthHeader || "");
         if (!user.isvalid) {
             res.status(401).json({ Message: "Please Login again!" });
@@ -30,14 +30,15 @@ const AddTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                     Title: req.body.Title,
                     isCompleted: false,
                 };
-                users_1.default.findById(user.userId).then((user) => {
-                    console.log(user);
-                });
-                // const userTasks = (await Users.findOneAndUpdate(
-                //   { _id: user.userId?.trim() },
-                //   { $push: { Tasks: task } }
-                // )) as { isvalid: boolean; userId: string | null };
-                // console.log(userTasks);
+                console.log(user.userId);
+                // Users.findById(user.userId).then((user) => {
+                //   if (user) {
+                //     user.Tasks.push(task);
+                //     user.save();
+                //   }
+                // });
+                const userTasks = (yield users_1.default.findOneAndUpdate({ _id: (_a = user.userId) === null || _a === void 0 ? void 0 : _a.trim() }, { $push: { Tasks: task } }));
+                console.log(userTasks);
                 if (true) {
                     res.status(200).json({ Message: "Task Added Successfully!" });
                 }

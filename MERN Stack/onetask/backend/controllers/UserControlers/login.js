@@ -20,31 +20,33 @@ const Login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (req.query.email == undefined || req.query.password == undefined) {
         res.status(500).json({ Message: "Email and password are required!" });
     }
-    try {
-        const userDetails = yield users_1.default.findOne({ email: req.query.email });
-        if (userDetails) {
-            const password = (_a = req.query.password) === null || _a === void 0 ? void 0 : _a.toString();
-            if (bcrypt_1.default.compareSync(password || "", userDetails.password || "")) {
-                const data = {
-                    message: "Login successful!",
-                    token: jsonwebtoken_1.default.sign({ userId: userDetails._id, userEmail: userDetails.email }, process.env.JWT_SECRET || "", {
-                        algorithm: "HS256",
-                        expiresIn: "7d",
-                    }),
-                    task: userDetails.Tasks,
-                };
-                res.status(200).json(data);
+    else {
+        try {
+            const userDetails = yield users_1.default.findOne({ email: req.query.email });
+            if (userDetails) {
+                const password = (_a = req.query.password) === null || _a === void 0 ? void 0 : _a.toString();
+                if (bcrypt_1.default.compareSync(password || "", userDetails.password || "")) {
+                    const data = {
+                        message: "Login successful!",
+                        token: jsonwebtoken_1.default.sign({ userId: userDetails._id, userEmail: userDetails.email }, process.env.JWT_SECRET || "", {
+                            algorithm: "HS256",
+                            expiresIn: "7d",
+                        }),
+                        task: userDetails.Tasks,
+                    };
+                    res.status(200).json(data);
+                }
+                else
+                    res.status(500).json({ Message: "Incorrect password!" });
             }
-            else
-                res.status(500).json({ Message: "Incorrect password!" });
+            else {
+                res.status(500).json({ Message: "Email not registered!" });
+            }
         }
-        else {
-            res.status(500).json({ Message: "Email not registered!" });
+        catch (error) {
+            console.log(error);
+            res.status(500).json({ Message: "Something went wrong on our side :(" });
         }
-    }
-    catch (error) {
-        console.log(error);
-        res.status(500).json({ Message: "Something went wrong on our side :(" });
     }
 });
 exports.default = Login;

@@ -7,7 +7,6 @@ import mongoose from "mongoose";
 const AddTasks = async (req: Request, res: Response) => {
   try {
     const AuthHeader = req.headers.authorization;
-    console.log(AuthHeader);
     const user = userSession(AuthHeader || "");
     if (!user.isvalid) {
       res.status(401).json({ Message: "Please Login again!" });
@@ -20,20 +19,20 @@ const AddTasks = async (req: Request, res: Response) => {
           Title: req.body.Title,
           isCompleted: false,
         };
+        console.log(user.userId);
         // Users.findById(user.userId).then((user) => {
         //   if (user) {
         //     user.Tasks.push(task);
         //     user.save();
         //   }
-
         // });
 
-        // const userTasks = (await Users.findOneAndUpdate(
-        //   { _id: user.userId?.trim() },
-        //   { $push: { Tasks: task } }
-        // )) as { isvalid: boolean; userId: string | null };
+        const userTasks = (await Users.findOneAndUpdate(
+          { _id: user.userId?.trim() },
+          { $push: { Tasks: task } }
+        )) as { isvalid: boolean; userId: string | null };
 
-        // console.log(userTasks);
+        console.log(userTasks);
         if (true) {
           res.status(200).json({ Message: "Task Added Successfully!" });
         } else {
