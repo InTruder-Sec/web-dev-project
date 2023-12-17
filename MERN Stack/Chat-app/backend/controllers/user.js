@@ -39,8 +39,14 @@ export const getUser = async (req, res) => {
         .status(200)
         .json({ data: { message: "Invalid email or password", id: null } });
     }
-  } catch {
+  } catch (err) {
+    console.log(err);
     console.log("Something went wrong");
+    return res
+      .status(500)
+      .json({
+        data: { message: "Something went wrong on our side: (", id: null },
+      });
   }
 };
 

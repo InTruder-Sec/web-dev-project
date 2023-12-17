@@ -22,7 +22,6 @@ function UserChats(props) {
       console.log(data);
       let resChats = await data.data.map(async (e) => {
         const ObjectData = JSON.parse(e);
-        // console.log(ObjectData.imgLink);
         const image = await fetch(ObjectData.imgLink);
         const imageJson = await image.text();
         if (ObjectData.sendersId === SessionUser.id) {
@@ -71,6 +70,8 @@ function UserChats(props) {
           ReciverDetails: ReciverDetails,
         }),
       });
+      GetChats(props.databaseId);
+      console.log("Sent successfully!");
       // const newData = await res.json();
       // Fetch live chat
     } catch {
