@@ -24,6 +24,7 @@ const UserProfile = (props) => {
             lastActive={props.lastActive}
             CurrentSession={props.CurrentSession}
             databaseId={props.databaseId}
+            setUserChatProfile={props.setUserChatProfile}
           />
         );
       }}

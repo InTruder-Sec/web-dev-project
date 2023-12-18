@@ -14,7 +14,6 @@ function UserChats(props) {
 
   // Get Chats from databaseId and set Chats
   const [resultChats, setresultChats] = React.useState(<></>);
-
   const GetChats = async (id) => {
     try {
       const res = await fetch(`http://localhost:5000/users/getchats?id=${id}`);
@@ -70,7 +69,7 @@ function UserChats(props) {
           ReciverDetails: ReciverDetails,
         }),
       });
-      GetChats(props.databaseId);
+
       console.log("Sent successfully!");
       // const newData = await res.json();
       // Fetch live chat
@@ -105,10 +104,21 @@ function UserChats(props) {
   function SVGhandler() {
     sketchRef.current.exportImage("png").then((data) => {
       // trigger socket.io
-
       // trigger database to save messeages
-
-      SvgUpload(data);
+      SvgUpload(data).then(() => {
+        console.log(props);
+        // props.setUserChatProfile(
+        //   <UserChats
+        //     username={props.username}
+        //     socket={props.socket}
+        //     id={props.id}
+        //     lastActive={props.lastActive}
+        //     CurrentSession={props.CurrentSession}
+        //     databaseId={props.databaseId}
+        //     setCurrentUserDetails={props.setCurrentUserDetails}
+        //   />
+        // );
+      });
     });
   }
 
