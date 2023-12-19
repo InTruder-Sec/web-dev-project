@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./messenger.css";
 import Settings from "./Settings";
 import logo from "../../images/logo.png";
+import SearchForUser from "../../Functions/SearchUser";
 
 export default function Messenger() {
-  const navigate = useNavigate();
-
   // Loding Screen
   const [loading, setloading] = useState(false);
 
@@ -21,6 +21,24 @@ export default function Messenger() {
 
   // Search settings state
   const [open, setOpen] = useState(false);
+  const [search, setsearch] = useState("");
+  const [searchData, setsearchData] = useState([]);
+
+  // User settings State
+
+  // User Details State
+  const [UserSessionDetails, setUserSessionDetails] = useState({
+    // Currently logged in user details
+    _id: "",
+    username: " ",
+    chat_history: [],
+  });
+
+  const [CurrentUserDetails, setCurrentUserDetails] = useState({
+    // Currently selected user details
+    _id: "",
+    username: "",
+  });
 
   return (
     <>
@@ -64,10 +82,10 @@ export default function Messenger() {
                 onChange={(e) => {
                   openSearchWindow();
                   setsearch(e.target.value);
-                  SearchForUser(e.target.value);
+                  SearchForUser(e.target.value, setsearchData);
                 }}
               ></input>
-              <SearchWindow
+              {/* <SearchWindow
                 style={
                   searchWindow ? openSearchWindowStyle : closeSearchWindowStyle
                 }
@@ -81,27 +99,28 @@ export default function Messenger() {
                 setUserChatProfile={setUserChatProfile}
                 setCurrentUserDetails={setCurrentUserDetails}
                 CurrentUserDetails={CurrentUserDetails}
-              />
+              /> */}
             </div>
           </div>
           <div className="chat--profiles">
             {/* History of chats */}
-            {ChatMap}
+            {/* {ChatMap} */}
           </div>
           <hr className="endline" />
           <div className="user--profile">
             <div className="user--logo">
-              {UserSessionDetails.username[0].toUpperCase()}
+              {/* {UserSessionDetails.username[0].toUpperCase()} */}
             </div>
             <div className="user--information">
               <div className="limitlength user--name">
-                {UserSessionDetails.username}
+                {/* {UserSessionDetails.username} */}
               </div>
               <div className="limitlength user--email">
-                {UserSessionDetails.email}
+                {/* {UserSessionDetails.email} */}
               </div>
             </div>
-            <div className="options" onClick={handleOpen}>
+            <div className="options">
+              {/*onClick={handleOpen}*/}
               <svg
                 fill="#000000"
                 width="35px"
@@ -124,31 +143,31 @@ export default function Messenger() {
           </div>
         </div>
         <div className="message">
-          <div className="message--layout">{UserChatProfile}</div>
+          {/* <div className="message--layout">{UserChatProfile}</div> */}
         </div>
       </div>
     </>
   );
 }
 
-const LandingPage = (props) => {
-  const styles = {
-    position: "absolute",
-  };
-  return (
-    <>
-      <ReactSketchCanvas
-        style={styles}
-        width="100%"
-        height="100%"
-        strokeWidth={5}
-        strokeColor="black"
-        canvasColor="white"
-      />
-      <WelcomePage />
-    </>
-  );
-};
+// const LandingPage = (props) => {
+//   const styles = {
+//     position: "absolute",
+//   };
+//   return (
+//     <>
+//       <ReactSketchCanvas
+//         style={styles}
+//         width="100%"
+//         height="100%"
+//         strokeWidth={5}
+//         strokeColor="black"
+//         canvasColor="white"
+//       />
+//       <WelcomePage />
+//     </>
+//   );
+// };
 
 // function Messenger() {
 
@@ -203,25 +222,6 @@ const LandingPage = (props) => {
 
 //   // Walkthrough state handler\
 //   const [walkthrough, setwalkthrough] = useState("");
-
-//   // User Search function
-//   const SearchForUser = async (val) => {
-//     try {
-//       const data = await fetch(
-//         `http://localhost:5000/users/search?username=${val}&userId=${UserSessionDetails.id}`,
-//         {
-//           method: "get",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//         }
-//       );
-//       const res = await data.json();
-//       setsearchData(res);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
 
 //   // Session check
 //   useEffect(() => {
