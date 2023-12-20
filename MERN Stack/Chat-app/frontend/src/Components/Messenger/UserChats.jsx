@@ -106,18 +106,20 @@ function UserChats(props) {
       // trigger socket.io
       // trigger database to save messeages
       SvgUpload(data).then(() => {
-        console.log(props);
-        // props.setUserChatProfile(
-        //   <UserChats
-        //     username={props.username}
-        //     socket={props.socket}
-        //     id={props.id}
-        //     lastActive={props.lastActive}
-        //     CurrentSession={props.CurrentSession}
-        //     databaseId={props.databaseId}
-        //     setCurrentUserDetails={props.setCurrentUserDetails}
-        //   />
-        // );
+        console.log("Changing State");
+        props.setUserChatProfile(
+          <UserChats
+            username={props.username}
+            socket={props.socket}
+            id={props.id}
+            lastActive={props.lastActive}
+            CurrentSession={props.CurrentSession}
+            databaseId={props.databaseId}
+            setUserChatProfile={props.setUserChatProfile}
+            setCurrentUserDetails={props.setCurrentUserDetails}
+            updated={true}
+          />
+        );
       });
     });
   }
