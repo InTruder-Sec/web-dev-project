@@ -81,7 +81,7 @@ function Settings(props) {
                 </button>
               </div>
               <div className="save--btn">
-                <button className="save btns" onClick={props.handleClose}>
+                <button className="save btns" onClick={props.setOpen(false)}>
                   Save
                 </button>
               </div>

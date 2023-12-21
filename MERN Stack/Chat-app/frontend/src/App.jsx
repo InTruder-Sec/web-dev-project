@@ -4,6 +4,7 @@ import Messenger from "./Components/Messenger/Messenger";
 import Main from "./Components/User/Main";
 import ResetPass from "./Components/User/ResetPass";
 
+// App theme
 const ToggleTheme = (theme) => {
   if (theme === "false") {
     document.body.style.filter = "invert(0)";
@@ -13,12 +14,11 @@ const ToggleTheme = (theme) => {
 };
 
 function App() {
+  // Toggle theme
   let theme = getCookie("theme");
-
   if (theme === "") {
     document.cookie = "theme=false";
   }
-
   ToggleTheme(theme);
 
   return (
