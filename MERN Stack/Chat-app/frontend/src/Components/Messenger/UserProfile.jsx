@@ -1,31 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import UserChats from "./UserChats";
+import { setCurrentUserDetailsGlobal } from "./Messenger";
 
 const UserProfile = (props) => {
-  console.log(props);
+  const setCurrentUserDetails = useContext(setCurrentUserDetailsGlobal);
   return (
     <div
       className="profile"
       onClick={(e) => {
-        props.setCurrentUserDetails({
+        setCurrentUserDetails({
           username: props.username,
           id: props.id,
           lastActive: props.lastActive,
           databaseId: props.databaseId,
         });
         props.setsearch("");
-        props.closeSearchWindow();
+        props.setSearchWindow(false);
         props.setUserChatProfile(
           <UserChats
             username={props.username}
-            socket={props.socket}
             id={props.id}
             lastActive={props.lastActive}
-            CurrentSession={props.CurrentSession}
             databaseId={props.databaseId}
             setUserChatProfile={props.setUserChatProfile}
-            setCurrentUserDetails={props.setCurrentUserDetails}
+            setCurrentUserDetails={setCurrentUserDetails}
+            key={props.username}
           />
         );
       }}

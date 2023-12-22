@@ -4,11 +4,12 @@ import { ReactSketchCanvas } from "react-sketch-canvas";
 import "./UserChats.css";
 import send from "./../../images/send.png";
 import pen from "./../../images/pen.png";
-import { SessionUserDetails, setSessionUserDetails } from "./Messenger";
+import { UserDetailsGlobal, setCurrentUserDetailsGlobal } from "./Messenger";
 
 function UserChats(props) {
   // Logged in user details
-  let SessionUser = React.useContext(SessionUserDetails);
+  let SessionUser = React.useContext(UserDetailsGlobal);
+  let CurrentUserDetails = React.useContext(setCurrentUserDetailsGlobal);
   // Reciver user Details
   const [ReciverDetails, setReciverDetails] = React.useState({});
 

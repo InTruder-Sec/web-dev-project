@@ -1,7 +1,9 @@
 import React from "react";
+import { UserDetailsGlobal } from "./Messenger";
 import UserProfile from "./UserProfile";
 
 const SearchWindow = (props) => {
+  const UserDetails = React.useContext(UserDetailsGlobal);
   if (props.searchData.length === 0) {
     return (
       <div className="search--result" style={props.style}>
@@ -9,16 +11,13 @@ const SearchWindow = (props) => {
       </div>
     );
   }
+
   const users = props.searchData.map((data) => {
-    // console.log(data);
+    if (data.username === UserDetails.username) return null;
     return (
       <UserProfile
-        setCurrentUserDetails={props.setCurrentUserDetails}
-        CurrentUserDetails={props.CurrentUserDetails}
         id={data?.id}
-        CurrentSession={props.CurrentSession}
-        socket={props.socket}
-        closeSearchWindow={props.closeSearchWindow}
+        setSearchWindow={props.setSearchWindow}
         username={data.username}
         databaseId={null}
         setsearch={props.setsearch}

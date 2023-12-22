@@ -6,6 +6,7 @@ import "./settings.css";
 import { useNavigate } from "react-router-dom";
 
 function Settings(props) {
+  console.log(props);
   const navigate = useNavigate();
   const style = {
     position: "absolute",
@@ -81,7 +82,12 @@ function Settings(props) {
                 </button>
               </div>
               <div className="save--btn">
-                <button className="save btns" onClick={props.setOpen(false)}>
+                <button
+                  className="save btns"
+                  onClick={() => {
+                    props.setOpen(false);
+                  }}
+                >
                   Save
                 </button>
               </div>

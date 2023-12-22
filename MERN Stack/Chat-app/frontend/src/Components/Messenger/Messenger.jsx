@@ -8,6 +8,7 @@ import CheckSession from "../../Utils/UserSession";
 import { MapChatHistory } from "../../Utils/MapChatHistory";
 import { create } from "@mui/material/styles/createTransitions";
 import { ReactSketchCanvas } from "react-sketch-canvas";
+import SearchWindow from "./SearchWindow";
 
 // Global State
 let UserDetailsGlobal;
@@ -62,6 +63,17 @@ export default function Messenger() {
     }
     fetchData();
   }, [navigate]);
+
+  // Search window style
+  const openSearchWindowStyle = {
+    display: "block",
+    zIndex: "3",
+  };
+
+  const closeSearchWindowStyle = {
+    display: "none",
+    zIndex: "-3",
+  };
 
   // ChatWindow
   const [UserChatProfile, setUserChatProfile] = useState(<LandingPage />);
@@ -119,21 +131,17 @@ export default function Messenger() {
                   SearchForUser(e.target.value, setsearchData);
                 }}
               ></input>
-              {/* <SearchWindow
+              <SearchWindow
                 style={
                   searchWindow ? openSearchWindowStyle : closeSearchWindowStyle
                 }
-                socket={socket}
-                CurrentSession={UserSessionDetails}
                 openSearchWindow={openSearchWindow}
-                closeSearchWindow={closeSearchWindow}
+                setSearchWindow={setsearchWindow}
                 searchData={searchData}
                 setsearch={setsearch}
                 ChatProfile={setUserChatProfile}
                 setUserChatProfile={setUserChatProfile}
-                setCurrentUserDetails={setCurrentUserDetails}
-                CurrentUserDetails={CurrentUserDetails}
-              /> */}
+              />
             </div>
           </div>
           <div className="chat--profiles">
@@ -153,8 +161,12 @@ export default function Messenger() {
                 {UserSessionDetails.email}
               </div>
             </div>
-            <div className="options">
-              {/* onClick={setOpen(true)} */}
+            <div
+              className="options"
+              onClick={() => {
+                setOpen(true);
+              }}
+            >
               <svg
                 fill="#000000"
                 width="35px"
@@ -252,16 +264,7 @@ export {
 
 //   // Seacrch window state handler
 //
-//   // Search window component style
-//   const openSearchWindowStyle = {
-//     display: "block",
-//     zIndex: "3",
-//   };
-
-//   const closeSearchWindowStyle = {
-//     display: "none",
-//     zIndex: "-3",
-//   };
+//
 
 //   // Walkthrough state handler\
 //   const [walkthrough, setwalkthrough] = useState("");
