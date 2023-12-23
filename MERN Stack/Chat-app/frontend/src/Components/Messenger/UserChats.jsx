@@ -61,20 +61,8 @@ function UserChats(props) {
     sketchRef.current.exportImage("png").then((data) => {
       SvgUpload(data, SessionUser, ReciverDetails).then(async () => {
         await GetChats(props.databaseId, setresultChats, SessionUser);
-        // console.log("Changing State");
-        // props.setUserChatProfile(
-        //   <UserChats
-        //     username={props.username}
-        //     socket={props.socket}
-        //     id={props.id}
-        //     lastActive={props.lastActive}
-        //     CurrentSession={props.CurrentSession}
-        //     databaseId={props.databaseId}
-        //     setUserChatProfile={props.setUserChatProfile}
-        //     setCurrentUserDetails={props.setCurrentUserDetails}
-        //     updated={true}
-        //   />
-        // );
+        // Use result to update chats
+        
       });
     });
   }
