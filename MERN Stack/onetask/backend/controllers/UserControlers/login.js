@@ -17,30 +17,30 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const users_1 = __importDefault(require("../../models/users"));
 const Login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
-    if (req.query.email == undefined || req.query.password == undefined) {
+    if (req.body.email == undefined || req.body.password == undefined) {
         res.status(500).json({ Message: "Email and password are required!" });
     }
     else {
         try {
-            const userDetails = yield users_1.default.findOne({ email: req.query.email });
+            const userDetails = yield users_1.default.findOne({ email: req.body.email });
             if (userDetails) {
-                const password = (_a = req.query.password) === null || _a === void 0 ? void 0 : _a.toString();
+                const password = (_a = req.body.password) === null || _a === void 0 ? void 0 : _a.toString();
                 if (bcrypt_1.default.compareSync(password || "", userDetails.password || "")) {
                     const data = {
                         message: "Login successful!",
                         token: jsonwebtoken_1.default.sign({ userId: userDetails._id, userEmail: userDetails.email }, process.env.JWT_SECRET || "", {
                             algorithm: "HS256",
-                            expiresIn: "365d",
+                            expiresIn: "7d",
                         }),
                         task: userDetails.Tasks,
                     };
                     res.status(200).json(data);
                 }
                 else
-                    res.status(500).json({ Message: "Incorrect password!" });
+                    res.status(500).json({ Message: "Incorrect email or password!" });
             }
             else {
-                res.status(500).json({ Message: "Email not registered!" });
+                res.status(500).json({ Message: "Incorrect email or password!" });
             }
         }
         catch (error) {

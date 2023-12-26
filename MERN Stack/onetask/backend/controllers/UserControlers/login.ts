@@ -11,14 +11,14 @@ type ReturnData = {
 };
 
 const Login = async (req: Request, res: Response): Promise<void> => {
-  if (req.query.email == undefined || req.query.password == undefined) {
+  if (req.body.email == undefined || req.body.password == undefined) {
     res.status(500).json({ Message: "Email and password are required!" });
   } else {
     try {
-      const userDetails = await Users.findOne({ email: req.query.email });
+      const userDetails = await Users.findOne({ email: req.body.email });
 
       if (userDetails) {
-        const password = req.query.password?.toString();
+        const password = req.body.password?.toString();
 
         if (bcrypt.compareSync(password || "", userDetails.password || "")) {
           const data: ReturnData = {
@@ -28,16 +28,17 @@ const Login = async (req: Request, res: Response): Promise<void> => {
               process.env.JWT_SECRET || "",
               {
                 algorithm: "HS256",
-                expiresIn: "365d",
+                expiresIn: "7d",
               }
             ),
             task: userDetails.Tasks,
           };
 
           res.status(200).json(data);
-        } else res.status(500).json({ Message: "Incorrect password!" });
+        } else
+          res.status(500).json({ Message: "Incorrect email or password!" });
       } else {
-        res.status(500).json({ Message: "Email not registered!" });
+        res.status(500).json({ Message: "Incorrect email or password!" });
       }
     } catch (error) {
       console.log(error);

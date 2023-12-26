@@ -23,3 +23,14 @@ svg:hover {
 .login {
   cursor: pointer;
 }
+
+.add-task {
+  cursor: pointer;
+}
+
+.add-task-svg {
+  transition: all 0.2s ease-in-out;
+}
+.add-task:hover .add-task-svg {
+  filter: invert(1);
+}

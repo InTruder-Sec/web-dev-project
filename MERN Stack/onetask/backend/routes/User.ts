@@ -4,7 +4,7 @@ import SignUp from "../controllers/UserControlers/Signup";
 
 const User = express.Router();
 
-User.get("/login", Login);
+User.post("/login", Login);
 User.post("/signup", SignUp);
 
 export default User;
