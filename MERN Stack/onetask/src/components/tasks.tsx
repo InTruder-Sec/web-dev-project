@@ -8,19 +8,24 @@ type TaskType = {
   _id: string;
 };
 
+type stateType = {
+  completedTasks: TaskType[];
+  Tasks: TaskType[];
+};
+
 type propsType = {
   Title: string | never[];
   isCompleted: boolean;
   id: string;
   key: string;
-  tasks: TaskType[];
+  tasks: stateType;
   settasks: React.Dispatch<
     React.SetStateAction<{ completedTasks: TaskType[]; Tasks: TaskType[] }>
   >;
 };
 
 function Tasks(props: propsType): JSX.Element {
-  const header = useContext(authorization);
+  const header: string | undefined = useContext(authorization);
   const completeTask = () => {
     let state = true;
     if (props.isCompleted) {
@@ -28,7 +33,7 @@ function Tasks(props: propsType): JSX.Element {
     }
     axios
       .post(
-        "http://localhost:5000/api/tasks/update",
+        "https://1task-backend.azurewebsites.net/api/tasks/update",
         {
           taskId: props.id,
           title: props.Title,
@@ -42,7 +47,7 @@ function Tasks(props: propsType): JSX.Element {
       )
       .then(() => {
         axios
-          .get("http://localhost:5000/api/tasks/get", {
+          .get("https://1task-backend.azurewebsites.net/api/tasks/get", {
             headers: {
               Authorization: header,
             },
@@ -51,17 +56,20 @@ function Tasks(props: propsType): JSX.Element {
             const tempTasks: TaskType[] = [];
             const tempCompletedTasks: TaskType[] = [];
             // Sepreate completed tasks from task
-            res.data.Tasks.map((e: TaskType) => {
-              if (e.isCompleted) {
-                tempCompletedTasks.push(e);
-              } else {
-                tempTasks.push(e);
-              }
-            });
-            props.settasks({
-              completedTasks: tempCompletedTasks,
-              Tasks: tempTasks,
-            });
+            if (typeof res.data.Tasks === "object") {
+              res.data.Tasks.map((e: TaskType) => {
+                if (e.isCompleted) {
+                  tempCompletedTasks.push(e);
+                } else {
+                  tempTasks.push(e);
+                }
+              });
+
+              props.settasks({
+                completedTasks: tempCompletedTasks,
+                Tasks: tempTasks,
+              });
+            }
           });
       });
   };
@@ -69,7 +77,7 @@ function Tasks(props: propsType): JSX.Element {
   const DeleteTask = () => {
     axios
       .post(
-        "http://localhost:5000/api/tasks/delete",
+        "https://1task-backend.azurewebsites.net/api/tasks/delete",
         {
           taskId: props.id,
         },
@@ -81,7 +89,7 @@ function Tasks(props: propsType): JSX.Element {
       )
       .then(() => {
         axios
-          .get("http://localhost:5000/api/tasks/get", {
+          .get("https://1task-backend.azurewebsites.net/api/tasks/get", {
             headers: {
               Authorization: header,
             },
@@ -90,17 +98,19 @@ function Tasks(props: propsType): JSX.Element {
             const tempTasks: TaskType[] = [];
             const tempCompletedTasks: TaskType[] = [];
             // Sepreate completed tasks from task
-            res.data.Tasks.map((e: TaskType) => {
-              if (e.isCompleted) {
-                tempCompletedTasks.push(e);
-              } else {
-                tempTasks.push(e);
-              }
-            });
-            props.settasks({
-              completedTasks: tempCompletedTasks,
-              Tasks: tempTasks,
-            });
+            if (typeof res.data.Tasks === "object") {
+              res.data.Tasks.map((e: TaskType) => {
+                if (e.isCompleted) {
+                  tempCompletedTasks.push(e);
+                } else {
+                  tempTasks.push(e);
+                }
+              });
+              props.settasks({
+                completedTasks: tempCompletedTasks,
+                Tasks: tempTasks,
+              });
+            }
           });
       });
   };
@@ -109,7 +119,7 @@ function Tasks(props: propsType): JSX.Element {
     const newTitle = prompt("Enter new title");
     axios
       .post(
-        "http://localhost:5000/api/tasks/update",
+        "https://1task-backend.azurewebsites.net/api/tasks/update",
         {
           taskId: props.id,
           title: newTitle,
@@ -123,7 +133,7 @@ function Tasks(props: propsType): JSX.Element {
       )
       .then(() => {
         axios
-          .get("http://localhost:5000/api/tasks/get", {
+          .get("https://1task-backend.azurewebsites.net/api/tasks/get", {
             headers: {
               Authorization: header,
             },
@@ -132,17 +142,19 @@ function Tasks(props: propsType): JSX.Element {
             const tempTasks: TaskType[] = [];
             const tempCompletedTasks: TaskType[] = [];
             // Sepreate completed tasks from task
-            res.data.Tasks.map((e: TaskType) => {
-              if (e.isCompleted) {
-                tempCompletedTasks.push(e);
-              } else {
-                tempTasks.push(e);
-              }
-            });
-            props.settasks({
-              completedTasks: tempCompletedTasks,
-              Tasks: tempTasks,
-            });
+            if (typeof res.data.Tasks === "object") {
+              res.data.Tasks.map((e: TaskType) => {
+                if (e.isCompleted) {
+                  tempCompletedTasks.push(e);
+                } else {
+                  tempTasks.push(e);
+                }
+              });
+              props.settasks({
+                completedTasks: tempCompletedTasks,
+                Tasks: tempTasks,
+              });
+            }
           });
       });
   };

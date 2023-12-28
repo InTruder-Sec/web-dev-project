@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import Tasks from "./tasks.tsx";
-import { authorization } from "../App.tsx";
+import Tasks from "./tasks";
+import { authorization } from "../App";
 import axios from "axios";
 
 type TaskType = {
@@ -14,7 +14,9 @@ type stateType = {
   Tasks: TaskType[];
 };
 
-function Main(props) {
+function Main(props: {
+  setisactive: React.Dispatch<React.SetStateAction<string>>;
+}) {
   const handleClick = () => {
     props.setisactive("");
   };
@@ -24,14 +26,14 @@ function Main(props) {
     Tasks: [],
   });
 
-  const header = useContext(authorization);
+  const header: string | undefined = useContext(authorization);
 
   useEffect(() => {
     const tempTasks: TaskType[] = [];
     const tempCompletedTasks: TaskType[] = [];
     if (header !== "") {
       axios
-        .get("http://localhost:5000/api/tasks/get", {
+        .get("https://1task-backend.azurewebsites.net/api/tasks/get", {
           headers: {
             Authorization: header,
           },
@@ -90,7 +92,7 @@ function Main(props) {
     if (title !== null) {
       axios
         .post(
-          "http://localhost:5000/api/tasks/add",
+          "https://1task-backend.azurewebsites.net/api/tasks/add",
           {
             title: title,
           },

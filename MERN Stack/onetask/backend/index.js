@@ -12,7 +12,7 @@ const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 dotenv_1.default.config();
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "https://one-task.netlify.app",
     credentials: true,
 };
 app.use((0, cors_1.default)(corsOptions));
@@ -21,6 +21,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/api/user", User_1.default);
 app.use("/api/tasks", Tasks_1.default);
 mongoose_1.default.connect(process.env.MONGO_URL || "");
-app.listen(5000, () => {
-    console.log("Server is running on port 5000");
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log("Server is running on port 8080");
 });

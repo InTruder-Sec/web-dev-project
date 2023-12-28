@@ -23,7 +23,7 @@ function Login(props: HeadProp): JSX.Element {
 
   const handleLogin = (): void => {
     axios
-      .post("http://localhost:5000/api/user/login", userDetails)
+      .post("https://1task-backend.azurewebsites.net/api/user/login", userDetails)
       .then((res) => {
         Header(res.data.token);
         // Set authorization cookie
@@ -37,7 +37,7 @@ function Login(props: HeadProp): JSX.Element {
 
   const handleSignup = (): void => {
     axios
-      .post("http://localhost:5000/api/user/signup", userDetails)
+      .post("https://1task-backend.azurewebsites.net/api/user/signup", userDetails)
       .then((res) => {
         console.log(res);
         handleLogin();
