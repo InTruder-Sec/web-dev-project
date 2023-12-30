@@ -1,50 +1,205 @@
 import { useContext, useEffect, useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "./ui/button";
+import svg from "./../assets/Spinner-1s-200px.svg";
 import { ModeToggle } from "./ui/toggle";
 import { globalToken } from "@/App";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuLabel,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "./ui/textarea";
+
 function Navbar() {
   const token = useContext(globalToken);
-  const [isAuthenticated, setisAuthenticated] = useState(<LoginButton />);
+  const [isAuthenticated, setisAuthenticated] = useState(<Loading />);
+
+  const [editProfile, seteditProfile] = useState(false);
+
+  const [userData, setuserData] = useState("");
+  const [onBoardingDetails, setonBoardingDetails] = useState({
+    name: "",
+    city: "",
+    country: "",
+    skills: "",
+  });
+
+  const [newUser, setnewUser] = useState(false);
+
   useEffect(() => {
-    if (token != undefined) {
+    if (token !== undefined || token?.length > 0 || token === "") {
       fetch("http://localhost:5000/api/user/profile?token=" + token, {
         method: "GET",
       })
         .then((res) => res.json())
         .then((res) => {
-          setisAuthenticated(<Profile avatar={res.data.avatar_url} />);
+          setisAuthenticated(
+            <Profile
+              avatar={res.data.avatar_url}
+              seteditProfile={seteditProfile}
+            />
+          );
+          setnewUser(res.onBoarding);
+          setuserData(res.data);
+          if (res.onBoarding === false) {
+            // set response data to onBoardingDetails
+            setonBoardingDetails(res.userDetails);
+          }
+        });
+    } else {
+      setisAuthenticated(<LoginButton />);
+    }
+  }, [token, newUser]);
+
+  const onSubmit = () => {
+    const name = userData.login;
+    setonBoardingDetails({ ...onBoardingDetails, name: name });
+    if (
+      onBoardingDetails.name !== "" &&
+      onBoardingDetails.city !== "" &&
+      onBoardingDetails.country !== "" &&
+      onBoardingDetails.skills !== ""
+    ) {
+      fetch("http://localhost:5000/api/user/onBoarding", {
+        method: "POST",
+        body: JSON.stringify(onBoardingDetails),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then(() => {
+          setnewUser(false);
         });
     }
-  }, [token]);
+  };
 
   return (
-    <div className="h-20 w-100 bg-white dark:bg-zinc-800 px-10 py-4">
-      <div className="text-3xl absolute mt-2 text-slate-800 dark:text-inherit ">
-        Prohub
+    <>
+      <div className="h-20 w-100 bg-white dark:bg-zinc-800 px-10 py-4">
+        <div className="text-3xl absolute mt-2 text-slate-800 dark:text-inherit ">
+          Prohub
+        </div>
+        <span className="absolute right-10 flex">
+          <span className="mt-1.5 mr-5">{/* <ModeToggle />{" "} */}</span>
+          <span>{isAuthenticated}</span>
+        </span>
       </div>
-      <span className="absolute right-10 flex">
-        <span className="mt-1.5 mr-5">{/* <ModeToggle /> */}</span>
-        <span>{isAuthenticated}</span>
-      </span>
-    </div>
+      <Dialog open={newUser || editProfile}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Welcome to Prohub!</DialogTitle>
+            <DialogDescription>
+              Please complete your profile to continue.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                Name:
+              </Label>
+              <Input
+                required
+                id="name"
+                value={`${userData.login}`}
+                disabled
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="username" className="text-right">
+                City:
+              </Label>
+              <Input
+                required
+                id="username"
+                placeholder="Mumbai"
+                className="col-span-3"
+                value={onBoardingDetails.city}
+                onChange={(e) =>
+                  setonBoardingDetails({
+                    ...onBoardingDetails,
+                    city: e.target.value,
+                  })
+                }
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="username" className="text-right">
+                Country:
+              </Label>
+              <Input
+                id="username"
+                placeholder="India"
+                className="col-span-3"
+                value={onBoardingDetails.country}
+                onChange={(e) =>
+                  setonBoardingDetails({
+                    ...onBoardingDetails,
+                    country: e.target.value,
+                  })
+                }
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="username" className="text-right">
+                Skills:
+              </Label>
+              <Textarea
+                className="w-72"
+                placeholder="Enter your skills sepreated by space."
+                value={onBoardingDetails.skills.toUpperCase()}
+                onChange={(e) =>
+                  setonBoardingDetails({
+                    ...onBoardingDetails,
+                    skills: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button type="submit" onClick={onSubmit}>
+              Save changes
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
 
+const Loading = () => {
+  return (
+    <>
+      <Button>
+        <img src={svg} alt="loading" width="30px" className="invert" />
+      </Button>
+    </>
+  );
+};
+
 const LoginButton = () => {
   return (
-    <Button className="inline-block mt-1.5 pr-10" asChild>
+    <Button className="inline-block flex mt-1.5" asChild>
       <a href="https://github.com/login/oauth/authorize?client_id=30a368613686b433cf11">
         <span className="text-slate-800"> Login</span>
 
-        <span className="absolute ml-2">
+        <span className=" ml-2">
           <svg
             width="24px"
             height="24px"
@@ -81,7 +236,6 @@ const Profile = (props) => {
     document.cookie = `token=`;
     window.location.href = "/";
   };
-  console.log(props.avatar);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -89,13 +243,20 @@ const Profile = (props) => {
           <AvatarImage src={props.avatar} />
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-slate-50 p-3 mt-2 mr-10 rounded-md">
-        <DropdownMenuLabel
-          className="text-slate-800 cursor-pointer"
+      <DropdownMenuContent className="bg-slate-50 mt-2 mr-10 rounded-md text-slate-800">
+        <DropdownMenuItem
+          className="hover:bg-slate-200 cursor-pointer text-slate-800 outline-none p-3 hover:rounded-md"
+          onClick={props.seteditProfile(true)}
+        >
+          My Account
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          className="hover:bg-slate-200 cursor-pointer text-slate-800 outline-none p-2.5 hover:rounded-md"
           onClick={logout}
         >
           Logout
-        </DropdownMenuLabel>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

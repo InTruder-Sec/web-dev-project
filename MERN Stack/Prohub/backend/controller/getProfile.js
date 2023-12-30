@@ -1,3 +1,7 @@
+// import User from "../model/user";
+
+import User from "./../model/user.js";
+
 export default async function getProfile(req, res) {
   const token = req.query.token;
 
@@ -12,7 +16,25 @@ export default async function getProfile(req, res) {
       })
         .then((result) => result.json())
         .then((result) => {
-          res.status(200).json({ code: 200, message: "OK", data: result });
+          // Check if user exsist in database
+          User.findOne({ name: result.login }).then((resul) => {
+            if (resul !== null) {
+              res.status(200).json({
+                code: 200,
+                message: "OK",
+                data: result,
+                onBoarding: false,
+                userDetails: resul,
+              });
+            } else {
+              res.status(200).json({
+                code: 200,
+                message: "OK",
+                data: result,
+                onBoarding: true,
+              });
+            }
+          });
         });
     } catch (error) {
       console.log(error);

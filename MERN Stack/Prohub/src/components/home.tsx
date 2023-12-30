@@ -1,5 +1,17 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Projects from "./projects";
 import image from "@/assets/documents-dark.webp";
+import { Button } from "./ui/button";
 
 function Home() {
   return (
@@ -15,9 +27,19 @@ function Home() {
         </div>
         <img src={image} className="m-auto" alt="projects" width="30%" />
       </div>
+      <div className="mt-10 mx-40 text-2xl text-slate-400">Your projects</div>
+      <div className="h-1 w-5/6 bg-slate-50 m-auto opacity-10 mt-2"></div>
+      <div className="mt-10 px-20 flex flex-wrap justify-center">
+        <Projects />
+        <Projects />
+        <Projects />
+        <Projects />
+        <Projects />
+      </div>
       <div className="mt-10 mx-40 text-2xl text-slate-400">Latest projects</div>
       <div className="h-1 w-5/6 bg-slate-50 m-auto opacity-10 mt-2"></div>
       <div className="mt-10 px-20 flex flex-wrap justify-center">
+        <Projects />
         <Projects />
         <Projects />
         <Projects />
