@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 function Projects() {
   return (
     <div>
-      <Card className="w-96 m-10">
+      <Card className="w-96 h-96 m-10 hover:scale-105 duration-100 ease-in">
         <CardHeader>
           <CardTitle>WaveAuth</CardTitle>
           <CardDescription className="flex py-1">

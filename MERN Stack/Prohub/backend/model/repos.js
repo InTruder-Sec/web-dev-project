@@ -18,6 +18,14 @@ const reposSchema = new mongoose.Schema({
     required: true,
     default: [],
   },
+  repoOwner: {
+    type: String,
+    required: true,
+  },
+  repoLocation: {
+    type: String,
+    required: true,
+  },
 });
 
 const Repos = mongoose.model("Repos", reposSchema);

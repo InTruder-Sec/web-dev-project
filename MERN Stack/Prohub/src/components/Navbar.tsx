@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "./ui/button";
 import svg from "./../assets/Spinner-1s-200px.svg";
@@ -32,10 +32,12 @@ function Navbar() {
 
   const [userData, setuserData] = useState("");
   const [onBoardingDetails, setonBoardingDetails] = useState({
+    _id: "",
     name: "",
     city: "",
     country: "",
     skills: "",
+    repos: [],
   });
 
   const [newUser, setnewUser] = useState(false);
@@ -66,6 +68,7 @@ function Navbar() {
   }, [token, newUser]);
 
   const onSubmit = () => {
+    console.log(userData);
     const name = userData.login;
     setonBoardingDetails({ ...onBoardingDetails, name: name });
     if (
@@ -74,6 +77,7 @@ function Navbar() {
       onBoardingDetails.country !== "" &&
       onBoardingDetails.skills !== ""
     ) {
+      console.log(onBoardingDetails);
       fetch("http://localhost:5000/api/user/onBoarding", {
         method: "POST",
         body: JSON.stringify(onBoardingDetails),
@@ -82,8 +86,14 @@ function Navbar() {
         },
       })
         .then((res) => res.json())
-        .then(() => {
+        .then((res) => {
+          // Add object of res to userDetails
+          console.log(res.data);
           setnewUser(false);
+          seteditProfile(false);
+          setonBoardingDetails(res.data);
+          // refresh page
+          window.location.reload();
         });
     }
   };
@@ -161,12 +171,12 @@ function Navbar() {
               </Label>
               <Textarea
                 className="w-72"
-                placeholder="Enter your skills sepreated by space."
-                value={onBoardingDetails.skills.toUpperCase()}
+                placeholder="Enter your skills sepreated by comma."
+                value={onBoardingDetails.skills}
                 onChange={(e) =>
                   setonBoardingDetails({
                     ...onBoardingDetails,
-                    skills: e.target.value,
+                    skills: e.target.value.toUpperCase(),
                   })
                 }
               />
@@ -236,6 +246,7 @@ const Profile = (props) => {
     document.cookie = `token=`;
     window.location.href = "/";
   };
+  console.log(props.avatar);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -246,7 +257,7 @@ const Profile = (props) => {
       <DropdownMenuContent className="bg-slate-50 mt-2 mr-10 rounded-md text-slate-800">
         <DropdownMenuItem
           className="hover:bg-slate-200 cursor-pointer text-slate-800 outline-none p-3 hover:rounded-md"
-          onClick={props.seteditProfile(true)}
+          onClick={props.seteditProfile}
         >
           My Account
         </DropdownMenuItem>
