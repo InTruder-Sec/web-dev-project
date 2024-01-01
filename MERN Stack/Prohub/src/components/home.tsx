@@ -31,7 +31,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Textarea } from "./ui/textarea";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { globalToken } from "@/App";
 
 function Home() {
@@ -42,6 +42,33 @@ function Home() {
   const [userData, setUserData] = useState({});
   console.log(userData);
   const [repos, setRepos] = useState(["Please wait till we fetch your repos!"]);
+
+  const [projects, setprojects] = useState("");
+  useEffect(() => {
+    const fetchRepos = async () => {
+      fetch("http://localhost:5000/api/user/profile?token=" + token, {
+        method: "GET",
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          const pro = res.userDetails?.repos?.map((repo) => {
+            return (
+              <Projects
+                name={repo.repoName}
+                location={repo.repoLocation}
+                description={repo.repoDescription}
+                tags={repo.repoTags}
+                link={repo.repoLink}
+                owner={repo.repoOwner}
+              />
+            );
+          });
+          setprojects(pro);
+        });
+    };
+    fetchRepos();
+  }, [token, userData]);
 
   const getRepos = async () => {
     fetch("http://localhost:5000/api/user/profile?token=" + token, {
@@ -94,11 +121,14 @@ function Home() {
         }).then((res) => {
           res.json().then((res) => {
             console.log(res);
+            // close modal
+            document.getElementById("close").click();
           });
         });
       }
     });
   };
+
   return (
     <>
       <Drawer>
@@ -119,11 +149,8 @@ function Home() {
           </div>
           <div className="h-1 w-5/6 bg-slate-50 m-auto opacity-10 mt-2"></div>
           <div className="mt-10 px-20 flex flex-wrap justify-center">
-            <Projects />
-            <Projects />
-            <Projects />
-            <Projects />
-            <Projects />
+            {/* Projects */}
+            {projects}
             <div>
               <DrawerTrigger onClick={getRepos}>
                 <Card className="w-96 m-10 h-96 hover:scale-105 duration-100 ease-in">
@@ -174,11 +201,11 @@ function Home() {
           </div>
           <div className="h-1 w-5/6 bg-slate-50 m-auto opacity-10 mt-2"></div>
           <div className="mt-10 px-20 flex flex-wrap justify-center">
+            {/* <Projects />
             <Projects />
             <Projects />
             <Projects />
-            <Projects />
-            <Projects />
+            <Projects /> */}
           </div>
         </div>
         <DrawerContent>
@@ -219,7 +246,7 @@ function Home() {
             </div>
             <Button onClick={submitRepo}>Submit</Button>
             <DrawerClose>
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full" id="close">
                 Cancel
               </Button>
             </DrawerClose>

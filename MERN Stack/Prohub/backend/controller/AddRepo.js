@@ -10,6 +10,9 @@ const addRepo = async (req, res) => {
   ) {
     res.status(400).json({ code: 400, message: "Bad Request" });
   } else {
+    if (req.body.repoDescription == null) {
+      req.body.repoDescription = "Please contact the owner for description!";
+    }
     try {
       Repo.create({
         repoName: req.body.repoName,
