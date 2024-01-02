@@ -86,6 +86,7 @@ function Home() {
           }
         );
       });
+    fetch("http://localhost:5000/api/user/search?latest=true");
   };
 
   const submitRepo = async () => {
@@ -120,8 +121,19 @@ function Home() {
           body: JSON.stringify(formData),
         }).then((res) => {
           res.json().then((res) => {
-            console.log(res);
-            // close modal
+            const pro = res.data[0]?.repos?.map((repo) => {
+              return (
+                <Projects
+                  name={repo.repoName}
+                  location={repo.repoLocation}
+                  description={repo.repoDescription}
+                  tags={repo.repoTags}
+                  link={repo.repoLink}
+                  owner={repo.repoOwner}
+                />
+              );
+            });
+            setprojects(pro);
             document.getElementById("close").click();
           });
         });
@@ -137,12 +149,13 @@ function Home() {
             <div className="w-5/6 mx-auto mt-20">
               Ever had problems while searching projects?
             </div>
-            <div className="text-xl my-8 w-4/6 m-auto ">
+            <div className="text-xl mt-8 mb-4 w-4/6 m-auto ">
               Prohub is here to help you out! Checkout the latest projects near
               your area and collaborate now! Worried about your skills? Nahh! We
               can help you with sorting projects based on your skills.
             </div>
             <img src={image} className="m-auto" alt="projects" width="30%" />
+            <Button className="m-auto">Explore Projects</Button>
           </div>
           <div className="mt-10 mx-40 text-2xl text-slate-400">
             Your projects
@@ -201,11 +214,7 @@ function Home() {
           </div>
           <div className="h-1 w-5/6 bg-slate-50 m-auto opacity-10 mt-2"></div>
           <div className="mt-10 px-20 flex flex-wrap justify-center">
-            {/* <Projects />
-            <Projects />
-            <Projects />
-            <Projects />
-            <Projects /> */}
+            {/* Projects explore */}
           </div>
         </div>
         <DrawerContent>

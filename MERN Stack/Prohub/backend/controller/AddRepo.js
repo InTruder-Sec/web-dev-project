@@ -33,12 +33,17 @@ const addRepo = async (req, res) => {
               }
             )
             .then((resul) => {
-              console.log(resul);
-              res.status(200).json({
-                code: 200,
-                message: "OK",
-                data: result,
-              });
+              user
+                .find({ name: req.body.repoOwner })
+                .populate("repos")
+                .then((resul) => {
+                  console.log(resul);
+                  res.status(200).json({
+                    code: 200,
+                    message: "OK",
+                    data: resul,
+                  });
+                });
             });
         })
         .catch((err) => {

@@ -26,6 +26,9 @@ const reposSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  // repoDate: {
+  //   type: ISO,
+  // },
 });
 
 const Repos = mongoose.model("Repos", reposSchema);
