@@ -43,6 +43,8 @@ function Home() {
   console.log(userData);
   const [repos, setRepos] = useState(["Please wait till we fetch your repos!"]);
 
+  const [latestRepo, setLatestRepo] = useState(<></>);
+
   const [projects, setprojects] = useState("");
   useEffect(() => {
     const fetchRepos = async () => {
@@ -51,7 +53,6 @@ function Home() {
       })
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
           const pro = res.userDetails?.repos?.map((repo) => {
             return (
               <Projects
@@ -65,6 +66,29 @@ function Home() {
             );
           });
           setprojects(pro);
+
+          fetch("http://localhost:5000/api/user/search?latest=true").then(
+            (res) => {
+              res.json().then((res) => {
+                console.log(res.data);
+
+                setLatestRepo(
+                  res?.data?.map((repo) => {
+                    return (
+                      <Projects
+                        name={repo.repoName}
+                        location={repo.repoLocation}
+                        description={repo.repoDescription}
+                        tags={repo.repoTags}
+                        link={repo.repoLink}
+                        owner={repo.repoOwner}
+                      />
+                    );
+                  })
+                );
+              });
+            }
+          );
         });
     };
     fetchRepos();
@@ -215,6 +239,7 @@ function Home() {
           <div className="h-1 w-5/6 bg-slate-50 m-auto opacity-10 mt-2"></div>
           <div className="mt-10 px-20 flex flex-wrap justify-center">
             {/* Projects explore */}
+            {latestRepo}
           </div>
         </div>
         <DrawerContent>

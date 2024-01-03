@@ -26,9 +26,11 @@ const reposSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // repoDate: {
-  //   type: ISO,
-  // },
+  repoDate: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
 });
 
 const Repos = mongoose.model("Repos", reposSchema);
