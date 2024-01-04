@@ -44,7 +44,7 @@ function Home() {
   const [userData, setUserData] = useState({});
   const [repos, setRepos] = useState(["Please wait till we fetch your repos!"]);
 
-  const [latestRepo, setLatestRepo] = useState(<></>);
+  const [latestRepo, setLatestRepo] = useState([]);
 
   const [projects, setprojects] = useState("");
   useEffect(() => {
@@ -71,20 +71,7 @@ function Home() {
           fetch("http://localhost:5000/api/user/search?latest=true").then(
             (res) => {
               res.json().then((res) => {
-                setLatestRepo(
-                  res?.data?.map((repo) => {
-                    return (
-                      <Projects
-                        name={repo.repoName}
-                        location={repo.repoLocation}
-                        description={repo.repoDescription}
-                        tags={repo.repoTags}
-                        link={repo.repoLink}
-                        owner={repo.repoOwner}
-                      />
-                    );
-                  })
-                );
+                setLatestRepo(res.data);
               });
             }
           );
@@ -92,6 +79,21 @@ function Home() {
     };
     fetchRepos();
   }, [token, userData]);
+
+  console.log(latestRepo);
+
+  const repository = latestRepo?.map((repo) => {
+    return (
+      <Projects
+        name={repo.repoName}
+        location={repo.repoLocation}
+        description={repo.repoDescription}
+        tags={repo.repoTags}
+        link={repo.repoLink}
+        owner={repo.repoOwner}
+      />
+    );
+  });
 
   const getRepos = async () => {
     fetch("http://localhost:5000/api/user/profile?token=" + token, {
@@ -103,7 +105,6 @@ function Home() {
         fetch(`https://api.github.com/users/${res.data.login}/repos`).then(
           (res) => {
             res.json().then((res) => {
-              console.log(res);
               setRepos(res);
             });
           }
@@ -150,6 +151,10 @@ function Home() {
           body: JSON.stringify(formData),
         }).then((res) => {
           res.json().then((res) => {
+            console.log(res.repoAdded);
+
+            setLatestRepo((prev) => [...prev, res.repoAdded]);
+
             const pro = res.data[0]?.repos?.map((repo) => {
               return (
                 <Projects
@@ -184,7 +189,14 @@ function Home() {
               can help you with sorting projects based on your skills.
             </div>
             <img src={image} className="m-auto" alt="projects" width="30%" />
-            <Button className="m-auto">Explore Projects</Button>
+            <Button
+              className="m-auto"
+              onClick={() => {
+                // window.scrollTo(0, 1000);Change this
+              }}
+            >
+              Explore Projects
+            </Button>
           </div>
           <div className="mt-10 mx-40 text-2xl text-slate-400">
             Your projects
@@ -237,12 +249,12 @@ function Home() {
               </DrawerTrigger>
             </div>
           </div>
-          <div className="mt-10 mx-40 text-2xl text-slate-400">
+          <div className="mt-10 mx-40 text-2xl text-slate-400" id="latest">
             Latest projects
           </div>
           <div className="h-1 w-5/6 bg-slate-50 m-auto opacity-10 mt-2"></div>
           <div className="mt-10 px-20 flex flex-wrap justify-center">
-            {latestRepo}
+            {repository}
           </div>
         </div>
         <DrawerContent>

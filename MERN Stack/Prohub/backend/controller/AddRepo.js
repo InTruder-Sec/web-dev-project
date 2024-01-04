@@ -42,6 +42,7 @@ const addRepo = async (req, res) => {
                     code: 200,
                     message: "OK",
                     data: resul,
+                    repoAdded: result,
                   });
                 });
             });

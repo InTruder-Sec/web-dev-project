@@ -66,7 +66,7 @@ function Projects(props) {
           </CardDescription>
         </CardHeader>
         <CardContent className="h-40">
-          <p>{props.description}</p>
+          <p>{props.description.slice(0, 250)}</p>
         </CardContent>
         <CardFooter className="flex  flex-wrap">
           {props.tags.map((tag) => (
