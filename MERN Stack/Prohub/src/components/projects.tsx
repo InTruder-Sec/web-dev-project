@@ -11,7 +11,11 @@ import { Badge } from "@/components/ui/badge";
 
 function Projects(props) {
   return (
-    <div>
+    <div
+      onClick={() => {
+        window.open(props.link, "_blank");
+      }}
+    >
       <Card className="w-96 h-96 m-10 hover:scale-105 duration-100 ease-in">
         <CardHeader>
           <CardTitle>{props.name}</CardTitle>

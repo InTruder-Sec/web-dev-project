@@ -33,14 +33,15 @@ import {
 import { Textarea } from "./ui/textarea";
 import { useContext, useEffect, useRef, useState } from "react";
 import { globalToken } from "@/App";
+import { useToast } from "./ui/use-toast";
 
 function Home() {
+  const { toast } = useToast();
   const token = useContext(globalToken);
   const inputRef = useRef(null);
   const tagRef = useRef(null);
 
   const [userData, setUserData] = useState({});
-  console.log(userData);
   const [repos, setRepos] = useState(["Please wait till we fetch your repos!"]);
 
   const [latestRepo, setLatestRepo] = useState(<></>);
@@ -70,8 +71,6 @@ function Home() {
           fetch("http://localhost:5000/api/user/search?latest=true").then(
             (res) => {
               res.json().then((res) => {
-                console.log(res.data);
-
                 setLatestRepo(
                   res?.data?.map((repo) => {
                     return (
@@ -101,10 +100,10 @@ function Home() {
       .then((res) => res.json())
       .then((res) => {
         setUserData(res);
-
         fetch(`https://api.github.com/users/${res.data.login}/repos`).then(
           (res) => {
             res.json().then((res) => {
+              console.log(res);
               setRepos(res);
             });
           }
@@ -114,8 +113,14 @@ function Home() {
   };
 
   const submitRepo = async () => {
+    if (token === "" || token === undefined) {
+      toast({
+        title: "Login Error",
+        description: "Please login to add projects!",
+      });
+      return;
+    }
     const value = inputRef.current.innerHTML;
-    console.log(userData);
     const formData = {
       _id: "",
       repoName: "",
@@ -131,12 +136,12 @@ function Home() {
         formData._id = userData.userDetails._id;
         formData.repoName = repo.name;
         formData.repoDescription = repo.description;
-        formData.repoLink = repo.url;
+        formData.repoLink = repo.html_url;
         formData.repoTags = tags;
         formData.repoOwner = repo.owner.login;
         formData.repoLocation =
           userData.userDetails.city + ", " + userData.userDetails.country;
-        console.log(formData);
+
         fetch("http://localhost:5000/api/user/add", {
           method: "POST",
           headers: {
@@ -186,7 +191,6 @@ function Home() {
           </div>
           <div className="h-1 w-5/6 bg-slate-50 m-auto opacity-10 mt-2"></div>
           <div className="mt-10 px-20 flex flex-wrap justify-center">
-            {/* Projects */}
             {projects}
             <div>
               <DrawerTrigger onClick={getRepos}>
@@ -238,7 +242,6 @@ function Home() {
           </div>
           <div className="h-1 w-5/6 bg-slate-50 m-auto opacity-10 mt-2"></div>
           <div className="mt-10 px-20 flex flex-wrap justify-center">
-            {/* Projects explore */}
             {latestRepo}
           </div>
         </div>

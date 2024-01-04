@@ -2,6 +2,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "./components/Navbar";
 import Home from "./components/home";
 import { createContext, useEffect, useState } from "react";
+import { Toaster } from "./components/ui/toaster";
 
 let globalToken;
 
@@ -14,6 +15,7 @@ function App() {
   globalToken = createContext(token);
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <Toaster />
       <Navbar />
       <Home />
     </ThemeProvider>
