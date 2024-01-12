@@ -1,40 +1,72 @@
-# Full-StackDev-Projects
+# Web Development projects
 
-<h3>HTML & CSS Projects</h3>
+Collection of all the web development projects that I have built during my learning journey! Learn collaborate and have fun : )
 
-1. [Contact Form](./Html-CSS/Contact-form)
-2. [Laptop Buying Page](./Html-CSS/Laptop-buying%20site)
-3. [Portfolio](https://intruder-sec.github.io/deep.github.io/)
+### 🔗 Link
 
-<hr>
+[Deployed Links ](https://intruder-sec.github.io/web-dev-project/)
 
-<h3>Javascript Projects</h3>
+<hr/>
 
-1. [ToDo List](./JavaScript-Projects/To-Do-List)
-2. [Calculator](./JavaScript-Projects/Calculator/)
-3. [Clock](./JavaScript-Projects/Clock/)
-4. [Notes Keeper](./JavaScript-Projects/Notes%20Keeper/)
-5. [Snakes and Ladders](./JavaScript-Projects/Snake-Ladder/)
-6. [Virtual Keyboard](./JavaScript-Projects/Virtual_keyboard/)
-7. [Snake Game](./JavaScript-Projects/Snake_Game/)
-8. [QRcode Generator](./JavaScript-Projects/QrCode/)
-9. [OWASP PCCOE Team Site](https://owasp-pccoe.web.app/)
+### 💻 Projects
 
-<hr>
+**HTML & CSS Projects**
 
-<h3>React Projects</h3>
+| Project Name  | Code |
+| ------------- | ------------- |
+| Contact Form | [Link](./Html-CSS/Contact-form) |
+| Laptop Buying Page  | [Link](./Html-CSS/Laptop-buying%20site)  |
+| Portfolio | [Link](https://intruder-sec.github.io/deep.github.io/) |
 
-1. [Weather App](https://intruder-sec.github.io/Weather-App-React/)
-2. [Travel Diary](https://travel-diary-intruder.netlify.app/)
-3. [Book Store](https://thebookmark.netlify.app/)
-4. [Playifyi](https://playifyi.netlify.app/)
-5. [Health Care App](https://healthcare-service.netlify.app/)
-6. [Portfolio (Using react)](https://intruder-security.systems/)
+<br/>
+
+**Javascript Projects**
+
+| Project Name       | Code                                                |
+| ------------------ | --------------------------------------------------- |
+| ToDo List          | [Link](./JavaScript-Projects/To-Do-List)            |
+| Calculator         | [Link](./JavaScript-Projects/Calculator/)           |
+| Clock              | [Link](./JavaScript-Projects/Clock/)                |
+| Notes Keeper       | [Link](./JavaScript-Projects/Notes%20Keeper/)      |
+| Snakes and Ladders | [Link](./JavaScript-Projects/Snake-Ladder/)         |
+| Virtual Keyboard   | [Link](./JavaScript-Projects/Virtual_keyboard/)    |
+| Snake Game         | [Link](./JavaScript-Projects/Snake_Game/)          |
+| QRcode Generator   | [Link](./JavaScript-Projects/QrCode/)              |
+| OWASP PCCOE Team Site | [Link](https://github.com/InTruder-Sec/OWASP-Student-Chapter-PCCOE)           |
+
+<br/>
+
+**React Projects**
+
+| Project Name           | Code                                               |
+| ---------------------- | -------------------------------------------------- |
+| Weather App            | [Link](https://github.com/InTruder-Sec/Weather-App-React) |
+| Travel Diary           | [Link](https://github.com/InTruder-Sec/React-Projects/tree/main/travel-diary) |
+| Book Store             | [Link](https://github.com/InTruder-Sec/React-Projects/tree/main/book-store)           |
+| Playifyi               | [Link](https://github.com/InTruder-Sec/playifyi-music-explorer)              |
+| Health Care App        | [Link](https://github.com/InTruder-Sec/Healthcare_Website)    |
+| Portfolio (Using React)| [Link](https://github.com/InTruder-Sec/deep.github.io)       |
+
+<br/>
+
+**Full Stack Projects**
 
 
-<hr>
+| Project Name           | Code                                               |
+| ---------------------- | -------------------------------------------------- |
+| Expense Tracker | [Link](https://github.com/InTruder-Sec/React-Projects/tree/main/expense-tracker) |
+| Chat App | [Link](https://github.com/InTruder-Sec/scribble-chat-app) |
+| One Task | [Link](https://github.com/InTruder-Sec/web-dev-project/tree/main/MERN%20Stack/onetask) |
+| Prohub | [Link](https://github.com/InTruder-Sec/prohub-os-project-finder) |
 
-<h3>Full-Stack-Project</h3>
 
-1. [Expense tracker](https://phoeinix.netlify.app/)
-2. [Chat-App](https://scribblechat.netlify.app)
+<hr/>
+
+### 🛠️ Tech-Stack
+
+> HTML, CSS, JS, REACT, TAILWIND, SHADCN/UI, Material UI, Appwrite Cloud, AZURE CLOUD, NODE, EXPRESS, MONGODB, OAUTH
+
+### 🚀 Contribution Guidelines
+
+I would ❤️ you to contribute to the projects and help make it better! Let's make open source contributing to be fun, enjoyable, and educational for anyone and everyone. All contributions are welcome, including issues, updates and more.
+
